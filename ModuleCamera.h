@@ -1,6 +1,7 @@
 #pragma once
 #include "Module.h"
 #include "Globals.h"
+#include "MathGeoLib/Geometry/Frustum.h"
 
 class ModuleCamera : public Module {
 public:
@@ -11,4 +12,7 @@ public:
 	update_status PostUpdate();
 
 	bool CleanUp();
+
+private:
+	Frustum frustum;
 };
