@@ -8,6 +8,7 @@ class ModuleRender;
 class ModuleWindow;
 class ModuleInput;
 class ModuleCamera;
+class ModuleDebugDraw;
 
 class Application {
 public:
@@ -24,6 +25,7 @@ public:
 	ModuleWindow* window = nullptr;
 	ModuleInput* input = nullptr;
 	ModuleCamera* camera = nullptr;
+	ModuleDebugDraw* debug_draw = nullptr;
 
 private:
 

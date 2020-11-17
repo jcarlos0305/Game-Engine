@@ -2,6 +2,8 @@
 #include "Application.h"
 #include "ModuleRender.h"
 #include "ModuleWindow.h"
+#include "ModuleCamera.h"
+#include "Debug Draw/ModuleDebugDraw.h"
 #include "SDL.h"
 #include <GL\glew.h>
 
@@ -38,6 +40,8 @@ update_status ModuleRender::PreUpdate() {
 update_status ModuleRender::Update() {
 	int w, h;
 	SDL_GetWindowSize(App->window->window, &w, &h);
+	// Drawing the grid with debug draw
+	App->debug_draw->Draw(App->camera->frustum.ViewMatrix(), App->camera->frustum.ProjectionMatrix(), w, h);
 	return update_status::UPDATE_CONTINUE;
 }
 

@@ -4,6 +4,7 @@
 #include "ModuleRender.h"
 #include "ModuleInput.h"
 #include "ModuleCamera.h"
+#include "Debug Draw/ModuleDebugDraw.h"
 
 using namespace std;
 
@@ -13,6 +14,7 @@ Application::Application() {
 	modules.push_back(renderer = new ModuleRender());
 	modules.push_back(input = new ModuleInput());
 	modules.push_back(camera = new ModuleCamera());
+	modules.push_back(debug_draw = new ModuleDebugDraw());
 }
 
 Application::~Application() {
