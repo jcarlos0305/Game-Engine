@@ -144,6 +144,9 @@
     <ClCompile Include="MathGeoLib\Geometry\TriangleMesh.cpp">
       <Filter>MathGeoLib</Filter>
     </ClCompile>
+    <ClCompile Include="Debug Draw\ModuleDebugDraw.cpp">
+      <Filter>Debug Draw</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
@@ -393,6 +396,15 @@
     <ClInclude Include="MathGeoLib\Math\vec2d.h">
       <Filter>MathGeoLib</Filter>
     </ClInclude>
+    <ClInclude Include="Debug Draw\debug_draw.hpp">
+      <Filter>Debug Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="Debug Draw\debugdraw.h">
+      <Filter>Debug Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="Debug Draw\ModuleDebugDraw.h">
+      <Filter>Debug Draw</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Modules">
@@ -403,6 +415,9 @@
     </Filter>
     <Filter Include="MathGeoLib">
       <UniqueIdentifier>{d38a4c00-4f5b-44d3-80c2-a2aa3df588be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Debug Draw">
+      <UniqueIdentifier>{308e90b5-dce6-422f-a78b-8fee0e44f40e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -13,6 +13,6 @@ public:
 
 	bool CleanUp();
 
-private:
+public:
 	Frustum frustum;
 };
