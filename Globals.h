@@ -43,3 +43,4 @@ enum class KeyState {
 #define FULLSCREEN false
 #define VSYNC true
 #define TITLE "Rearrengine"
+#define CAMERA_MOVEMENT_SPEED 5.0f

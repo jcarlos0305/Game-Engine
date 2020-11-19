@@ -27,8 +27,10 @@ public:
 	ModuleCamera* camera = nullptr;
 	ModuleDebugDraw* debug_draw = nullptr;
 
-private:
+	float delta_time = 0.0f;
 
+private:
+	float last_time = 0.0f;
 	std::list<Module*> modules;
 };
 
