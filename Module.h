@@ -13,16 +13,16 @@ public:
 		return true;
 	}
 
-	virtual update_status PreUpdate() {
-		return update_status::UPDATE_CONTINUE;
+	virtual UpdateStatus PreUpdate() {
+		return UpdateStatus::kUpdateContinue;
 	}
 
-	virtual update_status Update() {
-		return update_status::UPDATE_CONTINUE;
+	virtual UpdateStatus Update() {
+		return UpdateStatus::kUpdateContinue;
 	}
 
-	virtual update_status PostUpdate() {
-		return update_status::UPDATE_CONTINUE;
+	virtual UpdateStatus PostUpdate() {
+		return UpdateStatus::kUpdateContinue;
 	}
 
 	virtual bool CleanUp() {

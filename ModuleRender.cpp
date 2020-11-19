@@ -27,27 +27,27 @@ bool ModuleRender::Init() {
 	return true;
 }
 
-update_status ModuleRender::PreUpdate() {
+UpdateStatus ModuleRender::PreUpdate() {
 	// OpenGL Frame Init
 	SDL_GetWindowSize(App->window->window, NULL, NULL);
 	// Deleting color's buffer
 	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	return update_status::UPDATE_CONTINUE;
+	return UpdateStatus::kUpdateContinue;
 }
 
 // Called every draw update
-update_status ModuleRender::Update() {
+UpdateStatus ModuleRender::Update() {
 	int w, h;
 	SDL_GetWindowSize(App->window->window, &w, &h);
 	// Drawing the grid with debug draw
 	App->debug_draw->Draw(App->camera->frustum.ViewMatrix(), App->camera->frustum.ProjectionMatrix(), w, h);
-	return update_status::UPDATE_CONTINUE;
+	return UpdateStatus::kUpdateContinue;
 }
 
-update_status ModuleRender::PostUpdate() {
+UpdateStatus ModuleRender::PostUpdate() {
 	SDL_GL_SwapWindow(App->window->window);
-	return update_status::UPDATE_CONTINUE;
+	return UpdateStatus::kUpdateContinue;
 }
 
 // Called before quitting

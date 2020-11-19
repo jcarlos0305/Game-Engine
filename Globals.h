@@ -8,15 +8,38 @@
 
 void log(const char file[], int line, const char* format, ...);
 
-enum class update_status {
-	UPDATE_CONTINUE = 1,
-	UPDATE_STOP,
-	UPDATE_ERROR
+enum class MainStates {
+	kMainCreation = 0,
+	kMainStart,
+	kMainUpdate,
+	kMainFinish,
+	kMainExit
+};
+
+enum class UpdateStatus {
+	kUpdateContinue = 1,
+	kUpdateStop,
+	kUpdateError
+};
+
+enum class WindowEvent {
+	kQuit = 0,
+	kHide,
+	kShow,
+	kCount
+};
+
+enum class KeyState {
+	kKeyIdle = 0,
+	kKeyDown,
+	kKeyRepeat,
+	kKeyUp
 };
 
 // Configuration -----------
 #define SCREEN_WIDTH 1024
 #define SCREEN_HEIGHT 768
+#define SCREEN_SIZE 2
 #define FULLSCREEN false
 #define VSYNC true
 #define TITLE "Rearrengine"
