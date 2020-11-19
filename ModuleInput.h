@@ -18,6 +18,7 @@ public:
 	bool         CleanUp();
 
 	inline KeyState GetKey(int id) const { return keyboard[id]; }
+	inline KeyState GetMouseButtonDown(int id) const { return mouse_buttons[id - 1]; }
 	inline bool     GetWindowEvent(WindowEvent ev) const { return window_events[static_cast<unsigned int>(ev)]; }
 
 private:
