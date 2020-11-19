@@ -32,16 +32,16 @@ bool Application::Init() {
 	return ret;
 }
 
-update_status Application::Update() {
-	update_status ret = update_status::UPDATE_CONTINUE;
+UpdateStatus Application::Update() {
+	UpdateStatus ret = UpdateStatus::kUpdateContinue;
 
-	for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == update_status::UPDATE_CONTINUE; ++it)
+	for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UpdateStatus::kUpdateContinue; ++it)
 		ret = (*it)->PreUpdate();
 
-	for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == update_status::UPDATE_CONTINUE; ++it)
+	for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UpdateStatus::kUpdateContinue; ++it)
 		ret = (*it)->Update();
 
-	for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == update_status::UPDATE_CONTINUE; ++it)
+	for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UpdateStatus::kUpdateContinue; ++it)
 		ret = (*it)->PostUpdate();
 
 	return ret;

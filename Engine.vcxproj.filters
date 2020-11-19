@@ -405,6 +405,9 @@
     <ClInclude Include="Debug Draw\ModuleDebugDraw.h">
       <Filter>Debug Draw</Filter>
     </ClInclude>
+    <ClInclude Include="Point.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Modules">

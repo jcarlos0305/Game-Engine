@@ -11,16 +11,16 @@ bool ModuleCamera::Init() {
     return true;
 }
 
-update_status ModuleCamera::PreUpdate() {
-    return update_status::UPDATE_CONTINUE;
+UpdateStatus ModuleCamera::PreUpdate() {
+    return UpdateStatus::kUpdateContinue;
 }
 
-update_status ModuleCamera::Update() {
-    return update_status::UPDATE_CONTINUE;
+UpdateStatus ModuleCamera::Update() {
+    return UpdateStatus::kUpdateContinue;
 }
 
-update_status ModuleCamera::PostUpdate() {
-    return update_status::UPDATE_CONTINUE;
+UpdateStatus ModuleCamera::PostUpdate() {
+    return UpdateStatus::kUpdateContinue;
 }
 
 bool ModuleCamera::CleanUp() {

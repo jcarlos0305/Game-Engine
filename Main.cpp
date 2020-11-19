@@ -7,58 +7,50 @@
 #pragma comment( lib, "SDL/lib/x86/SDL2.lib" )
 #pragma comment( lib, "SDL/lib/x86/SDL2main.lib" )
 
-enum class main_states {
-	MAIN_CREATION,
-	MAIN_START,
-	MAIN_UPDATE,
-	MAIN_FINISH,
-	MAIN_EXIT
-};
-
 Application* App = NULL;
 
 int main(int argc, char** argv) {
 	int main_return = EXIT_FAILURE;
-	main_states state = main_states::MAIN_CREATION;
+	MainStates state = MainStates::kMainCreation;
 
-	while (state != main_states::MAIN_EXIT) {
+	while (state != MainStates::kMainExit) {
 		switch (state) {
-		case main_states::MAIN_CREATION:
+		case MainStates::kMainCreation:
 
 			LOG("Application Creation --------------");
 			App = new Application();
-			state = main_states::MAIN_START;
+			state = MainStates::kMainStart;
 			break;
 
-		case main_states::MAIN_START:
+		case MainStates::kMainStart:
 
 			LOG("Application Init --------------");
 			if (App->Init() == false) {
 				LOG("Application Init exits with error -----");
-				state = main_states::MAIN_EXIT;
+				state = MainStates::kMainExit;
 			}
 			else {
-				state = main_states::MAIN_UPDATE;
+				state = MainStates::kMainUpdate;
 				LOG("Application Update --------------");
 			}
 
 			break;
 
-		case main_states::MAIN_UPDATE:
+		case MainStates::kMainUpdate:
 		{
-			update_status update_return = App->Update();
+			UpdateStatus update_return = App->Update();
 
-			if (update_return == update_status::UPDATE_ERROR) {
+			if (update_return == UpdateStatus::kUpdateError) {
 				LOG("Application Update exits with error -----");
-				state = main_states::MAIN_EXIT;
+				state = MainStates::kMainExit;
 			}
 
-			if (update_return == update_status::UPDATE_STOP)
-				state = main_states::MAIN_FINISH;
+			if (update_return == UpdateStatus::kUpdateStop)
+				state = MainStates::kMainFinish;
 		}
 		break;
 
-		case main_states::MAIN_FINISH:
+		case MainStates::kMainFinish:
 
 			LOG("Application CleanUp --------------");
 			if (App->CleanUp() == false) {
@@ -67,7 +59,7 @@ int main(int argc, char** argv) {
 			else
 				main_return = EXIT_SUCCESS;
 
-			state = main_states::MAIN_EXIT;
+			state = MainStates::kMainExit;
 
 			break;
 		}
