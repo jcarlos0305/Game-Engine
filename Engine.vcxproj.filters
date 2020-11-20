@@ -147,6 +147,12 @@
     <ClCompile Include="Debug Draw\ModuleDebugDraw.cpp">
       <Filter>Debug Draw</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleProgram.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleTexture.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
@@ -411,6 +417,12 @@
     <ClInclude Include="LeakTest.h">
       <Filter>Utils</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleProgram.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleTexture.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Modules">
@@ -424,6 +436,9 @@
     </Filter>
     <Filter Include="Debug Draw">
       <UniqueIdentifier>{308e90b5-dce6-422f-a78b-8fee0e44f40e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{00970e2f-7b20-495d-9fb9-09aba29b70f4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -447,6 +462,12 @@
     </None>
     <None Include="MathGeoLib\Geometry\TriangleMesh_IntersectRay_SSE.inl">
       <Filter>MathGeoLib</Filter>
+    </None>
+    <None Include="fragment.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="vertex.glsl">
+      <Filter>Shaders</Filter>
     </None>
   </ItemGroup>
 </Project>
