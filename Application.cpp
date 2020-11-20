@@ -6,6 +6,8 @@
 #include "ModuleCamera.h"
 #include "Debug Draw/ModuleDebugDraw.h"
 
+#include "LeakTest.h"
+
 using namespace std;
 
 Application::Application() {

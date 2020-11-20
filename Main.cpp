@@ -3,13 +3,20 @@
 #include "ModuleRender.h"
 #include "Globals.h"
 
+#include "LeakTest.h"
+
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL/lib/x86/SDL2.lib" )
 #pragma comment( lib, "SDL/lib/x86/SDL2main.lib" )
 
 Application* App = NULL;
 
+void DumpLeaks(void) {
+	_CrtDumpMemoryLeaks(); // show leaks with file and line where allocation was made
+}
+
 int main(int argc, char** argv) {
+	atexit(DumpLeaks);
 	int main_return = EXIT_FAILURE;
 	MainStates state = MainStates::kMainCreation;
 

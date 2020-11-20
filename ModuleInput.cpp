@@ -4,6 +4,8 @@
 #include "ModuleRender.h"
 #include "SDL/include/SDL.h"
 
+#include "LeakTest.h"
+
 #define MAX_KEYS 300
 
 ModuleInput::ModuleInput() : Module(), mouse({ 0, 0 }), mouse_motion({ 0,0 }) {
@@ -113,5 +115,6 @@ UpdateStatus ModuleInput::Update() {
 bool ModuleInput::CleanUp() {
 	LOG("Quitting SDL input event subsystem");
 	SDL_QuitSubSystem(SDL_INIT_EVENTS);
+	delete keyboard;
 	return true;
 }

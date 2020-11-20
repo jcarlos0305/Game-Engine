@@ -7,6 +7,8 @@
 #include "SDL.h"
 #include <GL\glew.h>
 
+#include "LeakTest.h"
+
 ModuleRender::ModuleRender() {}
 
 // Destructor
