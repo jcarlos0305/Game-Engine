@@ -9,6 +9,8 @@ class ModuleWindow;
 class ModuleInput;
 class ModuleCamera;
 class ModuleDebugDraw;
+class ModuleProgram;
+class ModuleTexture;
 
 class Application {
 public:
@@ -26,6 +28,8 @@ public:
 	ModuleInput* input = nullptr;
 	ModuleCamera* camera = nullptr;
 	ModuleDebugDraw* debug_draw = nullptr;
+	ModuleProgram* program = nullptr;
+	ModuleTexture* texture = nullptr;
 
 	float delta_time = 0.0f;
 
