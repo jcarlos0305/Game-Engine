@@ -408,6 +408,9 @@
     <ClInclude Include="Point.h">
       <Filter>Utils</Filter>
     </ClInclude>
+    <ClInclude Include="LeakTest.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Modules">

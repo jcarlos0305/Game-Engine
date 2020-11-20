@@ -5,6 +5,8 @@
 #include "MathGeoLib/Math/float3x3.h"
 #include "MathGeoLib/Math/Quat.h"
 
+#include "LeakTest.h"
+
 bool ModuleCamera::Init() {
     frustum.SetKind(FrustumSpaceGL, FrustumRightHanded);
     frustum.SetViewPlaneDistances(0.1f, 32.0f);
