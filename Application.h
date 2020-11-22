@@ -11,6 +11,7 @@ class ModuleCamera;
 class ModuleDebugDraw;
 class ModuleProgram;
 class ModuleTexture;
+class ModuleModel;
 
 class Application {
 public:
@@ -23,13 +24,14 @@ public:
 	bool CleanUp();
 
 public:
-	ModuleRender* renderer = nullptr;
+	ModuleRender* render = nullptr;
 	ModuleWindow* window = nullptr;
 	ModuleInput* input = nullptr;
 	ModuleCamera* camera = nullptr;
 	ModuleDebugDraw* debug_draw = nullptr;
 	ModuleProgram* program = nullptr;
 	ModuleTexture* texture = nullptr;
+	ModuleModel* model = nullptr;
 
 	float delta_time = 0.0f;
 
