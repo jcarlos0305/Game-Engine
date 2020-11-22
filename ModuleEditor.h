@@ -2,15 +2,15 @@
 
 #include "Module.h"
 
-class ModuleTexture : public Module {
-
+class ModuleEditor : public Module {
 public:
 	bool Init();
+
+	// Update functions
 	UpdateStatus PreUpdate();
 	UpdateStatus Update();
 	UpdateStatus PostUpdate();
 
-	unsigned int LoadTexture(const char* path);
-
+	// Clean up
 	bool CleanUp();
 };

@@ -1,6 +1,6 @@
 #pragma once
 #include "Module.h"
-#include "Globals.h"
+
 #include "Point.h"
 
 #define NUM_MOUSE_BUTTONS 5

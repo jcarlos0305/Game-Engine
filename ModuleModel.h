@@ -2,6 +2,7 @@
 
 #include "Module.h"
 #include "Mesh.h"
+
 #include <assimp/material.h>
 
 class ModuleModel : public Module {

@@ -2,13 +2,13 @@
 #include "ModuleRender.h"
 #include "ModuleWindow.h"
 #include "ModuleCamera.h"
-#include "Debug Draw/ModuleDebugDraw.h"
 #include "ModuleWindow.h"
 #include "ModuleProgram.h"
 #include "ModuleTexture.h"
 #include "ModuleModel.h"
 
 #include "MathGeoLib/Math/float4x4.h"
+#include "Debug Draw/ModuleDebugDraw.h"
 
 #include "SDL.h"
 #include <GL\glew.h>

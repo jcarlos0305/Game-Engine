@@ -8,6 +8,7 @@
 #include "ModuleProgram.h"
 #include "ModuleTexture.h"
 #include "ModuleModel.h"
+#include "ModuleEditor.h"
 
 #include "LeakTest.h"
 
@@ -23,6 +24,7 @@ Application::Application() {
 	modules.push_back(model = new ModuleModel());
 	modules.push_back(render = new ModuleRender());
 	modules.push_back(debug_draw = new ModuleDebugDraw());
+	modules.push_back(editor = new ModuleEditor());
 }
 
 Application::~Application() {
@@ -41,8 +43,8 @@ bool Application::Init() {
 }
 
 UpdateStatus Application::Update() {
-	float current_time = SDL_GetTicks();
-	delta_time = (current_time - last_time) / 1000;
+	unsigned int current_time = SDL_GetTicks();
+	delta_time = (float)((current_time - last_time) / 1000);
 	last_time = current_time;
 
 	UpdateStatus ret = UpdateStatus::kUpdateContinue;
