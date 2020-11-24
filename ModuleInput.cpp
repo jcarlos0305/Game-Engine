@@ -2,7 +2,9 @@
 #include "Application.h"
 #include "ModuleInput.h"
 #include "ModuleRender.h"
+
 #include "SDL/include/SDL.h"
+#include "ImGui/imgui_impl_sdl.h"
 
 #include "LeakTest.h"
 
@@ -62,6 +64,8 @@ UpdateStatus ModuleInput::Update() {
 		if (mouse_buttons[i] == KeyState::kKeyUp)
 			mouse_buttons[i] = KeyState::kKeyIdle;
 	}
+
+	ImGui_ImplSDL2_ProcessEvent(&event);
 
 	while (SDL_PollEvent(&event) != 0) {
 		switch (event.type) {

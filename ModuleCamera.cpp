@@ -1,6 +1,8 @@
 #include "Application.h"
+#include "Globals.h"
 #include "ModuleCamera.h"
 #include "ModuleInput.h"
+
 #include "SDL.h"
 #include "MathGeoLib/Math/float3x3.h"
 #include "MathGeoLib/Math/Quat.h"

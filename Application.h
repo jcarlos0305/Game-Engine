@@ -12,6 +12,7 @@ class ModuleDebugDraw;
 class ModuleProgram;
 class ModuleTexture;
 class ModuleModel;
+class ModuleEditor;
 
 class Application {
 public:
@@ -23,6 +24,8 @@ public:
 	UpdateStatus Update();
 	bool CleanUp();
 
+	void RequestBrowser(const char* url);
+
 public:
 	ModuleRender* render = nullptr;
 	ModuleWindow* window = nullptr;
@@ -32,11 +35,12 @@ public:
 	ModuleProgram* program = nullptr;
 	ModuleTexture* texture = nullptr;
 	ModuleModel* model = nullptr;
+	ModuleEditor* editor = nullptr;
 
 	float delta_time = 0.0f;
 
 private:
-	float last_time = 0.0f;
+	unsigned int last_time = 0;
 	std::list<Module*> modules;
 };
 

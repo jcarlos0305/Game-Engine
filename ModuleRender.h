@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Module.h"
 
 class ModuleRender : public Module {
@@ -12,8 +13,6 @@ public:
 	bool CleanUp();
 
 	void WindowResized(unsigned width, unsigned height);
-
-private:
 	void* context = nullptr;
 
 };
