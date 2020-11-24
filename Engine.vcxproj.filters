@@ -153,9 +153,6 @@
     <ClCompile Include="ModuleTexture.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="Mesh.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
     <ClCompile Include="ModuleModel.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
@@ -179,6 +176,18 @@
     </ClCompile>
     <ClCompile Include="ImGui\imgui_widgets.cpp">
       <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Utils\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Utils\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="About.cpp">
+      <Filter>Utils\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Configuration.cpp">
+      <Filter>Utils\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -453,9 +462,6 @@
     <ClInclude Include="ModuleModel.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="Mesh.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleEditor.h">
       <Filter>Modules</Filter>
     </ClInclude>
@@ -483,6 +489,18 @@
     <ClInclude Include="ImGui\imstb_truetype.h">
       <Filter>ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Utils\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Utils\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="About.h">
+      <Filter>Utils\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Configuration.h">
+      <Filter>Utils\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Modules">
@@ -502,6 +520,12 @@
     </Filter>
     <Filter Include="ImGui">
       <UniqueIdentifier>{3836a1c1-ddfd-4d45-9a85-1217c41429d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\Mesh">
+      <UniqueIdentifier>{27ac4752-ae18-4199-85a7-b374644e06f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\UI">
+      <UniqueIdentifier>{02d353f3-6b01-4941-869b-14488263744d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

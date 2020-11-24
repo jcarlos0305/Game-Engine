@@ -44,7 +44,7 @@ bool Application::Init() {
 
 UpdateStatus Application::Update() {
 	unsigned int current_time = SDL_GetTicks();
-	delta_time = (float)((current_time - last_time) / 1000);
+	delta_time = (current_time - last_time) / 1000.0f;
 	last_time = current_time;
 
 	UpdateStatus ret = UpdateStatus::kUpdateContinue;
@@ -68,4 +68,8 @@ bool Application::CleanUp() {
 		ret = (*it)->CleanUp();
 
 	return ret;
+}
+
+void Application::RequestBrowser(const char* url) {
+	ShellExecuteA(NULL, "open", url, NULL, NULL, SW_SHOWNORMAL);
 }

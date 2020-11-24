@@ -28,12 +28,12 @@ void ModuleModel::Load(const char* model_path, const char* vertex_shader_path, c
 	char* fragment_shader_url = App->program->LoadShaderSource(fragment_shader_path);
 	if (fragment_shader_url) fragment_shader = App->program->CompileShader(GL_FRAGMENT_SHADER, fragment_shader_url);
 
-	if (vertex_shader && fragment_shader)
-	program = App->program->CreateProgram(vertex_shader, fragment_shader);
+	if (vertex_shader && fragment_shader) {
+		program = App->program->CreateProgram(vertex_shader, fragment_shader);
+	}
 
 	const aiScene* scene = aiImportFile(model_path, aiProcessPreset_TargetRealtime_MaxQuality);
 	if ( program && scene) {
-
 		LoadTextures(scene->mMaterials, scene->mNumMaterials);
 		LoadMeshes(scene->mMeshes, scene->mNumMeshes, program);
 	}

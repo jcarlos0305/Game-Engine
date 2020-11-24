@@ -28,7 +28,12 @@ bool ModuleRender::Init() {
 	glFrontFace(GL_CCW);
 
 	/* Load the model with the shaders */
-	App->model->Load("img/BakerHouse.fbx", "../vertex.glsl", "../fragment.glsl");
+	App->model->Load("assets/BakerHouse.fbx", "../vertex.glsl", "../fragment.glsl");
+
+	/*
+	*	Custom model
+	*	App->model->Load("assets/shiba.fbx", "../vertex.glsl", "../fragment.glsl");
+	*/
 
 	return true;
 }

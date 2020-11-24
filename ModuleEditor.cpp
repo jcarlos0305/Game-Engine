@@ -4,6 +4,11 @@
 #include "ModuleRender.h"
 #include "ModuleModel.h"
 
+// UI
+#include "MainMenu.h"
+#include "Configuration.h"
+
+#include <GL/glew.h>
 #include "ImGui/imgui.h"
 #include "ImGui/imgui_impl_opengl3.h"
 #include "ImGui/imgui_impl_sdl.h"
@@ -11,6 +16,7 @@
 #include "LeakTest.h"
 
 bool ModuleEditor::Init() {
+    IMGUI_CHECKVERSION();
     ImGui::CreateContext();
     ImGui::StyleColorsDark();
     ImGui_ImplSDL2_InitForOpenGL(App->window->window, App->render->context);
@@ -26,14 +32,15 @@ UpdateStatus ModuleEditor::PreUpdate() {
 }
 
 UpdateStatus ModuleEditor::Update() {
-    unsigned int num_vertices = App->model->GetNumVertices();
-    ImGui::Begin("Model Info");
-    ImGui::Text("Vertices: %d", num_vertices);
-    ImGui::Text("Triangles: %d", num_vertices / 3);
-    ImGui::End();
+    // Menu bar
+    UpdateStatus ret = MainMenu::Draw();
+
+    // Configuration
+    Configuration::Draw();
+
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-    return UpdateStatus::kUpdateContinue;
+    return ret;
 }
 
 UpdateStatus ModuleEditor::PostUpdate() {

@@ -137,7 +137,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="About.h" />
     <ClInclude Include="Application.h" />
+    <ClInclude Include="Configuration.h" />
     <ClInclude Include="Debug Draw\debugdraw.h" />
     <ClInclude Include="Debug Draw\debug_draw.hpp" />
     <ClInclude Include="Debug Draw\ModuleDebugDraw.h" />
@@ -151,6 +153,7 @@
     <ClInclude Include="ImGui\imstb_textedit.h" />
     <ClInclude Include="ImGui\imstb_truetype.h" />
     <ClInclude Include="LeakTest.h" />
+    <ClInclude Include="MainMenu.h" />
     <ClInclude Include="MathGeoLib\Algorithm\GJK.h" />
     <ClInclude Include="MathGeoLib\Algorithm\GJK2D.h" />
     <ClInclude Include="MathGeoLib\Algorithm\Random\LCG.h" />
@@ -240,7 +243,9 @@
     <ClInclude Include="Point.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="About.cpp" />
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Configuration.cpp" />
     <ClCompile Include="Debug Draw\ModuleDebugDraw.cpp" />
     <ClCompile Include="ImGui\imgui.cpp" />
     <ClCompile Include="ImGui\imgui_demo.cpp" />
@@ -250,6 +255,7 @@
     <ClCompile Include="ImGui\imgui_widgets.cpp" />
     <ClCompile Include="log.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="MathGeoLib\Algorithm\GJK.cpp" />
     <ClCompile Include="MathGeoLib\Algorithm\GJK2D.cpp" />
     <ClCompile Include="MathGeoLib\Algorithm\Random\LCG.cpp" />
