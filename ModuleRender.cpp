@@ -54,8 +54,8 @@ UpdateStatus ModuleRender::Update() {
 	int w, h;
 	SDL_GetWindowSize(App->window->window, &w, &h);
 
-	float4x4 proj = App->camera->frustum.ProjectionMatrix();
-	float4x4 view = App->camera->frustum.ViewMatrix();
+	float4x4 proj = App->camera->GetProjectionMatrix();
+	float4x4 view = App->camera->GetViewMatrix();
 
 	// Drawing the model
 	App->model->Draw();

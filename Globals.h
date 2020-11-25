@@ -44,6 +44,7 @@ enum class KeyState {
 #define VSYNC true
 #define TITLE "Rearrengine"
 #define CAMERA_MOVEMENT_SPEED 5.0f
+#define ZOOM_MOVEMENT_SPEED 2.0f
 
 #define REPO_URL "https://github.com/jcarlos0305/Game-Engine"
 #define ENGINE_VERSION "1.0"

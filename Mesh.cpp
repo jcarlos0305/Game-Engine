@@ -75,8 +75,8 @@ void Mesh::CreateVAO() {
 
 void Mesh::Draw(const std::vector<unsigned>& model_textures) {
 
-	float4x4 proj = App->camera->frustum.ProjectionMatrix();
-	float4x4 view = App->camera->frustum.ViewMatrix();
+	float4x4 proj = App->camera->GetProjectionMatrix();
+	float4x4 view = App->camera->GetViewMatrix();
 	float4x4 model = float4x4::identity;
 
 	glUseProgram(program);
