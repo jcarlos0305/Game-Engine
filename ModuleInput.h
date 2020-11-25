@@ -20,6 +20,7 @@ public:
 	inline KeyState GetKey(int id) const { return keyboard[id]; }
 	inline KeyState GetMouseButtonDown(int id) const { return mouse_buttons[id - 1]; }
 	inline bool     GetWindowEvent(WindowEvent ev) const { return window_events[static_cast<unsigned int>(ev)]; }
+	inline int      GetMouseWheel() const { return mouse_wheel; }
 
 private:
 	bool      window_events[static_cast<unsigned int>(WindowEvent::kCount)];
@@ -27,4 +28,5 @@ private:
 	KeyState  mouse_buttons[NUM_MOUSE_BUTTONS];
 	iPoint	  mouse_motion;
 	iPoint	  mouse;
+	int       mouse_wheel = 0;
 };

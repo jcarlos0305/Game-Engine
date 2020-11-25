@@ -38,6 +38,7 @@ UpdateStatus ModuleInput::Update() {
 	SDL_Event event;
 
 	mouse_motion = { 0, 0 };
+	mouse_wheel = 0;
 	memset(window_events, false, static_cast<unsigned int>(WindowEvent::kCount) * sizeof(bool));
 
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
@@ -65,9 +66,8 @@ UpdateStatus ModuleInput::Update() {
 			mouse_buttons[i] = KeyState::kKeyIdle;
 	}
 
-	ImGui_ImplSDL2_ProcessEvent(&event);
-
 	while (SDL_PollEvent(&event) != 0) {
+		ImGui_ImplSDL2_ProcessEvent(&event);
 		switch (event.type) {
 		case SDL_QUIT:
 			window_events[static_cast<unsigned int>(WindowEvent::kQuit)] = true;
@@ -105,6 +105,9 @@ UpdateStatus ModuleInput::Update() {
 			mouse_motion.y = event.motion.yrel / SCREEN_SIZE;
 			mouse.x = event.motion.x / SCREEN_SIZE;
 			mouse.y = event.motion.y / SCREEN_SIZE;
+			break;
+		case SDL_MOUSEWHEEL:
+			mouse_wheel = event.wheel.y;
 			break;
 		}
 	}
