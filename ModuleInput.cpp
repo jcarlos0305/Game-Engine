@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "ModuleInput.h"
 #include "ModuleRender.h"
+#include "ModuleModel.h"
 
 #include "SDL/include/SDL.h"
 #include "ImGui/imgui_impl_sdl.h"
@@ -108,6 +109,9 @@ UpdateStatus ModuleInput::Update() {
 			break;
 		case SDL_MOUSEWHEEL:
 			mouse_wheel = event.wheel.y;
+			break;
+		case SDL_DROPFILE:
+			App->model->Load(event.drop.file);
 			break;
 		}
 	}
