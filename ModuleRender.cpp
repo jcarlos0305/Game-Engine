@@ -15,6 +15,10 @@
 
 #include "LeakTest.h"
 
+ModuleRender::ModuleRender() {}
+
+ModuleRender::~ModuleRender() {}
+
 // Called before render is available
 bool ModuleRender::Init() {
 	LOG("Creating Renderer context");

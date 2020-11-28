@@ -2,8 +2,15 @@
 
 #include "ImGui/imgui.h"
 
+About::About() {
+	visible = false;
+	title = "About";
+}
+
+About::~About() {}
+
 void About::Draw() {
-	ImGui::Begin("About");
+	ImGui::Begin("About", &visible, ImGuiWindowFlags_NoCollapse);
 
 	// Engine name
 	ImGui::Text("Rearengine v.");
