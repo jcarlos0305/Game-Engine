@@ -11,6 +11,8 @@ class About;
 class ModuleEditor : public Module {
 public:
 	ModuleEditor();
+	~ModuleEditor();
+
 	bool Init();
 
 	// Update functions

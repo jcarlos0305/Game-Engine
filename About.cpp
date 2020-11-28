@@ -35,3 +35,7 @@ void About::Draw() {
 
 	ImGui::End();
 }
+
+bool About::CleanUp() {
+	return true;
+}

@@ -13,6 +13,8 @@ public:
 	void AddLog(const char* fmt);
 	void Draw();
 
+	bool CleanUp();
+
 public:
 	bool             auto_scroll = true;
 	ImVector<char*>  buffer;

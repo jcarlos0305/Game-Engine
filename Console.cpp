@@ -38,3 +38,7 @@ void Console::Draw() {
 	ImGui::EndChild();
 	ImGui::End();
 }
+
+bool Console::CleanUp() {
+	return true;
+}
