@@ -21,16 +21,34 @@ bool ModuleModel::Init() {
 	return true;
 }
 
-void ModuleModel::Load(const char* model_path) {
-	LOG("Loading file %s", model_path);
-	Load(model_path, "../vertex.glsl", "../fragment.glsl");
+void ModuleModel::Load(const char* file_path) {
+	char file_ext[_MAX_EXT];
+	_splitpath_s(file_path, NULL, 0, NULL, 0, NULL, 0, file_ext, _MAX_EXT);
+
+	if (file_ext == ".fbx") {
+		LOG("Loading model %s", file_path);
+		Load(file_path, "../vertex.glsl", "../fragment.glsl");
+	}
+	else if (strcmp(file_ext, ".png" ) == 0|| strcmp(file_ext, ".dds" ) == 0|| strcmp(file_ext, ".jpg" ) == 0|| strcmp(file_ext, ".jpeg") == 0) {
+		LOG("Loading texture %s", file_path);
+
+		unsigned int loaded_texture = App->texture->LoadTexture(file_path);
+		if (loaded_texture) {
+			if (!textures.empty()) {
+				textures.clear();
+				textures.shrink_to_fit();
+			}
+			textures.push_back(loaded_texture);
+			LOG("Texture loaded successfully");
+		}
+	}
 }
 
 void ModuleModel::Load(const char* model_path, const char* vertex_shader_path, const char* fragment_shader_path) {
 	unsigned int program = CreateProgram(vertex_shader_path, fragment_shader_path);
 
 	const aiScene* scene = aiImportFile(model_path, aiProcessPreset_TargetRealtime_MaxQuality);
-	if ( program && scene) {
+	if (program && scene) {
 		LOG("Shaders program created successfully!\n");
 		LoadTextures(scene->mMaterials, scene->mNumMaterials, model_path);
 		LoadMeshes(scene->mMeshes, scene->mNumMeshes, program);
@@ -70,7 +88,6 @@ void ModuleModel::LoadTextures(aiMaterial** const mMaterials, unsigned int mNumM
 	textures.reserve(mNumMaterials);
 	for (unsigned i = 0; i < mNumMaterials; ++i) {
 		if (mMaterials[i]->GetTexture(aiTextureType_DIFFUSE, 0, &file) == AI_SUCCESS) {
-
 			LOG("Looking for: .\\%s", file.data);
 			unsigned int loaded_texture = App->texture->LoadTexture(file.data);
 
@@ -91,7 +108,7 @@ void ModuleModel::LoadTextures(aiMaterial** const mMaterials, unsigned int mNumM
 
 				char full_path[_MAX_PATH];
 				_makepath_s(full_path, _MAX_PATH, src_file_drive, src_file_dir, texture_file_name, texture_file_ext);
-				
+
 				LOG("Looking for: %s", full_path);
 				loaded_texture = App->texture->LoadTexture(full_path);
 
@@ -131,7 +148,6 @@ unsigned int ModuleModel::GetNumVertices() {
 }
 
 void ModuleModel::LoadMeshes(aiMesh** const mMeshes, unsigned int mNumMeshes, unsigned int program) {
-
 	if (!meshes.empty()) {
 		meshes.clear();
 		meshes.shrink_to_fit();
