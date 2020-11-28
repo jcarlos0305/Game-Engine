@@ -1,6 +1,8 @@
 #include "MainMenu.h"
 #include "Application.h"
 #include "About.h"
+#include "ModuleEditor.h"
+#include "Console.h"
 
 #include "ImGui/imgui.h"
 
@@ -14,12 +16,23 @@ UpdateStatus MainMenu::Draw() {
 			}
 			ImGui::EndMenu();
 		}
+		if (ImGui::BeginMenu("View")) {
+			for (UiComponent* window : App->editor->windows) {
+				if (window->title != "About") {
+					if (ImGui::MenuItem(window->title, NULL, window->visible)) {
+						window->Show((bool*)!window->visible);
+					}
+				}
+			}
+			ImGui::EndMenu();
+		}
 		if (ImGui::BeginMenu("Help")) {
 			if (ImGui::MenuItem("Github")) {
 				App->RequestBrowser(REPO_URL);
 			}
 			if (ImGui::MenuItem("About")) {
-				About::Draw();
+				bool show = true;
+				App->editor->about->Show(&show);
 			}
 			ImGui::EndMenu();
 		}

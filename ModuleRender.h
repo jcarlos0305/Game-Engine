@@ -4,6 +4,9 @@
 
 class ModuleRender : public Module {
 public:
+	ModuleRender();
+	~ModuleRender();
+	
 	bool Init();
 
 	UpdateStatus PreUpdate();

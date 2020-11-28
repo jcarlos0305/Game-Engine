@@ -8,9 +8,15 @@
 #include "MathGeoLib/Math/float3.h"
 #include "MathGeoLib/Math/float3x4.h"
 
+Configuration::Configuration() {
+	title = "Configuration";
+	visible = true;
+}
+
+Configuration::~Configuration() {}
+
 void Configuration::Draw() {
-	bool active = true;
-	ImGui::Begin("Configuration", &active, ImGuiWindowFlags_NoCollapse);
+	ImGui::Begin("Configuration", &visible, ImGuiWindowFlags_NoCollapse);
 
 	if (ImGui::CollapsingHeader("Camera")) {
 		// Column header

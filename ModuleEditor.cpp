@@ -7,6 +7,8 @@
 // UI
 #include "MainMenu.h"
 #include "Configuration.h"
+#include "Console.h"
+#include "About.h"
 
 #include <GL/glew.h>
 #include "ImGui/imgui.h"
@@ -15,12 +17,21 @@
 
 #include "LeakTest.h"
 
+ModuleEditor::ModuleEditor() {
+    console = new Console();
+}
+
 bool ModuleEditor::Init() {
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
     ImGui::StyleColorsDark();
     ImGui_ImplSDL2_InitForOpenGL(App->window->window, App->render->context);
     ImGui_ImplOpenGL3_Init();
+
+    windows.push_back(console);
+    windows.push_back(configuration = new Configuration());
+    windows.push_back(about = new About());
+
     return true;
 }
 
@@ -35,8 +46,8 @@ UpdateStatus ModuleEditor::Update() {
     // Menu bar
     UpdateStatus ret = MainMenu::Draw();
 
-    // Configuration
-    Configuration::Draw();
+    for (UiComponent* window : windows)
+        if (window->visible) window->Draw();
 
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -45,6 +56,10 @@ UpdateStatus ModuleEditor::Update() {
 
 UpdateStatus ModuleEditor::PostUpdate() {
     return UpdateStatus::kUpdateContinue;
+}
+
+void ModuleEditor::AddLog(const char* log) {
+    console->AddLog(log);
 }
 
 bool ModuleEditor::CleanUp() {

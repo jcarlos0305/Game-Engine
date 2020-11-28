@@ -24,8 +24,8 @@ int main(int argc, char** argv) {
 		switch (state) {
 		case MainStates::kMainCreation:
 
-			LOG("Application Creation --------------");
 			App = new Application();
+			LOG("Application Creation --------------");
 			state = MainStates::kMainStart;
 			break;
 
@@ -73,6 +73,5 @@ int main(int argc, char** argv) {
 	}
 
 	delete App;
-	LOG("Bye :)\n");
 	return main_return;
 }

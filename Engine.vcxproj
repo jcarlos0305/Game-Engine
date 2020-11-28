@@ -140,6 +140,7 @@
     <ClInclude Include="About.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Configuration.h" />
+    <ClInclude Include="Console.h" />
     <ClInclude Include="Debug Draw\debugdraw.h" />
     <ClInclude Include="Debug Draw\debug_draw.hpp" />
     <ClInclude Include="Debug Draw\ModuleDebugDraw.h" />
@@ -240,12 +241,16 @@
     <ClInclude Include="ModuleRender.h" />
     <ClInclude Include="ModuleTexture.h" />
     <ClInclude Include="ModuleWindow.h" />
+    <ClInclude Include="PerformanceTimer.h" />
     <ClInclude Include="Point.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="UiComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="About.cpp" />
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Configuration.cpp" />
+    <ClCompile Include="Console.cpp" />
     <ClCompile Include="Debug Draw\ModuleDebugDraw.cpp" />
     <ClCompile Include="ImGui\imgui.cpp" />
     <ClCompile Include="ImGui\imgui_demo.cpp" />
@@ -307,6 +312,8 @@
     <ClCompile Include="ModuleRender.cpp" />
     <ClCompile Include="ModuleTexture.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
+    <ClCompile Include="PerformanceTimer.cpp" />
+    <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="fragment.glsl" />

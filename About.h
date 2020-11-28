@@ -1,8 +1,13 @@
 #pragma once
 
 #include "Globals.h"
+#include "UiComponent.h"
 
-class About {
+class About : public UiComponent {
 public:
-	static void Draw();
+	About();
+	~About();
+
+	void Draw();
+
 };
