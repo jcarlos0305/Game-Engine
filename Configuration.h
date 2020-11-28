@@ -10,4 +10,6 @@ public:
 	
 	void Draw();
 
+	bool CleanUp();
+
 };

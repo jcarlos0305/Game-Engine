@@ -21,6 +21,10 @@ ModuleEditor::ModuleEditor() {
     console = new Console();
 }
 
+ModuleEditor::~ModuleEditor() {
+    for (UiComponent* window : windows) delete window;
+}
+
 bool ModuleEditor::Init() {
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();

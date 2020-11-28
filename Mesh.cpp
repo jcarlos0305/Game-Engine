@@ -34,6 +34,7 @@ void Mesh::LoadVBO(const aiMesh* mesh) {
 
 	glUnmapBuffer(GL_ARRAY_BUFFER);
 	num_vertices = mesh->mNumVertices;
+	num_faces = mesh->mNumFaces;
 }
 
 void Mesh::LoadEBO(const aiMesh* mesh) {
@@ -73,11 +74,10 @@ void Mesh::CreateVAO() {
 	glBindVertexArray(0);
 }
 
-void Mesh::Draw(const std::vector<unsigned>& model_textures) {
+void Mesh::Draw(const std::vector<unsigned>& model_textures, const float4x4 model) {
 
-	float4x4 proj = App->camera->GetProjectionMatrix();
-	float4x4 view = App->camera->GetViewMatrix();
-	float4x4 model = float4x4::identity;
+	float4x4 proj  = App->camera->GetProjectionMatrix();
+	float4x4 view  = App->camera->GetViewMatrix();
 
 	glUseProgram(program);
 

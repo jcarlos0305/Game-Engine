@@ -15,6 +15,8 @@
 
 ModuleModel::ModuleModel() {}
 
+ModuleModel::~ModuleModel() {}
+
 bool ModuleModel::Init() {
 	return true;
 }
@@ -22,7 +24,6 @@ bool ModuleModel::Init() {
 void ModuleModel::Load(const char* model_path) {
 	LOG("Loading file %s", model_path);
 	Load(model_path, "../vertex.glsl", "../fragment.glsl");
-	LOG("Model loaded successfully!\n");
 }
 
 void ModuleModel::Load(const char* model_path, const char* vertex_shader_path, const char* fragment_shader_path) {
@@ -33,6 +34,7 @@ void ModuleModel::Load(const char* model_path, const char* vertex_shader_path, c
 		LOG("Shaders program created successfully!\n");
 		LoadTextures(scene->mMaterials, scene->mNumMaterials, model_path);
 		LoadMeshes(scene->mMeshes, scene->mNumMeshes, program);
+		LOG("Model loaded successfully!\n");
 	}
 	else {
 		LOG("Error loading %s: %s", model_path, aiGetErrorString());
@@ -77,7 +79,7 @@ void ModuleModel::LoadTextures(aiMaterial** const mMaterials, unsigned int mNumM
 				textures.push_back(loaded_texture);
 			}
 			else {
-				LOG("Texture not found, looking for secondary path...");
+				LOG("Texture not found, looking in the source path...");
 
 				char src_file_dir[_MAX_DIR];
 				char src_file_drive[_MAX_DRIVE];
@@ -98,7 +100,7 @@ void ModuleModel::LoadTextures(aiMaterial** const mMaterials, unsigned int mNumM
 					textures.push_back(loaded_texture);
 				}
 				else {
-					LOG("Texture not found, looking at last possible path...");
+					LOG("Texture not found, looking the Textures folder...");
 
 					std::string final_path = ".\\assets\\Textures\\";
 					final_path.append(texture_file_name);
@@ -146,8 +148,9 @@ void ModuleModel::LoadMeshes(aiMesh** const mMeshes, unsigned int mNumMeshes, un
 }
 
 void ModuleModel::Draw() {
+	model_matrix = float4x4::identity;
 	for (unsigned int i = 0; i < meshes.size(); i++) {
-		meshes[i].Draw(textures);
+		meshes[i].Draw(textures, model_matrix);
 	}
 }
 
