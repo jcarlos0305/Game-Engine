@@ -18,7 +18,9 @@ public:
 
 	void ResetCameraPosition();
 
-	void SetPos(int x, int y, int z);
+	void SetFocusToModel(float3 model_center, float radius = 1.0);
+
+	void SetPos(float3 position);
 
 	UpdateStatus PreUpdate();
 	UpdateStatus Update();

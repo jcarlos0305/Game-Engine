@@ -23,6 +23,10 @@ public:
 	void LoadTextures(aiMaterial** const mMaterials, unsigned int mNumMaterials, const char* src_path);
 	void LoadMeshes(aiMesh** const mMeshes, unsigned int mNumMeshes, unsigned int program);
 
+	float3 GetModelCenterPoint();
+
+	float GetModelRadius();
+
 	void Draw();
 
 	unsigned int GetNumVertices();
@@ -32,4 +36,13 @@ public:
 	std::vector<Mesh> meshes;
 	std::vector<unsigned int> textures;
 	float4x4 model_matrix = float4x4::zero;
+
+	float min_x;
+	float max_x;
+
+	float min_y;
+	float max_y;
+
+	float min_z;
+	float max_z;
 };
