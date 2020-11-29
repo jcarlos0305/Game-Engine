@@ -13,8 +13,8 @@ Viewport::Viewport() {
 Viewport::~Viewport() {}
 
 void Viewport::Draw() {
-	bool active = true;
-	if (ImGui::Begin("Viewport", &active, ImGuiWindowFlags_NoCollapse)) {
+
+	if (ImGui::Begin(title, &visible, ImGuiWindowFlags_NoCollapse)) {
 		is_viewport_focused = ImGui::IsWindowFocused();
 
 		static ImVec2 window_size = ImGui::GetWindowSize();

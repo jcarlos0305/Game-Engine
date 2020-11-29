@@ -22,7 +22,7 @@ Configuration::Configuration() {
 Configuration::~Configuration() {}
 
 void Configuration::Draw() {
-	ImGui::Begin("Configuration", &visible, ImGuiWindowFlags_NoCollapse);
+	ImGui::Begin(title, &visible, ImGuiWindowFlags_NoCollapse);
 
 	if (ImGui::CollapsingHeader("Camera")) {
 		// Column header

@@ -8,6 +8,7 @@ class Console;
 class Configuration;
 class About;
 class Viewport;
+class Information;
 
 class ModuleEditor : public Module {
 public:
@@ -31,6 +32,7 @@ public:
 	Configuration* configuration = nullptr;
 	About*         about = nullptr;
 	Viewport*      viewport = nullptr;
+	Information*   information = nullptr;
 
 	std::vector<UiComponent*> windows;
 };
