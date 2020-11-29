@@ -7,12 +7,12 @@ Console::Console() {
 	Clear();
 }
 
-Console::~Console() {}
+Console::~Console() {
+	CleanUp();
+}
 
 void Console::Clear() {
 	buffer.clear();
-	line_offsets.clear();
-	line_offsets.push_back(0);
 }
 
 void Console::AddLog(const char* fmt) {
@@ -40,5 +40,6 @@ void Console::Draw() {
 }
 
 bool Console::CleanUp() {
+	buffer.clear();
 	return true;
 }

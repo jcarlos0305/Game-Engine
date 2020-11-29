@@ -13,11 +13,18 @@
 
 #include "LeakTest.h"
 
+void AssimpLog(const char* msg, char* userData) {
+	if (msg) LOG("Assimp %s", msg);
+}
+
 ModuleModel::ModuleModel() {}
 
 ModuleModel::~ModuleModel() {}
 
 bool ModuleModel::Init() {
+	struct aiLogStream stream;
+	stream.callback = AssimpLog;
+	aiAttachLogStream(&stream);
 	return true;
 }
 
@@ -25,11 +32,11 @@ void ModuleModel::Load(const char* file_path) {
 	char file_ext[_MAX_EXT];
 	_splitpath_s(file_path, NULL, 0, NULL, 0, NULL, 0, file_ext, _MAX_EXT);
 
-	if (file_ext == ".fbx") {
+	if (strcmp(file_ext,".fbx") == 0) {
 		LOG("Loading model %s", file_path);
 		Load(file_path, "../vertex.glsl", "../fragment.glsl");
 	}
-	else if (strcmp(file_ext, ".png" ) == 0|| strcmp(file_ext, ".dds" ) == 0|| strcmp(file_ext, ".jpg" ) == 0|| strcmp(file_ext, ".jpeg") == 0) {
+	else if (strcmp(file_ext, ".png" ) == 0 || strcmp(file_ext, ".dds" ) == 0 || strcmp(file_ext, ".jpg" ) == 0 || strcmp(file_ext, ".jpeg") == 0) {
 		LOG("Loading texture %s", file_path);
 
 		unsigned int loaded_texture = App->texture->LoadTexture(file_path);

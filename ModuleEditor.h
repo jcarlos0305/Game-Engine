@@ -22,6 +22,8 @@ public:
 
 	void AddLog(const char* log);
 
+	void RenderViewport();
+
 	// Clean up
 	bool CleanUp();
 
@@ -29,6 +31,8 @@ public:
 	Console*       console = nullptr;
 	Configuration* configuration = nullptr;
 	About*         about = nullptr;
+
+	bool           is_viewport_focused = false;
 
 	std::vector<UiComponent*> windows;
 };

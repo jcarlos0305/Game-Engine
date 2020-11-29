@@ -18,5 +18,4 @@ public:
 public:
 	bool             auto_scroll = true;
 	ImVector<char*>  buffer;
-	ImVector<int>    line_offsets;
 };
