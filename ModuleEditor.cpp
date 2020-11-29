@@ -11,6 +11,7 @@
 #include "Console.h"
 #include "About.h"
 #include "Viewport.h"
+#include "Information.h"
 
 #include <GL/glew.h>
 #include "ImGui/imgui.h"
@@ -38,6 +39,7 @@ bool ModuleEditor::Init() {
 	windows.push_back(configuration = new Configuration());
 	windows.push_back(about = new About());
 	windows.push_back(viewport = new Viewport());
+	windows.push_back(information = new Information());
 
 	ImGuiIO& io = ImGui::GetIO();
 	io.ConfigFlags = ImGuiConfigFlags_DockingEnable;

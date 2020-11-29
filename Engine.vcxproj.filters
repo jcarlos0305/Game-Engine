@@ -201,6 +201,9 @@
     <ClCompile Include="Viewport.cpp">
       <Filter>Utils\UI</Filter>
     </ClCompile>
+    <ClCompile Include="Information.cpp">
+      <Filter>Utils\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
@@ -526,6 +529,9 @@
       <Filter>Utils\UI</Filter>
     </ClInclude>
     <ClInclude Include="Viewport.h">
+      <Filter>Utils\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Information.h">
       <Filter>Utils\UI</Filter>
     </ClInclude>
   </ItemGroup>
