@@ -9,7 +9,6 @@
 
 #include "MathGeoLib/Math/float4x4.h"
 #include "Debug Draw/ModuleDebugDraw.h"
-
 #include "SDL.h"
 #include <GL\glew.h>
 
@@ -31,13 +30,8 @@ bool ModuleRender::Init() {
 	glEnable(GL_CULL_FACE);
 	glFrontFace(GL_CCW);
 
-	/* Load the model with the shaders */
+	/* Load the baker's house with the shaders */
 	App->model->Load("assets/BakerHouse.fbx", "../vertex.glsl", "../fragment.glsl");
-
-	/*
-	*	Custom model
-	*	App->model->Load("assets/shiba.fbx", "../vertex.glsl", "../fragment.glsl");
-	*/
 
 	glGenFramebuffers(1, &fbo);
 
@@ -66,7 +60,7 @@ UpdateStatus ModuleRender::PostUpdate() {
 	return UpdateStatus::kUpdateContinue;
 }
 
-void ModuleRender::RenderViewport(unsigned int width, unsigned int height) {
+void ModuleRender::RenderToViewport(unsigned int width, unsigned int height) {
 	int w, h;
 	SDL_GetWindowSize(App->window->window, &w, &h);
 
@@ -82,8 +76,6 @@ void ModuleRender::RenderViewport(unsigned int width, unsigned int height) {
 	// Creating texture
 	glGenTextures(1, &texture);
 	glBindTexture(GL_TEXTURE_2D, texture);
-
-	// TODO: update w&h 
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -104,7 +96,7 @@ void ModuleRender::RenderViewport(unsigned int width, unsigned int height) {
 	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, width, height);
 	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo);
 
-	glViewport(0,0,width, height);
+	glViewport(0, 0, width, height);
 	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -114,7 +106,6 @@ void ModuleRender::RenderViewport(unsigned int width, unsigned int height) {
 	// Drawing the grid with debug draw
 	App->debug_draw->Draw(view, proj, w, h);
 
-
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
@@ -123,7 +114,7 @@ void ModuleRender::RenderViewport(unsigned int width, unsigned int height) {
 bool ModuleRender::CleanUp() {
 	LOG("Destroying renderer");
 
-	// Destroy framebuffer
+	// Destroy buffers
 	if (fbo != 0) glDeleteFramebuffers(1, &fbo);
 	if (rbo != 0) glDeleteRenderbuffers(1, &rbo);
 	if (texture != 0) glDeleteTextures(1, &texture);

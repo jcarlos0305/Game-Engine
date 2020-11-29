@@ -15,5 +15,6 @@ void log(const char file[], int line, const char* format, ...) {
 	vsprintf_s(tmp_string, 4096, format, ap);
 	va_end(ap);
 
+	// Logging to ImGui console
 	App->editor->console->AddLog(tmp_string);
 }

@@ -198,6 +198,9 @@
     <ClCompile Include="PerformanceTimer.cpp">
       <Filter>Utils\Timers</Filter>
     </ClCompile>
+    <ClCompile Include="Viewport.cpp">
+      <Filter>Utils\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
@@ -520,6 +523,9 @@
       <Filter>Utils\Timers</Filter>
     </ClInclude>
     <ClInclude Include="UiComponent.h">
+      <Filter>Utils\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Viewport.h">
       <Filter>Utils\UI</Filter>
     </ClInclude>
   </ItemGroup>
