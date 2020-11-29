@@ -114,7 +114,6 @@ void ModuleCamera::SetFocusToModel(float3 model_center, float radius) {
 
 void ModuleCamera::SetPos(float3 position) {
 	frustum.SetPos(position);
-
 }
 
 UpdateStatus ModuleCamera::PreUpdate() {
