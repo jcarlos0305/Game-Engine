@@ -31,7 +31,7 @@ bool ModuleRender::Init() {
 	glFrontFace(GL_CCW);
 
 	/* Load the baker's house with the shaders */
-	App->model->Load("assets/BakerHouse.fbx", "../vertex.glsl", "../fragment.glsl");
+	App->model->Load("assets/BakerHouse.fbx", "assets/vertex.glsl", "assets/fragment.glsl");
 
 	glGenFramebuffers(1, &fbo);
 

@@ -35,7 +35,7 @@ void ModuleModel::Load(const char* file_path) {
 
 	if (strcmp(file_ext, ".fbx") == 0) {
 		LOG("Loading model %s", file_path);
-		Load(file_path, "../vertex.glsl", "../fragment.glsl");
+		Load(file_path, "assets/vertex.glsl", "assets/fragment.glsl");
 	}
 	else if (strcmp(file_ext, ".png") == 0 || strcmp(file_ext, ".dds") == 0 || strcmp(file_ext, ".jpg") == 0 || strcmp(file_ext, ".jpeg") == 0) {
 		LOG("Loading texture %s", file_path);
@@ -54,7 +54,6 @@ void ModuleModel::Load(const char* file_path) {
 
 void ModuleModel::Load(const char* model_path, const char* vertex_shader_path, const char* fragment_shader_path) {
 	unsigned int program = CreateProgram(vertex_shader_path, fragment_shader_path);
-
 	const aiScene* scene = aiImportFile(model_path, aiProcessPreset_TargetRealtime_MaxQuality);
 	if (program && scene) {
 		LOG("Shaders program created successfully!\n");
