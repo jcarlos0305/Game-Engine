@@ -13,7 +13,7 @@ public:
 	UpdateStatus Update();
 	UpdateStatus PostUpdate();
 
-	void RenderViewport(unsigned int width, unsigned int height);
+	void RenderToViewport(unsigned int width, unsigned int height);
 
 	bool CleanUp();
 

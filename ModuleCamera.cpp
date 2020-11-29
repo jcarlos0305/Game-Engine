@@ -3,6 +3,7 @@
 #include "ModuleCamera.h"
 #include "ModuleInput.h"
 #include "ModuleEditor.h"
+#include "Viewport.h"
 
 #include "SDL.h"
 #include "MathGeoLib/Math/float3x3.h"
@@ -128,7 +129,7 @@ UpdateStatus ModuleCamera::Update() {
 		speed_modifier = 1;
 	}
 
-	if (App->editor->is_viewport_focused) {
+	if (App->editor->viewport->is_viewport_focused) {
 		FreeLookAround(x, y);
 		KeyboardMovement();
 		KeyboardRotation();

@@ -7,6 +7,7 @@
 class Console;
 class Configuration;
 class About;
+class Viewport;
 
 class ModuleEditor : public Module {
 public:
@@ -22,8 +23,6 @@ public:
 
 	void AddLog(const char* log);
 
-	void RenderViewport();
-
 	// Clean up
 	bool CleanUp();
 
@@ -31,8 +30,7 @@ public:
 	Console*       console = nullptr;
 	Configuration* configuration = nullptr;
 	About*         about = nullptr;
-
-	bool           is_viewport_focused = false;
+	Viewport*      viewport = nullptr;
 
 	std::vector<UiComponent*> windows;
 };

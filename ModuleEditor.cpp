@@ -10,6 +10,7 @@
 #include "Configuration.h"
 #include "Console.h"
 #include "About.h"
+#include "Viewport.h"
 
 #include <GL/glew.h>
 #include "ImGui/imgui.h"
@@ -36,6 +37,7 @@ bool ModuleEditor::Init() {
 	windows.push_back(console);
 	windows.push_back(configuration = new Configuration());
 	windows.push_back(about = new About());
+	windows.push_back(viewport = new Viewport());
 
 	ImGuiIO& io = ImGui::GetIO();
 	io.ConfigFlags = ImGuiConfigFlags_DockingEnable;
@@ -56,10 +58,11 @@ UpdateStatus ModuleEditor::Update() {
 	// Menu bar
 	UpdateStatus ret = MainMenu::Draw();
 
+	ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
+
+	// Rendering the windows
 	for (UiComponent* window : windows)
 		if (window->visible) window->Draw();
-
-	RenderViewport();
 
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -72,31 +75,6 @@ UpdateStatus ModuleEditor::PostUpdate() {
 
 void ModuleEditor::AddLog(const char* log) {
 	console->AddLog(log);
-}
-
-void ModuleEditor::RenderViewport() {
-	bool active = true;
-	if (ImGui::Begin("Viewport", &active, ImGuiWindowFlags_NoCollapse)) {
-		is_viewport_focused = ImGui::IsWindowFocused();
-		
-		static ImVec2 window_size = ImGui::GetWindowSize();
-
-		App->render->RenderViewport(window_size.x, window_size.y);
-
-		ImGui::GetWindowDrawList()->AddImage(
-			(void*)(intptr_t)App->render->texture,
-			ImGui::GetCursorScreenPos(),
-			ImVec2(ImGui::GetCursorScreenPos().x + window_size.x, ImGui::GetCursorScreenPos().y + window_size.y),
-			ImVec2(0, 1), ImVec2(1, 0)
-		);
-
-		ImVec2 new_window_size = ImGui::GetWindowSize();
-		if (window_size.x != new_window_size.x || window_size.y != new_window_size.y) {
-			App->camera->SetAspectRatio(new_window_size.x / new_window_size.y);
-			window_size = ImGui::GetWindowSize();
-		}
-	}
-	ImGui::End();
 }
 
 bool ModuleEditor::CleanUp() {
