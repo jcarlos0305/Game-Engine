@@ -3,6 +3,7 @@
 #include "ModuleCamera.h"
 #include "ModuleInput.h"
 #include "ModuleEditor.h"
+#include "ModuleModel.h"
 #include "Viewport.h"
 
 #include "SDL.h"
@@ -15,8 +16,7 @@ bool ModuleCamera::Init() {
 	frustum.SetKind(FrustumSpaceGL, FrustumRightHanded);
 	frustum.SetViewPlaneDistances(0.1f, 32.0f);
 	frustum.SetHorizontalFovAndAspectRatio(DEGTORAD(90.0f), 1.3f);
-	frustum.SetPos(float3(0, 3, -8));
-	frustum.SetFront(float3::unitZ);
+	frustum.SetFront(-float3::unitZ);
 	frustum.SetUp(float3::unitY);
 
 	return true;
@@ -104,14 +104,17 @@ void ModuleCamera::ZoomCamera(int x, int y) {
 
 void ModuleCamera::ResetCameraPosition() {
 	if (App->input->GetKey(SDL_SCANCODE_F) == KeyState::kKeyRepeat) {
-		SetPos(0, 3, -8);
-		frustum.SetFront(float3::unitZ);
-		frustum.SetUp(float3::unitY);
+		SetFocusToModel(App->model->GetModelCenterPoint(), App->model->GetModelRadius());
 	}
 }
 
-void ModuleCamera::SetPos(int x, int y, int z) {
-	frustum.SetPos(float3(x, y, z));
+void ModuleCamera::SetFocusToModel(float3 model_center, float radius) {
+	frustum.SetPos(model_center + frustum.Front().Neg() * radius * 2.5);
+}
+
+void ModuleCamera::SetPos(float3 position) {
+	frustum.SetPos(position);
+
 }
 
 UpdateStatus ModuleCamera::PreUpdate() {

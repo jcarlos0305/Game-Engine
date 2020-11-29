@@ -22,7 +22,17 @@ void Mesh::LoadVBO(const aiMesh* mesh) {
 
 	float* uvs = (float*)(glMapBufferRange(GL_ARRAY_BUFFER, 0, vertices_size, GL_MAP_WRITE_BIT));
 
+	min_x = mesh->mVertices[0].x; min_y = mesh->mVertices[0].y; min_z = mesh->mVertices[0].z;
+	max_x = mesh->mVertices[0].x; max_y = mesh->mVertices[0].y; max_z = mesh->mVertices[0].z;
+
 	for (unsigned i = 0, position = 0; i < mesh->mNumVertices; ++i) {
+		if (mesh->mVertices[i].x > max_x) max_x = mesh->mVertices[i].x;
+		if (mesh->mVertices[i].x < min_x) min_x = mesh->mVertices[i].x;
+		if (mesh->mVertices[i].y > max_y) max_y = mesh->mVertices[i].y;
+		if (mesh->mVertices[i].y < min_y) min_y = mesh->mVertices[i].y;
+		if (mesh->mVertices[i].z > max_z) max_z = mesh->mVertices[i].z;
+		if (mesh->mVertices[i].z < min_z) min_z = mesh->mVertices[i].z;
+
 		// vertices
 		uvs[position++] = mesh->mVertices[i].x;
 		uvs[position++] = mesh->mVertices[i].y;

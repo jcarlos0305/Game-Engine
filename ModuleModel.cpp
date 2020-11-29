@@ -3,6 +3,7 @@
 #include "Application.h"
 #include "ModuleTexture.h"
 #include "ModuleProgram.h"
+#include "ModuleCamera.h"
 
 #include <GL\glew.h>
 #include <assimp/cimport.h>
@@ -32,11 +33,11 @@ void ModuleModel::Load(const char* file_path) {
 	char file_ext[_MAX_EXT];
 	_splitpath_s(file_path, NULL, 0, NULL, 0, NULL, 0, file_ext, _MAX_EXT);
 
-	if (strcmp(file_ext,".fbx") == 0) {
+	if (strcmp(file_ext, ".fbx") == 0) {
 		LOG("Loading model %s", file_path);
 		Load(file_path, "../vertex.glsl", "../fragment.glsl");
 	}
-	else if (strcmp(file_ext, ".png" ) == 0 || strcmp(file_ext, ".dds" ) == 0 || strcmp(file_ext, ".jpg" ) == 0 || strcmp(file_ext, ".jpeg") == 0) {
+	else if (strcmp(file_ext, ".png") == 0 || strcmp(file_ext, ".dds") == 0 || strcmp(file_ext, ".jpg") == 0 || strcmp(file_ext, ".jpeg") == 0) {
 		LOG("Loading texture %s", file_path);
 
 		unsigned int loaded_texture = App->texture->LoadTexture(file_path);
@@ -167,11 +168,35 @@ void ModuleModel::LoadMeshes(aiMesh** const mMeshes, unsigned int mNumMeshes, un
 		meshes[i].LoadVBO(mMeshes[i]);
 		meshes[i].LoadEBO(mMeshes[i]);
 		meshes[i].CreateVAO();
+		if (i == 0) {
+			max_x = meshes[0].max_x; min_x = meshes[0].min_x;
+			max_y = meshes[0].max_y; min_y = meshes[0].min_y;
+			max_z = meshes[0].max_z; min_z = meshes[0].min_z;
+		}
+		else {
+			if (meshes[i].max_x > max_x) max_x = meshes[i].max_x;
+			if (meshes[i].min_x < min_x) min_x = meshes[i].min_x;
+			if (meshes[i].max_y > max_y) max_y = meshes[i].max_y;
+			if (meshes[i].min_y < min_y) min_y = meshes[i].min_y;
+			if (meshes[i].max_z > max_z) max_z = meshes[i].max_z;
+			if (meshes[i].min_z < min_z) min_z = meshes[i].min_z;
+		}
 	}
+
+	App->camera->SetFocusToModel(GetModelCenterPoint(), GetModelRadius());
+}
+
+float3 ModuleModel::GetModelCenterPoint() {
+	return float3((max_x + min_x) / 2, (max_y + min_y) / 2, (max_z + min_z) / 2);
+}
+
+float ModuleModel::GetModelRadius() {
+	return float3(max_x - min_x, max_y - min_y, max_z - min_z).Length() / 2;
 }
 
 void ModuleModel::Draw() {
 	model_matrix = float4x4::identity;
+
 	for (unsigned int i = 0; i < meshes.size(); i++) {
 		meshes[i].Draw(textures, model_matrix);
 	}

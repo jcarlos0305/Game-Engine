@@ -18,6 +18,15 @@ public:
 	unsigned int num_indices = 0;
 	unsigned int material_index = 0;
 
+	float min_x;
+	float max_x;
+
+	float min_y;
+	float max_y;
+	
+	float min_z;
+	float max_z;
+
 private:
 	unsigned int program = 0;
 	unsigned int vao = 0;
