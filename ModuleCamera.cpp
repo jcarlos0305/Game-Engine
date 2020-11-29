@@ -2,6 +2,7 @@
 #include "Globals.h"
 #include "ModuleCamera.h"
 #include "ModuleInput.h"
+#include "ModuleEditor.h"
 
 #include "SDL.h"
 #include "MathGeoLib/Math/float3x3.h"
@@ -10,14 +11,14 @@
 #include "LeakTest.h"
 
 bool ModuleCamera::Init() {
-    frustum.SetKind(FrustumSpaceGL, FrustumRightHanded);
-    frustum.SetViewPlaneDistances(0.1f, 32.0f);
-    frustum.SetHorizontalFovAndAspectRatio(DEGTORAD(90.0f), 1.3f);
-    frustum.SetPos(float3(0, 3, -8));
-    frustum.SetFront(float3::unitZ);
-    frustum.SetUp(float3::unitY);
+	frustum.SetKind(FrustumSpaceGL, FrustumRightHanded);
+	frustum.SetViewPlaneDistances(0.1f, 32.0f);
+	frustum.SetHorizontalFovAndAspectRatio(DEGTORAD(90.0f), 1.3f);
+	frustum.SetPos(float3(0, 3, -8));
+	frustum.SetFront(float3::unitZ);
+	frustum.SetUp(float3::unitY);
 
-    return true;
+	return true;
 }
 
 void ModuleCamera::Rotate(float3x3 rotationMatrix) {
@@ -68,9 +69,9 @@ void ModuleCamera::FreeLookAround(int x, int y) {
 		rotateY = -(float)x * App->delta_time * CAMERA_MOVEMENT_SPEED * speed_modifier;
 	}
 
-	Quat quatX(frustum.WorldRight(), rotateX * App->delta_time * CAMERA_MOVEMENT_SPEED * speed_modifier );
+	Quat quatX(frustum.WorldRight(), rotateX * App->delta_time * CAMERA_MOVEMENT_SPEED * speed_modifier);
 	Quat quatY(float3::unitY, rotateY * App->delta_time * CAMERA_MOVEMENT_SPEED * speed_modifier);
-	
+
 	Rotate(float3x3::FromQuat(quatY) * float3x3::FromQuat(quatX));
 }
 
@@ -113,7 +114,7 @@ void ModuleCamera::SetPos(int x, int y, int z) {
 }
 
 UpdateStatus ModuleCamera::PreUpdate() {
-    return UpdateStatus::kUpdateContinue;
+	return UpdateStatus::kUpdateContinue;
 }
 
 UpdateStatus ModuleCamera::Update() {
@@ -127,19 +128,25 @@ UpdateStatus ModuleCamera::Update() {
 		speed_modifier = 1;
 	}
 
-	FreeLookAround(x, y);
-	KeyboardMovement();
-	KeyboardRotation();
-	ZoomCamera(x, y);
-	ResetCameraPosition();
+	if (App->editor->is_viewport_focused) {
+		FreeLookAround(x, y);
+		KeyboardMovement();
+		KeyboardRotation();
+		ZoomCamera(x, y);
+		ResetCameraPosition();
+	}
 
-    return UpdateStatus::kUpdateContinue;
+	return UpdateStatus::kUpdateContinue;
 }
 
 UpdateStatus ModuleCamera::PostUpdate() {
-    return UpdateStatus::kUpdateContinue;
+	return UpdateStatus::kUpdateContinue;
+}
+
+void ModuleCamera::SetAspectRatio(float aspect_ratio) {
+	frustum.SetHorizontalFovAndAspectRatio(frustum.HorizontalFov(), aspect_ratio);
 }
 
 bool ModuleCamera::CleanUp() {
-    return true;
+	return true;
 }

@@ -37,6 +37,8 @@ public:
 	inline float GetVerticalFOV()   const { return frustum.VerticalFov(); }
 	inline float GetAspectRatio()   const { return frustum.AspectRatio(); }
 
+	void SetAspectRatio(float aspect_ratio);
+
 	bool CleanUp();
 
 private:

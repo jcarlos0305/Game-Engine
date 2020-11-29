@@ -13,9 +13,15 @@ public:
 	UpdateStatus Update();
 	UpdateStatus PostUpdate();
 
+	void RenderViewport(unsigned int width, unsigned int height);
+
 	bool CleanUp();
 
 	void WindowResized(unsigned width, unsigned height);
+	
+	
 	void* context = nullptr;
-
+	unsigned int fbo = 0;
+	unsigned int texture = 0;
+	unsigned int rbo = 0;
 };

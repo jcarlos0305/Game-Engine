@@ -39,6 +39,8 @@ bool ModuleRender::Init() {
 	*	App->model->Load("assets/shiba.fbx", "../vertex.glsl", "../fragment.glsl");
 	*/
 
+	glGenFramebuffers(1, &fbo);
+
 	return true;
 }
 
@@ -55,18 +57,6 @@ UpdateStatus ModuleRender::PreUpdate() {
 
 // Called every draw update
 UpdateStatus ModuleRender::Update() {
-	int w, h;
-	SDL_GetWindowSize(App->window->window, &w, &h);
-
-	float4x4 proj = App->camera->GetProjectionMatrix();
-	float4x4 view = App->camera->GetViewMatrix();
-
-	// Drawing the model
-	App->model->Draw();
-	
-	// Drawing the grid with debug draw
-	App->debug_draw->Draw(view, proj, w, h);
-
 	return UpdateStatus::kUpdateContinue;
 }
 
@@ -76,11 +66,69 @@ UpdateStatus ModuleRender::PostUpdate() {
 	return UpdateStatus::kUpdateContinue;
 }
 
+void ModuleRender::RenderViewport(unsigned int width, unsigned int height) {
+	int w, h;
+	SDL_GetWindowSize(App->window->window, &w, &h);
+
+	float4x4 proj = App->camera->GetProjectionMatrix();
+	float4x4 view = App->camera->GetViewMatrix();
+
+	// Framebuffer
+	glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+
+	// Deleting previous texture
+	glDeleteTextures(1, &texture);
+
+	// Creating texture
+	glGenTextures(1, &texture);
+	glBindTexture(GL_TEXTURE_2D, texture);
+
+	// TODO: update w&h 
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glBindTexture(GL_TEXTURE_2D, 0);
+
+	// Assign the texture to the frame buffer
+	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texture, 0);
+
+	// Creating the render buffer
+	glDeleteRenderbuffers(1, &rbo);
+
+	// Creating the render buffer
+	glGenRenderbuffers(1, &rbo);
+	glBindRenderbuffer(GL_RENDERBUFFER, rbo);
+
+	// Buffer use definition TODO: update w&h
+	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, width, height);
+	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo);
+
+	glViewport(0,0,width, height);
+	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	// Drawing the model
+	App->model->Draw();
+
+	// Drawing the grid with debug draw
+	App->debug_draw->Draw(view, proj, w, h);
+
+
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
 // Called before quitting
 bool ModuleRender::CleanUp() {
 	LOG("Destroying renderer");
 
-	//Destroy window
+	// Destroy framebuffer
+	if (fbo != 0) glDeleteFramebuffers(1, &fbo);
+	if (rbo != 0) glDeleteRenderbuffers(1, &rbo);
+	if (texture != 0) glDeleteTextures(1, &texture);
+
+	// Destroy window
 	SDL_GL_DeleteContext(context);
 
 	return true;
