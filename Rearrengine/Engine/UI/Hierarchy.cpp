@@ -1,7 +1,7 @@
 #include "Hierarchy.h"
 
-#include "../Main/Application.h"
-#include "../Modules/ModuleScene.h"
+#include "Main/Application.h"
+#include "Modules/ModuleScene.h"
 
 #include "ImGui/imgui.h"
 

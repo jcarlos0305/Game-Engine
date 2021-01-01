@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Utils/Globals.h"
+#include "Utils/Globals.h"
 
 class Component {
 public:

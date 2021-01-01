@@ -2,7 +2,11 @@
 
 GameObject::GameObject() {}
 
-GameObject::~GameObject() {}
+GameObject::~GameObject() {
+	free(name);
+	name = nullptr;
+	for (Component* component : components) delete component;
+}
 
 bool GameObject::HasComponentType(ComponentTypes _type) const {
 	for (Component* component : components) {

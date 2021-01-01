@@ -15,7 +15,4 @@ public:
 	UpdateStatus PostUpdate() override;
 
 	bool CleanUp() override;
-
-private:
-	char* data = nullptr;
 };

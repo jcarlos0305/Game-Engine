@@ -1,10 +1,10 @@
 #include "ModuleTexture.h"
-#include "../Utils/Globals.h"
+#include "Utils/Globals.h"
 
 #include <GL/glew.h>
 #include <IL/il.h>
 
-#include "../Utils/LeakTest.h"
+#include "Utils/LeakTest.h"
 
 bool ModuleTexture::Init() {
 	ilInit();

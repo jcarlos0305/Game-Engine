@@ -1,4 +1,5 @@
 #include "Information.h"
+#include "Main/Application.h"
 
 #include "ImGui/imgui.h"
 
@@ -72,6 +73,8 @@ void Information::Draw() {
 		ImGui::Text("Available VRAM: %.2f Mb", nCurAvailMemoryInKB / 1024.0f);
 
 		ImGui::Text("VRAM usage: %.2f Mb", (nTotalMemoryInKB - nCurAvailMemoryInKB) / 1024.0f);
+
+		ImGui::Text("FPS: %.2f", App->fps);
 	}
 
 	ImGui::End();

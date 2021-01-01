@@ -1,16 +1,16 @@
-#include "../Main/Application.h"
-#include "../Utils/Globals.h"
+#include "Main/Application.h"
+#include "Utils/Globals.h"
 #include "ModuleCamera.h"
 #include "ModuleInput.h"
 #include "ModuleEditor.h"
 #include "ModuleModel.h"
-#include "../UI/Viewport.h"
+#include "UI/Viewport.h"
 
 #include <SDL.h>
 #include "Math/float3x3.h"
 #include "Math/Quat.h"
 
-#include "../Utils/LeakTest.h"
+#include "Utils/LeakTest.h"
 
 bool ModuleCamera::Init() {
 	frustum.SetKind(FrustumSpaceGL, FrustumRightHanded);

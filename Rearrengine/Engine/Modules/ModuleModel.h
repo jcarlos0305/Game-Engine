@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Module.h"
-#include "../Resources/Mesh.h"
+#include "Resources/Mesh.h"
 
 #include <assimp/material.h>
 #include "Math/float4x4.h"
@@ -10,7 +10,6 @@ class GameObject;
 struct aiNode;
 
 class ModuleModel : public Module {
-
 public:
 
 	ModuleModel();
@@ -24,7 +23,6 @@ public:
 	unsigned int CreateProgram(const char* vertex_shader_path, const char* fragment_shader_path);
 
 	void LoadTextures(aiMaterial** const mMaterials, unsigned int mNumMaterials, const char* src_path);
-	void LoadMeshes(aiMesh** const mMeshes, unsigned int mNumMeshes, unsigned int program);
 	void LoadModelChildren(aiMesh** const mMeshes, unsigned int program, aiNode* node, GameObject* father);
 
 	void SetMinMax(Mesh* _mesh);
@@ -37,7 +35,7 @@ public:
 
 	unsigned int GetNumVertices();
 	bool CleanUp() override;
-	
+
 public:
 	std::vector<Mesh> meshes;
 	std::vector<unsigned int> textures;

@@ -7,6 +7,7 @@ public:
 
 	void Start();
 	double Read();
+	double GetTick();
 	unsigned int Stop();
 
 	inline unsigned int GetFrequency() const { return frequency; }

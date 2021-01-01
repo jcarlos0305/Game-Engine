@@ -1,18 +1,18 @@
 #pragma once
-#include "../Main/Application.h"
-#include "../Modules/ModuleWindow.h"
-#include "../Modules/ModuleRender.h"
-#include "../Modules/ModuleInput.h"
-#include "../Modules/ModuleCamera.h"
-#include "../Modules/ModuleProgram.h"
-#include "../Modules/ModuleTexture.h"
-#include "../Modules/ModuleModel.h"
-#include "../Modules/ModuleEditor.h"
-#include "../Modules/ModuleScene.h"
+#include "Main/Application.h"
+#include "Modules/ModuleWindow.h"
+#include "Modules/ModuleRender.h"
+#include "Modules/ModuleInput.h"
+#include "Modules/ModuleCamera.h"
+#include "Modules/ModuleProgram.h"
+#include "Modules/ModuleTexture.h"
+#include "Modules/ModuleModel.h"
+#include "Modules/ModuleEditor.h"
+#include "Modules/ModuleScene.h"
 
-#include "../../Debug Draw/ModuleDebugDraw.h"
+#include "Debug Draw/ModuleDebugDraw.h"
 
-#include "../Utils/LeakTest.h"
+#include "Utils/LeakTest.h"
 
 using namespace std;
 
@@ -39,6 +39,7 @@ Application::~Application() {
 
 bool Application::Init() {
 	bool ret = true;
+	timer = new Timer();
 
 	for (std::vector<Module*>::iterator it = modules.begin(); it != modules.end() && ret; ++it)
 		ret = (*it)->Init();
@@ -47,9 +48,11 @@ bool Application::Init() {
 }
 
 UpdateStatus Application::Update() {
-	unsigned int current_time = SDL_GetTicks();
+	unsigned int current_time = timer->GetTicks();
 	delta_time = (current_time - last_time) / 1000.0f;
+	fps = 1 / delta_time;
 	last_time = current_time;
+
 
 	UpdateStatus ret = UpdateStatus::kUpdateContinue;
 
@@ -67,6 +70,7 @@ UpdateStatus Application::Update() {
 
 bool Application::CleanUp() {
 	bool ret = true;
+	free(timer);
 
 	for (std::vector<Module*>::reverse_iterator it = modules.rbegin(); it != modules.rend() && ret; ++it)
 		ret = (*it)->CleanUp();

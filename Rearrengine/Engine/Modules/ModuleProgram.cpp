@@ -3,7 +3,7 @@
 #include <SDL.h>
 #include <GL\glew.h>
 
-#include "../Utils/LeakTest.h"
+#include "Utils/LeakTest.h"
 
 bool ModuleProgram::Init() {
 	return true;
@@ -11,6 +11,7 @@ bool ModuleProgram::Init() {
 
 char* ModuleProgram::LoadShaderSource(const char* shader_file_name) {
 	FILE* file = nullptr;
+	char* data = nullptr;
 	fopen_s(&file, shader_file_name, "rb");
 	if (file) {
 		fseek(file, 0, SEEK_END);
@@ -80,7 +81,5 @@ UpdateStatus ModuleProgram::PostUpdate() {
 }
 
 bool ModuleProgram::CleanUp() {
-	free(data);
-	data = nullptr;
 	return true;
 }

@@ -2,7 +2,9 @@
 
 #include <SDL.h>
 
-Timer::Timer() {}
+Timer::Timer() {
+	Start();
+}
 
 Timer::~Timer() {}
 
@@ -13,6 +15,10 @@ void Timer::Start() {
 
 unsigned int Timer::Read() {
 	return SDL_GetTicks() - started_at;
+}
+
+unsigned int Timer::GetTicks() {
+	return SDL_GetTicks();
 }
 
 unsigned int Timer::Stop() {

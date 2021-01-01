@@ -1,7 +1,7 @@
 #pragma once
 #include "Module.h"
 
-#include "../Utils/Point.h"
+#include "Utils/Point.h"
 
 #define NUM_MOUSE_BUTTONS 5
 

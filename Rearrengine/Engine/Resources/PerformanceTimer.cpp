@@ -2,7 +2,9 @@
 
 #include <SDL.h>
 
-PerformanceTimer::PerformanceTimer() : frequency(SDL_GetPerformanceFrequency()) {}
+PerformanceTimer::PerformanceTimer() : frequency(SDL_GetPerformanceFrequency()) {
+	Start();
+}
 
 PerformanceTimer::~PerformanceTimer() {}
 
@@ -13,6 +15,10 @@ void PerformanceTimer::Start() {
 
 double PerformanceTimer::Read() {
 	return (SDL_GetPerformanceCounter() - started_at ) / frequency;
+}
+
+double PerformanceTimer::GetTick() {
+	return SDL_GetPerformanceCounter() / frequency;
 }
 
 unsigned int PerformanceTimer::Stop() {

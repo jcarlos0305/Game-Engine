@@ -1,4 +1,4 @@
-#include "../Main/Application.h"
+#include "Main/Application.h"
 #include "ModuleRender.h"
 #include "ModuleWindow.h"
 #include "ModuleCamera.h"
@@ -9,12 +9,12 @@
 #include "ModuleScene.h"
 
 #include "Math/float4x4.h"
-#include "../../Debug Draw/ModuleDebugDraw.h"
+#include "Debug Draw/ModuleDebugDraw.h"
 
 #include <SDL.h>
 #include <GL\glew.h>
 
-#include "../Utils/LeakTest.h"
+#include "Utils/LeakTest.h"
 
 ModuleRender::ModuleRender() {}
 

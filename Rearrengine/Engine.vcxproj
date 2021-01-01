@@ -79,12 +79,12 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>false</SDLCheck>
       <ExceptionHandling>Sync</ExceptionHandling>
-      <AdditionalIncludeDirectories>./Engine;./External Libs/DevIL/include;./External Libs/glew-2.1.0/include;./External Libs/Assimp/include;./External Libs/Brofiler/Brofiler;./External Libs/ImGui;./External Libs/MathGeoLib;./SDL/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./Engine;./External Libs/DevIL/include;./External Libs/glew-2.1.0/include;./External Libs/Assimp/include;./External Libs/Brofiler/Brofiler;./External Libs/ImGui;./External Libs/MathGeoLib;./External Libs/Debug Draw;./External Libs/SDL/include;./External Libs/Brofiler</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
-      <AdditionalLibraryDirectories>./External Libs/DevIL/lib/x86/Release;./External Libs/glew-2.1.0/lib/Release/Win32;./External Libs/Assimp/lib;./External Libs/Brofiler/Brofiler;./SDL/lib/x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>./External Libs/DevIL/lib/x86/Release;./External Libs/glew-2.1.0/lib/Release/Win32;./External Libs/Assimp/lib;./External Libs/Brofiler/Brofiler;./External Libs/SDL/lib/x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;glew32.lib;DevIL.lib;assimp-vc141-mt.lib;ProfilerCore32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -111,14 +111,14 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
       <ExceptionHandling>Sync</ExceptionHandling>
-      <AdditionalIncludeDirectories>./Engine;./External Libs/DevIL/include;./External Libs/glew-2.1.0/include;./External Libs/Assimp/include;./External Libs/Brofiler/Brofiler;./External Libs/ImGui;./External Libs/MathGeoLib;./SDL/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./Engine;./External Libs/DevIL/include;./External Libs/glew-2.1.0/include;./External Libs/Assimp/include;./External Libs/Brofiler/Brofiler;./External Libs/ImGui;./External Libs/MathGeoLib;./External Libs/Debug Draw;./External Libs/SDL/include;./External Libs/Brofiler</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Windows</SubSystem>
-      <AdditionalLibraryDirectories>./External Libs/DevIL/lib/x86/Release;./External Libs/glew-2.1.0/lib/Release/Win32;./External Libs/Assimp/lib;./External Libs/Brofiler/Brofiler;./SDL/lib/x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>./External Libs/DevIL/lib/x86/Release;./External Libs/glew-2.1.0/lib/Release/Win32;./External Libs/Assimp/lib;./External Libs/Brofiler/Brofiler;./External Libs/SDL/lib/x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;glew32.lib;DevIL.lib;assimp-vc141-mt.lib;ProfilerCore32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -148,15 +148,17 @@
     <ClInclude Include="Engine\Components\ComponentTransform.h" />
     <ClInclude Include="Engine\Modules\ModuleScene.h" />
     <ClInclude Include="Engine\Resources\GameObject.h" />
+    <ClInclude Include="Engine\Resources\PerformanceTimer.h" />
+    <ClInclude Include="Engine\Resources\Timer.h" />
     <ClInclude Include="Engine\UI\About.h" />
     <ClInclude Include="Engine\Main\Application.h" />
     <ClInclude Include="Engine\UI\Configuration.h" />
     <ClInclude Include="Engine\UI\Console.h" />
     <ClInclude Include="Engine\UI\Hierarchy.h" />
     <ClInclude Include="Engine\Utils\Globals.h" />
-    <ClInclude Include="External Libs\Debug Draw\debugdraw.h" />
-    <ClInclude Include="External Libs\Debug Draw\debug_draw.hpp" />
-    <ClInclude Include="External Libs\Debug Draw\ModuleDebugDraw.h" />
+    <ClInclude Include="External Libs\Debug Draw\Debug Draw\debugdraw.h" />
+    <ClInclude Include="External Libs\Debug Draw\Debug Draw\debug_draw.hpp" />
+    <ClInclude Include="External Libs\Debug Draw\Debug Draw\ModuleDebugDraw.h" />
     <ClInclude Include="External Libs\ImGui\ImGui\imconfig.h" />
     <ClInclude Include="External Libs\ImGui\ImGui\imgui.h" />
     <ClInclude Include="External Libs\ImGui\ImGui\imgui_impl_opengl3.h" />
@@ -270,7 +272,7 @@
     <ClCompile Include="Engine\UI\Configuration.cpp" />
     <ClCompile Include="Engine\UI\Console.cpp" />
     <ClCompile Include="Engine\UI\Hierarchy.cpp" />
-    <ClCompile Include="External Libs\Debug Draw\ModuleDebugDraw.cpp" />
+    <ClCompile Include="External Libs\Debug Draw\Debug Draw\ModuleDebugDraw.cpp" />
     <ClCompile Include="External Libs\ImGui\ImGui\imgui.cpp" />
     <ClCompile Include="External Libs\ImGui\ImGui\imgui_demo.cpp" />
     <ClCompile Include="External Libs\ImGui\ImGui\imgui_draw.cpp" />

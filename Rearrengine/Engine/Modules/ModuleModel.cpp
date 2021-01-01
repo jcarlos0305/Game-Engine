@@ -1,13 +1,13 @@
-#include "../Utils/Globals.h"
-#include "../Main/Application.h"
+#include "Utils/Globals.h"
+#include "Main/Application.h"
 #include "ModuleModel.h"
 #include "ModuleTexture.h"
 #include "ModuleProgram.h"
 #include "ModuleCamera.h"
 #include "ModuleScene.h"
-#include "../Resources/GameObject.h"
-#include "../Components/ComponentMesh.h"
-#include "../Components/ComponentTransform.h"
+#include "Resources/GameObject.h"
+#include "Components/ComponentMesh.h"
+#include "Components/ComponentTransform.h"
 
 #include <GL\glew.h>
 #include <assimp/cimport.h>
@@ -16,8 +16,10 @@
 
 #include <string>
 
-#include "../Utils/LeakTest.h"
-#include "../../Brofiler/Brofiler/Brofiler.h"
+#include "Utils/LeakTest.h"
+#include "Brofiler/Brofiler.h"
+
+struct aiLogStream stream;
 
 void AssimpLog(const char* msg, char* userData) {
 	if (msg) LOG("Assimp %s", msg);
@@ -32,7 +34,6 @@ ModuleModel::ModuleModel() {
 ModuleModel::~ModuleModel() {}
 
 bool ModuleModel::Init() {
-	struct aiLogStream stream;
 	stream.callback = AssimpLog;
 	aiAttachLogStream(&stream);
 
@@ -70,19 +71,19 @@ void ModuleModel::Load(const char* model_path, const char* vertex_shader_path, c
 	if (program && scene) {
 		LOG("Shaders program created successfully!\n");
 		LoadTextures(scene->mMaterials, scene->mNumMaterials, model_path);
-		
+
 		char model_name[_MAX_FNAME];
 		_splitpath_s(model_path, NULL, 0, NULL, 0, model_name, _MAX_FNAME, NULL, 0);
 
 		GameObject* game_object = new GameObject();
-		game_object->SetName(_strdup(model_name));
+		game_object->SetName(model_name);
 
 		ComponentTransform* component_transform = new ComponentTransform();
 		game_object->AddComponent(component_transform);
 
 		LoadModelChildren(scene->mMeshes, program, scene->mRootNode, game_object);
 		LOG("Model loaded successfully!\n");
-		
+
 		App->scene->GetRoot()->AddChild(game_object);
 	}
 	else {
@@ -105,6 +106,13 @@ unsigned int ModuleModel::CreateProgram(const char* vertex_shader_path, const ch
 	if (vertex_shader && fragment_shader) {
 		program = App->program->CreateProgram(vertex_shader, fragment_shader);
 	}
+
+	free(vertex_shader_url);
+	vertex_shader_url = nullptr;
+
+	free(fragment_shader_url);
+	fragment_shader_url = nullptr;
+
 	return program;
 }
 
@@ -181,9 +189,8 @@ unsigned int ModuleModel::GetNumVertices() {
 void ModuleModel::LoadModelChildren(aiMesh** const mMeshes, unsigned int program, aiNode* node, GameObject* father) {
 	BROFILER_CATEGORY("Load model meshes", Profiler::Color::Blue);
 	for (unsigned int i = 0; i < node->mNumChildren; i++) {
-
 		GameObject* game_object = new GameObject();
-		game_object->SetName(_strdup(node->mChildren[i]->mName.C_Str()));
+		game_object->SetName(node->mChildren[i]->mName.C_Str());
 
 		ComponentTransform* component_transform = new ComponentTransform();
 		component_transform->SetTransform(node->mChildren[i]->mTransformation);
@@ -243,5 +250,6 @@ void ModuleModel::Draw() {
 bool ModuleModel::CleanUp() {
 	textures.clear();
 	meshes.clear();
+	aiDetachLogStream(&stream);
 	return true;
 }

@@ -1,8 +1,9 @@
 #pragma once
 
 #include<vector>
-#include "../Modules/Module.h"
-#include "../Utils/Globals.h"
+#include "Modules/Module.h"
+#include "Utils/Globals.h"
+#include "Resources/Timer.h"
 
 class ModuleRender;
 class ModuleWindow;
@@ -40,8 +41,10 @@ public:
 	ModuleScene* scene = nullptr;
 
 	float delta_time = 0.0f;
+	float fps = 0.0f;
 
 private:
+	Timer* timer = nullptr;
 	unsigned int last_time = 0;
 	std::vector<Module*> modules;
 };

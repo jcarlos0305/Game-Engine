@@ -1,9 +1,10 @@
-#include "../UI/Configuration.h"
-#include "../Main/Application.h"
-#include "../Modules/ModuleCamera.h"
-#include "../Modules/ModuleModel.h"
+#include "UI/Configuration.h"
+#include "Main/Application.h"
+#include "Modules/ModuleCamera.h"
+#include "Modules/ModuleModel.h"
+#include "Modules/ModuleScene.h"
 
-#include "../Resources/Mesh.h"
+#include "Resources/Mesh.h"
 #include <vector>
 
 #include "ImGui/imgui.h"
@@ -32,7 +33,7 @@ void Configuration::Draw() {
 		ImGui::Text("    y    "); ImGui::NextColumn();
 		ImGui::Text("    z    "); ImGui::NextColumn();
 		ImGui::Text("         "); ImGui::NextColumn();
-		
+
 		// Front
 		float3 camera_front = App->camera->GetFront();
 		ImGui::PushItemFlag(ImGuiItemFlags_Disabled, true);
@@ -100,7 +101,7 @@ void Configuration::Draw() {
 		ImGui::DragFloat("", &position.y, 0.0f); ImGui::NextColumn();
 		ImGui::DragFloat("", &position.z, 0.0f); ImGui::NextColumn();
 		ImGui::Text("Position");                 ImGui::NextColumn();
-		
+
 		ImGui::Separator();
 
 		// Scale
@@ -109,7 +110,7 @@ void Configuration::Draw() {
 		ImGui::DragFloat("", &scale.y, 0.0f); ImGui::NextColumn();
 		ImGui::DragFloat("", &scale.z, 0.0f); ImGui::NextColumn();
 		ImGui::Text("Scale");                 ImGui::NextColumn();
-		
+
 		ImGui::Separator();
 
 		// Rotaton
@@ -132,7 +133,8 @@ void Configuration::Draw() {
 	}
 
 	if (ImGui::CollapsingHeader("Geometry")) {
-		std::vector<Mesh> meshes = App->model->meshes;
+		//std::vector<Mesh> meshes = App->model->meshes;
+		std::vector<Mesh> meshes = App->scene->GetRoot();
 		for (unsigned int i = 0; i < meshes.size(); i++) {
 			ImGui::Text("Mesh %i", i);
 			ImGui::Separator();

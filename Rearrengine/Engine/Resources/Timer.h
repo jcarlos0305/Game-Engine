@@ -7,6 +7,7 @@ public:
 
 	void Start();
 	unsigned int Read();
+	unsigned int GetTicks();
 	unsigned int Stop();
 
 	unsigned int stopped_at = 0;
