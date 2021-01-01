@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Module.h"
-#include "../UI/UIWindow.h"
+#include "UI/UIWindow.h"
 #include<vector>
 
 class Console;

@@ -1,15 +1,15 @@
 #include <stdlib.h>
 #include "Application.h"
-#include "../Modules/ModuleRender.h"
-#include "../Utils/Globals.h"
+#include "Modules/ModuleRender.h"
+#include "Utils/Globals.h"
 
-#include "../Utils/LeakTest.h"
-#include "../../Brofiler/Brofiler/Brofiler.h"
+#include "Utils/LeakTest.h"
+#include "Brofiler/Brofiler.h"
 
 #include <SDL.h>
 
-#pragma comment( lib, "SDL/lib/x86/SDL2.lib" )
-#pragma comment( lib, "SDL/lib/x86/SDL2main.lib" )
+#pragma comment( lib, "External Libs/SDL/lib/x86/SDL2.lib" )
+#pragma comment( lib, "External Libs/SDL/lib/x86/SDL2main.lib" )
 
 Application* App = NULL;
 

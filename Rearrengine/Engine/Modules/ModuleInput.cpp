@@ -1,5 +1,5 @@
-#include "../Utils/Globals.h"
-#include "../Main/Application.h"
+#include "Utils/Globals.h"
+#include "Main/Application.h"
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModuleModel.h"
@@ -7,7 +7,7 @@
 #include <SDL.h>
 #include "ImGui/imgui_impl_sdl.h"
 
-#include "../Utils/LeakTest.h"
+#include "Utils/LeakTest.h"
 
 #define MAX_KEYS 300
 

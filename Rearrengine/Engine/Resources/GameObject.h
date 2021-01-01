@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../Utils/Globals.h"
-#include "../Components/Component.h"
+#include "Utils/Globals.h"
+#include "Components/Component.h"
 
 #include <vector>
 
@@ -9,8 +9,8 @@ class GameObject {
 public:
 	GameObject();
 	~GameObject();
-	
-	void SetName(const char* _name) { name = _name; };
+
+	void SetName(const char* _name) { name = _strdup(_name); };
 	const char* GetName() const { return name; };
 
 	void AddChild(GameObject* _child) { children.push_back(_child); };
@@ -26,7 +26,7 @@ public:
 	Component* GetComponentType(ComponentTypes _type) const;
 
 private:
-	const char*              name = "";
+	char* name = "";
 	std::vector<GameObject*> children;
 	std::vector<Component*>  components;
 };

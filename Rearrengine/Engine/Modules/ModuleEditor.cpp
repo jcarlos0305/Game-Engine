@@ -6,20 +6,20 @@
 #include "ModuleCamera.h"
 
 // UI
-#include "../UI/MainMenu.h"
-#include "../UI/Configuration.h"
-#include "../UI/Console.h"
-#include "../UI/About.h"
-#include "../UI/Viewport.h"
-#include "../UI/Information.h"
-#include "../UI/Hierarchy.h"
+#include "UI/MainMenu.h"
+#include "UI/Configuration.h"
+#include "UI/Console.h"
+#include "UI/About.h"
+#include "UI/Viewport.h"
+#include "UI/Information.h"
+#include "UI/Hierarchy.h"
 
 #include <GL/glew.h>
 #include "ImGui/imgui.h"
 #include "ImGui/imgui_impl_opengl3.h"
 #include "ImGui/imgui_impl_sdl.h"
 
-#include "../Utils/LeakTest.h"
+#include "Utils/LeakTest.h"
 
 ModuleEditor::ModuleEditor() {
 	console = new Console();

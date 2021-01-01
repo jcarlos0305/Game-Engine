@@ -1,9 +1,9 @@
-#include "../UI/MainMenu.h"
-#include "../UI/About.h"
-#include "../UI/Console.h"
+#include "UI/MainMenu.h"
+#include "UI/About.h"
+#include "UI/Console.h"
 
-#include "../Main/Application.h"
-#include "../Modules/ModuleEditor.h"
+#include "Main/Application.h"
+#include "Modules/ModuleEditor.h"
 
 #include "ImGui/imgui.h"
 

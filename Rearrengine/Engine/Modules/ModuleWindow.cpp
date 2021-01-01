@@ -1,8 +1,8 @@
-#include "../Utils/Globals.h"
-#include "../Main/Application.h"
+#include "Utils/Globals.h"
+#include "Main/Application.h"
 #include "ModuleWindow.h"
 
-#include "../Utils/LeakTest.h"
+#include "Utils/LeakTest.h"
 
 ModuleWindow::ModuleWindow() {}
 

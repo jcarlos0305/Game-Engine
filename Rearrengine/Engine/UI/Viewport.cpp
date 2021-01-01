@@ -1,7 +1,7 @@
-#include "../Main/Application.h"
-#include "../Modules/ModuleRender.h"
-#include "../Modules/ModuleCamera.h"
-#include "../UI/Viewport.h"
+#include "Main/Application.h"
+#include "Modules/ModuleRender.h"
+#include "Modules/ModuleCamera.h"
+#include "UI/Viewport.h"
 
 #include "ImGui/imgui.h"
 

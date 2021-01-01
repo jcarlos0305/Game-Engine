@@ -1,8 +1,8 @@
 #pragma once
 #include "Globals.h"
-#include "../Main/Application.h"
-#include "../Modules/ModuleEditor.h"
-#include "../UI/Console.h"
+#include "Main/Application.h"
+#include "Modules/ModuleEditor.h"
+#include "UI/Console.h"
 
 #include <string.h>
 

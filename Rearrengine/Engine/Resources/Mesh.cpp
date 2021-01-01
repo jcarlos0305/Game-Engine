@@ -1,12 +1,12 @@
 #include "Mesh.h"
-#include "../Main/Application.h"
-#include "../Modules/ModuleCamera.h"
-#include "../Modules/ModuleRender.h"
+#include "Main/Application.h"
+#include "Modules/ModuleCamera.h"
+#include "Modules/ModuleRender.h"
 
 #include <GL/glew.h>
 #include "Math/float2.h"
 
-#include "../Utils/LeakTest.h"
+#include "Utils/LeakTest.h"
 
 Mesh::Mesh(unsigned int program) : program(program) {
 	min_x = 0.0; max_x = 0.0;

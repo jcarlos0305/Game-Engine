@@ -110,7 +110,7 @@
     <ClCompile Include="External Libs\MathGeoLib\Math\SSEMath.cpp" />
     <ClCompile Include="External Libs\MathGeoLib\Math\TransformOps.cpp" />
     <ClCompile Include="External Libs\MathGeoLib\Time\Clock.cpp" />
-    <ClCompile Include="External Libs\Debug Draw\ModuleDebugDraw.cpp" />
+    <ClCompile Include="External Libs\Debug Draw\Debug Draw\ModuleDebugDraw.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Main\Application.h" />
@@ -275,9 +275,11 @@
     <ClInclude Include="External Libs\MathGeoLib\MathBuildConfig.h" />
     <ClInclude Include="External Libs\MathGeoLib\MathGeoLib.h" />
     <ClInclude Include="External Libs\MathGeoLib\MathGeoLibFwd.h" />
-    <ClInclude Include="External Libs\Debug Draw\debug_draw.hpp" />
-    <ClInclude Include="External Libs\Debug Draw\debugdraw.h" />
-    <ClInclude Include="External Libs\Debug Draw\ModuleDebugDraw.h" />
+    <ClInclude Include="External Libs\Debug Draw\Debug Draw\debug_draw.hpp" />
+    <ClInclude Include="External Libs\Debug Draw\Debug Draw\debugdraw.h" />
+    <ClInclude Include="External Libs\Debug Draw\Debug Draw\ModuleDebugDraw.h" />
+    <ClInclude Include="Engine\Resources\Timer.h" />
+    <ClInclude Include="Engine\Resources\PerformanceTimer.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Modules">

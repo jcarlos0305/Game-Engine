@@ -1,8 +1,10 @@
 #include "ModuleScene.h"
 
-#include "../Components/ComponentMesh.h"
+#include "Components/ComponentMesh.h"
 
-ModuleScene::ModuleScene() : root(new GameObject()) {}
+ModuleScene::ModuleScene() : root(new GameObject()) {
+	root->SetName("root");
+}
 
 ModuleScene::~ModuleScene() {}
 
@@ -15,4 +17,17 @@ void ModuleScene::Draw(GameObject& game_object) {
 	for (GameObject* child : game_object.GetChildren()) {
 		Draw(*child);
 	}
+}
+
+void ModuleScene::RecursiveDelete(GameObject* game_object) {
+	for (GameObject* child : game_object->GetChildren()) {
+		RecursiveDelete(child);
+	}
+	delete game_object;
+}
+
+bool ModuleScene::CleanUp() {
+	RecursiveDelete(root);
+	root = nullptr;
+	return true;
 }

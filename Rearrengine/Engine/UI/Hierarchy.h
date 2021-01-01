@@ -1,7 +1,7 @@
 #pragma once
 
 #include "UIWindow.h"
-#include "../Resources/GameObject.h"
+#include "Resources/GameObject.h"
 
 #include <vector>
 
