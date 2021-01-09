@@ -9,6 +9,7 @@ public:
 	~ComponentMesh();
 
 	inline void SetMesh(Mesh* _mesh) { mesh = _mesh; }
+	inline Mesh* GetMesh() { return mesh; };
 	void Draw() const;
 
 private:

@@ -14,7 +14,7 @@
 
 bool ModuleCamera::Init() {
 	frustum.SetKind(FrustumSpaceGL, FrustumRightHanded);
-	frustum.SetViewPlaneDistances(0.1f, 32.0f);
+	frustum.SetViewPlaneDistances(0.1f, 1000.0f);
 	frustum.SetHorizontalFovAndAspectRatio(DEGTORAD(90.0f), 1.3f);
 	frustum.SetFront(-float3::unitZ);
 	frustum.SetUp(float3::unitY);

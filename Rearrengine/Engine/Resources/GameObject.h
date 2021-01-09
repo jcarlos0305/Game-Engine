@@ -2,6 +2,7 @@
 
 #include "Utils/Globals.h"
 #include "Components/Component.h"
+#include "Math/float4x4.h"
 
 #include <vector>
 
@@ -25,8 +26,14 @@ public:
 	bool HasComponentType(ComponentTypes _type) const;
 	Component* GetComponentType(ComponentTypes _type) const;
 
+	const float4x4 GameObject::GetGlobalMatrix() const;
+	inline GameObject* GetParent() const { return parent; };
+	inline void SetParent(GameObject* _parent) { parent = _parent; };
+
 private:
 	char* name = "";
 	std::vector<GameObject*> children;
 	std::vector<Component*>  components;
+
+	GameObject* parent = nullptr;
 };

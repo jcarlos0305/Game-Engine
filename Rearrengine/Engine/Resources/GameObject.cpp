@@ -1,4 +1,5 @@
 #include "GameObject.h"
+#include "Components/ComponentTransform.h"
 
 GameObject::GameObject() {}
 
@@ -20,4 +21,9 @@ Component* GameObject::GetComponentType(ComponentTypes _type) const {
 		if (component->GetType() == _type) return component;
 	}
 	return nullptr;
+}
+
+const float4x4 GameObject::GetGlobalMatrix() const {
+	ComponentTransform* transform = static_cast<ComponentTransform*>(GetComponentType(ComponentTypes::kTransform));
+	return transform->GetGlobalMatrix();
 }

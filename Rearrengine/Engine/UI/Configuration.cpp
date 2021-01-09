@@ -4,6 +4,7 @@
 #include "Modules/ModuleModel.h"
 #include "Modules/ModuleScene.h"
 
+#include "Components/ComponentMesh.h"
 #include "Resources/Mesh.h"
 #include <vector>
 
@@ -11,10 +12,13 @@
 #include "ImGui/imgui.h"
 #include "ImGui/imgui_internal.h"
 
-#include "Math/float3.h"
 #include "Math/float3x3.h"
 #include "Math/float3x4.h"
 #include "Math/float4x4.h"
+
+static float3 translate_vector;
+static float3 rotation_vector;
+static float3 scale_vector;
 
 Configuration::Configuration() {
 	title = "Configuration";
@@ -86,61 +90,47 @@ void Configuration::Draw() {
 		ImGui::Columns(1);
 	}
 
-	if (ImGui::CollapsingHeader("Transform")) {
-		ImGui::Columns(4, NULL, false);
-		ImGui::Text("    x    "); ImGui::NextColumn();
-		ImGui::Text("    y    "); ImGui::NextColumn();
-		ImGui::Text("    z    "); ImGui::NextColumn();
-		ImGui::Text("         "); ImGui::NextColumn();
+	if (selected_game_object) {
+		if (ImGui::CollapsingHeader("Transform")) {
+			ImGui::Text(selected_game_object->GetName());
+			ImGui::Columns(4, NULL, false);
+			ImGui::Text("    x    "); ImGui::NextColumn();
+			ImGui::Text("    y    "); ImGui::NextColumn();
+			ImGui::Text("    z    "); ImGui::NextColumn();
+			ImGui::Text("         "); ImGui::NextColumn();
 
-		float4x4 model = App->model->model_matrix;
-		// Position
-		float3 position = model.TranslatePart();
-		ImGui::PushItemFlag(ImGuiItemFlags_Disabled, true);
-		ImGui::DragFloat("", &position.x, 0.0f); ImGui::NextColumn();
-		ImGui::DragFloat("", &position.y, 0.0f); ImGui::NextColumn();
-		ImGui::DragFloat("", &position.z, 0.0f); ImGui::NextColumn();
-		ImGui::Text("Position");                 ImGui::NextColumn();
+			ComponentTransform* component_transform = static_cast<ComponentTransform*>(selected_game_object->GetComponentType(ComponentTypes::kTransform));
 
-		ImGui::Separator();
+			// Position
+			translate_vector = component_transform->GetTranslate();
+			DrawModifiableVector(translate_vector, component_transform);
+			ImGui::Text("Position"); ImGui::NextColumn();
+			ImGui::Separator();
 
-		// Scale
-		float3 scale = model.GetScale();
-		ImGui::DragFloat("", &scale.x, 0.0f); ImGui::NextColumn();
-		ImGui::DragFloat("", &scale.y, 0.0f); ImGui::NextColumn();
-		ImGui::DragFloat("", &scale.z, 0.0f); ImGui::NextColumn();
-		ImGui::Text("Scale");                 ImGui::NextColumn();
+			// Scale
+			scale_vector = component_transform->GetScale();
+			DrawModifiableVector(scale_vector, component_transform);
+			ImGui::Text("Scale");  ImGui::NextColumn();
+			ImGui::Separator();
 
-		ImGui::Separator();
+			// Rotaton
+			rotation_vector = component_transform->GetRotation();
+			DrawModifiableVector(rotation_vector, component_transform);
+			ImGui::Text("Rotation");  ImGui::NextColumn();
 
-		// Rotaton
-		float3x3 rotation = model.RotatePart();
-		for (unsigned int i = 0; i < 3; i++) {
-			for (unsigned int j = 0; j < 3; j++) {
-				ImGui::DragFloat("", &rotation[i][j], 0.0f); ImGui::NextColumn();
-			}
-			if (i != 1) {
-				ImGui::Text(""); ImGui::NextColumn();
-			}
-			else {
-				ImGui::Text("Rotation"); ImGui::NextColumn();
-			}
+			ImGui::Columns(1);
+			ImGui::NewLine();
 		}
 
-		ImGui::PopItemFlag();
-		ImGui::Columns(1);
-		ImGui::NewLine();
-	}
-
-	if (ImGui::CollapsingHeader("Geometry")) {
-		//std::vector<Mesh> meshes = App->model->meshes;
-		std::vector<Mesh> meshes = App->scene->GetRoot();
-		for (unsigned int i = 0; i < meshes.size(); i++) {
-			ImGui::Text("Mesh %i", i);
-			ImGui::Separator();
-			ImGui::Text("Vertices: %u", meshes[i].num_vertices, 0);
-			ImGui::Text("Triangles: %u", meshes[i].num_faces, 0);
-			ImGui::NewLine();
+		ComponentMesh* component_mesh = static_cast<ComponentMesh*>(selected_game_object->GetComponentType(ComponentTypes::kMesh));
+		if (component_mesh) {
+			if (ImGui::CollapsingHeader("Geometry")) {
+				ImGui::Text(selected_game_object->GetName());
+				Mesh* mesh = component_mesh->GetMesh();
+				ImGui::Text("Vertices: %u", mesh->num_vertices, 0);
+				ImGui::Text("Triangles: %u", mesh->num_faces, 0);
+				ImGui::NewLine();
+			}
 		}
 	}
 
@@ -148,6 +138,17 @@ void Configuration::Draw() {
 		ImGui::Image((ImTextureID)App->model->textures[0], ImVec2(128, 128));
 	}
 	ImGui::End();
+}
+
+void Configuration::DrawModifiableVector(float3& vector, ComponentTransform* transform) {
+	for (unsigned int i = 0; i < 3; i++) {
+		ImGui::PushID(&vector[i]);
+		if (ImGui::DragFloat("", &vector[i], 1.0f, -FLT_MAX, +FLT_MAX, "%.4f", ImGuiSliderFlags_None)) {
+			transform->SetTransform(translate_vector, rotation_vector, scale_vector);
+		}
+		ImGui::PopID();
+		ImGui::NextColumn();
+	}
 }
 
 bool Configuration::CleanUp() {

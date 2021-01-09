@@ -22,12 +22,12 @@ Mesh::~Mesh() {
 }
 
 void Mesh::LoadVBO(const aiMesh* mesh) {
-
 	glGenBuffers(1, &vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
 	unsigned vertex_size = (sizeof(float) * 3 + sizeof(float) * 2);
 	unsigned vertices_size = vertex_size * mesh->mNumVertices;
+	material_index = mesh->mMaterialIndex;
 
 	glBufferData(GL_ARRAY_BUFFER, vertices_size, nullptr, GL_STATIC_DRAW);
 
@@ -48,9 +48,15 @@ void Mesh::LoadVBO(const aiMesh* mesh) {
 		uvs[position++] = mesh->mVertices[i].x;
 		uvs[position++] = mesh->mVertices[i].y;
 		uvs[position++] = mesh->mVertices[i].z;
-		// UV 
-		uvs[position++] = mesh->mTextureCoords[0][i].x;
-		uvs[position++] = mesh->mTextureCoords[0][i].y;
+		// UV
+		if (mesh->mTextureCoords[0]) {
+			uvs[position++] = mesh->mTextureCoords[0][i].x;
+			uvs[position++] = mesh->mTextureCoords[0][i].y;
+		}
+		else {
+			uvs[position++] = 0;
+			uvs[position++] = 0;
+		}
 	}
 
 	glUnmapBuffer(GL_ARRAY_BUFFER);
@@ -67,11 +73,9 @@ void Mesh::LoadEBO(const aiMesh* mesh) {
 	unsigned* indices = (unsigned*)(glMapBufferRange(GL_ELEMENT_ARRAY_BUFFER, 0, index_size, GL_MAP_WRITE_BIT));
 
 	for (unsigned i = 0; i < mesh->mNumFaces; ++i) {
-		assert(mesh->mFaces[i].mNumIndices == 3);
-
-		*(indices++) = mesh->mFaces[i].mIndices[0];
-		*(indices++) = mesh->mFaces[i].mIndices[1];
-		*(indices++) = mesh->mFaces[i].mIndices[2];
+		for (unsigned j = 0; j < mesh->mFaces[i].mNumIndices; j++) {
+			*(indices++) = mesh->mFaces[i].mIndices[j];
+		}
 	}
 
 	glUnmapBuffer(GL_ELEMENT_ARRAY_BUFFER);
@@ -79,7 +83,6 @@ void Mesh::LoadEBO(const aiMesh* mesh) {
 }
 
 void Mesh::CreateVAO() {
-
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
 
@@ -96,9 +99,8 @@ void Mesh::CreateVAO() {
 }
 
 void Mesh::Draw(const std::vector<unsigned>& model_textures, const float4x4 model) {
-
-	float4x4 proj  = App->camera->GetProjectionMatrix();
-	float4x4 view  = App->camera->GetViewMatrix();
+	float4x4 proj = App->camera->GetProjectionMatrix();
+	float4x4 view = App->camera->GetViewMatrix();
 
 	glUseProgram(program);
 
