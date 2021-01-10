@@ -13,6 +13,7 @@ public:
 	~Configuration();
 
 	inline void SetSelectedGameObject(GameObject* _game_object) { selected_game_object = _game_object; };
+	inline GameObject* GetSelectedGameObject() const { return selected_game_object; };
 
 	void Draw();
 

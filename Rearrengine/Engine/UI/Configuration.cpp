@@ -145,6 +145,7 @@ void Configuration::DrawModifiableVector(float3& vector, ComponentTransform* tra
 		ImGui::PushID(&vector[i]);
 		if (ImGui::DragFloat("", &vector[i], 1.0f, -FLT_MAX, +FLT_MAX, "%.4f", ImGuiSliderFlags_None)) {
 			transform->SetTransform(translate_vector, rotation_vector, scale_vector);
+			selected_game_object->UpdateChildrenGlobalMatrix();
 		}
 		ImGui::PopID();
 		ImGui::NextColumn();

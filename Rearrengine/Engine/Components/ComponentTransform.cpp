@@ -21,7 +21,7 @@ void ComponentTransform::SetTransform(const aiMatrix4x4& matrix) {
 	rotation_quat = Quat(assimp_rotation.x, assimp_rotation.y, assimp_rotation.z, assimp_rotation.w);
 
 	local_matrix = float4x4::FromTRS(translate, rotation_quat, scale);
-	global_matrix = game_object->GetParent() != nullptr ? game_object->GetParent()->GetGlobalMatrix() * local_matrix : local_matrix;
+	UpdateGlobalMatrix();
 }
 
 void ComponentTransform::SetTransform(float3 translate_vector, float3 rotation_vector, float3 scale_vector) {
@@ -29,9 +29,12 @@ void ComponentTransform::SetTransform(float3 translate_vector, float3 rotation_v
 	rotation = rotation_vector;
 	translate = translate_vector;
 
-	//rotation_quat = Quat(rotation_vector.x, rotation_vector.y, rotation_vector.z, 1.0f);
 	rotation_quat = Quat::FromEulerXYZ(rotation_vector.x, rotation_vector.y, rotation_vector.z);
 
 	local_matrix = float4x4::FromTRS(translate, rotation_quat, scale);
+	UpdateGlobalMatrix();
+}
+
+void ComponentTransform::UpdateGlobalMatrix() {
 	global_matrix = game_object->GetParent() != nullptr ? game_object->GetParent()->GetGlobalMatrix() * local_matrix : local_matrix;
 }
