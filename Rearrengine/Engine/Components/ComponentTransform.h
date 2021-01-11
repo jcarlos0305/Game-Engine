@@ -15,6 +15,7 @@ public:
 	void SetTransform(float3 position_vector, float3 rotation_vector, float3 scale_vector);
 
 	bool ToJSON() const override;
+	void UpdateGlobalMatrix();
 
 	inline float3 GetScale() { return scale; };
 	inline float3 GetRotation() { return rotation; };

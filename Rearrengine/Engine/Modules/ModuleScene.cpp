@@ -1,9 +1,11 @@
 #include "ModuleScene.h"
 
 #include "Components/ComponentMesh.h"
+#include "Components/ComponentTransform.h"
 
 ModuleScene::ModuleScene() : root(new GameObject()) {
 	root->SetName("root");
+	root->AddComponent(new ComponentTransform());
 }
 
 ModuleScene::~ModuleScene() {}

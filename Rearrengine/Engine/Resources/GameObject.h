@@ -29,6 +29,7 @@ public:
 	const float4x4 GameObject::GetGlobalMatrix() const;
 	inline GameObject* GetParent() const { return parent; };
 	inline void SetParent(GameObject* _parent) { parent = _parent; };
+	void UpdateChildrenGlobalMatrix();
 
 private:
 	char* name = "";
