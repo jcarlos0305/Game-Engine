@@ -1,8 +1,8 @@
 #include "Mesh.h"
 #include "Main/Application.h"
 #include "Modules/ModuleCamera.h"
-#include "Modules/ModuleRender.h"
 #include "Debug Draw/ModuleDebugDraw.h"
+#include "Modules/ModuleRender.h"
 
 #include <GL/glew.h>
 #include "Math/float2.h"
@@ -55,6 +55,7 @@ void Mesh::LoadVBO(const aiMesh* mesh) {
 	}
 
 	glUnmapBuffer(GL_ARRAY_BUFFER);
+	mVertices = mesh->mVertices;
 	num_vertices = mesh->mNumVertices;
 	num_faces = mesh->mNumFaces;
 }
@@ -114,9 +115,6 @@ void Mesh::Draw(const std::vector<unsigned>& model_textures, const float4x4 mode
 	glBindTexture(GL_TEXTURE_2D, model_textures[material_index]);
 
 	glDrawElements(GL_TRIANGLES, num_indices, GL_UNSIGNED_INT, nullptr);
-
-	// Drawing quads from mesh to check its hitbox
-	if (App->render->showQuad) App->debug_draw->DrawQuad(max_x, max_y, max_z, min_x, min_y, min_z);
 
 	glBindVertexArray(0);
 }

@@ -103,7 +103,8 @@ void ModuleRender::RenderToViewport(unsigned int width, unsigned int height) {
 
 	// Drawing the model
 	App->model->Draw();
-	// Change draw to sen all the gameobjects that obb is inside the frustrum
+
+	// Change draw to send all the gameobjects that obb is inside the frustrum
 	App->scene->Draw(*App->scene->GetRoot());
 
 	// Drawing the grid with debug draw

@@ -21,7 +21,7 @@ public:
 	bool            CleanUp();
 
     void            Draw(const float4x4& view, const float4x4& proj, unsigned width, unsigned height);
-    void            DrawQuad(const float& max_x, const float& max_y, const float& max_z, const float& min_x, const float& min_y, const float& min_z);
+    void            DrawQuad(const float3& _maxs, const float3& _mins);
     void            DrawFrustumCamera(const float4x4& viewProjMatrix);
 private:
 

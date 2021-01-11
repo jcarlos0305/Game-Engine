@@ -1,7 +1,6 @@
 #include "Camera.h"
 #include "Utils/Globals.h"
 
-
 Camera::Camera()
 {
 	frustum.SetKind(FrustumSpaceGL, FrustumRightHanded);

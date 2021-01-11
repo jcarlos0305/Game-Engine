@@ -15,6 +15,7 @@ public:
 	void CreateVAO();
 	void Draw(const std::vector<unsigned>& model_textures, float4x4 model);
 
+	aiVector3D* mVertices = nullptr;
 	unsigned int num_vertices = 0;
 	unsigned int num_faces = 0;
 	unsigned int num_indices = 0;
