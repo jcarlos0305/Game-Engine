@@ -31,13 +31,16 @@ ModuleModel::ModuleModel() {
 	min_z = 0.0; max_z = 0.0;
 }
 
-ModuleModel::~ModuleModel() {}
+ModuleModel::~ModuleModel() {
+	aiDetachLogStream(&stream);
+}
 
 bool ModuleModel::Init() {
 	stream.callback = AssimpLog;
 	aiAttachLogStream(&stream);
 
-	Load("assets/BakerHouse.fbx", "assets/vertex.glsl", "assets/fragment.glsl");
+	//Load("assets/BakerHouse.fbx", "assets/vertex.glsl", "assets/fragment.glsl");
+	Load("assets/Street_Environment/Street_environment_V01.fbx", "assets/vertex.glsl", "assets/fragment.glsl");
 
 	return true;
 }
@@ -46,11 +49,11 @@ void ModuleModel::Load(const char* file_path) {
 	char file_ext[_MAX_EXT];
 	_splitpath_s(file_path, NULL, 0, NULL, 0, NULL, 0, file_ext, _MAX_EXT);
 
-	if (strcmp(file_ext, ".fbx") == 0) {
+	if (strcmpi(file_ext, ".fbx") == 0) {
 		LOG("Loading model %s", file_path);
 		Load(file_path, "assets/vertex.glsl", "assets/fragment.glsl");
 	}
-	else if (strcmp(file_ext, ".png") == 0 || strcmp(file_ext, ".dds") == 0 || strcmp(file_ext, ".jpg") == 0 || strcmp(file_ext, ".jpeg") == 0) {
+	else if (strcmpi(file_ext, ".png") == 0 || strcmpi(file_ext, ".dds") == 0 || strcmpi(file_ext, ".jpg") == 0 || strcmpi(file_ext, ".jpeg") == 0) {
 		LOG("Loading texture %s", file_path);
 
 		unsigned int loaded_texture = App->texture->LoadTexture(file_path);
@@ -77,8 +80,10 @@ void ModuleModel::Load(const char* model_path, const char* vertex_shader_path, c
 
 		GameObject* game_object = new GameObject();
 		game_object->SetName(model_name);
+		game_object->SetParent(App->scene->GetRoot());
 
 		ComponentTransform* component_transform = new ComponentTransform();
+		component_transform->SetOwner(game_object);
 		game_object->AddComponent(component_transform);
 
 		LoadModelChildren(scene->mMeshes, program, scene->mRootNode, game_object);
@@ -119,63 +124,68 @@ unsigned int ModuleModel::CreateProgram(const char* vertex_shader_path, const ch
 void ModuleModel::LoadTextures(aiMaterial** const mMaterials, unsigned int mNumMaterials, const char* src_path) {
 	aiString file;
 
-	if (!textures.empty()) {
-		textures.clear();
-		textures.shrink_to_fit();
-	}
-
 	textures.reserve(mNumMaterials);
 	for (unsigned i = 0; i < mNumMaterials; ++i) {
 		if (mMaterials[i]->GetTexture(aiTextureType_DIFFUSE, 0, &file) == AI_SUCCESS) {
-			LOG("Looking for: .\\%s", file.data);
-			unsigned int loaded_texture = App->texture->LoadTexture(file.data);
+			SearchTexture(file.data, src_path);
+		}
+		else {
+			SearchTexture(file.data, src_path);
+		}
+	}
+}
+
+bool ModuleModel::SearchTexture(const char* texture_path, const char* src_path) {
+	LOG("Looking for: .\\%s", texture_path);
+	unsigned int loaded_texture = App->texture->LoadTexture(texture_path);
+
+	if (loaded_texture) {
+		LOG("Texture loaded successfully!\n");
+		textures.push_back(loaded_texture);
+	}
+	else {
+		LOG("Texture not found, looking in the source path...");
+
+		char src_file_dir[_MAX_DIR];
+		char src_file_drive[_MAX_DRIVE];
+		_splitpath_s(src_path, src_file_drive, _MAX_DRIVE, src_file_dir, _MAX_DIR, NULL, 0, NULL, 0);
+
+		char texture_file_name[_MAX_FNAME];
+		char texture_file_ext[_MAX_EXT];
+		_splitpath_s(texture_path, NULL, 0, NULL, 0, texture_file_name, _MAX_FNAME, texture_file_ext, _MAX_EXT);
+
+		char full_path[_MAX_PATH];
+		_makepath_s(full_path, _MAX_PATH, src_file_drive, src_file_dir, texture_file_name, texture_file_ext);
+
+		LOG("Looking for: %s", full_path);
+		loaded_texture = App->texture->LoadTexture(full_path);
+
+		if (loaded_texture) {
+			LOG("Texture loaded successfully!\n");
+			textures.push_back(loaded_texture);
+			return true;
+		}
+		else {
+			LOG("Texture not found, looking the Textures folder...");
+
+			std::string final_path = ".\\assets\\Textures\\";
+			final_path.append(texture_file_name);
+			final_path.append(texture_file_ext);
+
+			LOG("Looking for: %s", final_path.c_str());
+			loaded_texture = App->texture->LoadTexture(final_path.c_str());
 
 			if (loaded_texture) {
 				LOG("Texture loaded successfully!\n");
 				textures.push_back(loaded_texture);
+				return true;
 			}
 			else {
-				LOG("Texture not found, looking in the source path...");
-
-				char src_file_dir[_MAX_DIR];
-				char src_file_drive[_MAX_DRIVE];
-				_splitpath_s(src_path, src_file_drive, _MAX_DRIVE, src_file_dir, _MAX_DIR, NULL, 0, NULL, 0);
-
-				char texture_file_name[_MAX_FNAME];
-				char texture_file_ext[_MAX_EXT];
-				_splitpath_s(file.data, NULL, 0, NULL, 0, texture_file_name, _MAX_FNAME, texture_file_ext, _MAX_EXT);
-
-				char full_path[_MAX_PATH];
-				_makepath_s(full_path, _MAX_PATH, src_file_drive, src_file_dir, texture_file_name, texture_file_ext);
-
-				LOG("Looking for: %s", full_path);
-				loaded_texture = App->texture->LoadTexture(full_path);
-
-				if (loaded_texture) {
-					LOG("Texture loaded successfully!\n");
-					textures.push_back(loaded_texture);
-				}
-				else {
-					LOG("Texture not found, looking the Textures folder...");
-
-					std::string final_path = ".\\assets\\Textures\\";
-					final_path.append(texture_file_name);
-					final_path.append(texture_file_ext);
-
-					LOG("Looking for: %s", final_path.c_str());
-					loaded_texture = App->texture->LoadTexture(final_path.c_str());
-
-					if (loaded_texture) {
-						LOG("Texture loaded successfully!\n");
-						textures.push_back(loaded_texture);
-					}
-					else {
-						LOG("Well.. we tried!\n");
-					}
-				}
+				LOG("Well.. we tried!\n");
 			}
 		}
 	}
+	return false;
 }
 
 unsigned int ModuleModel::GetNumVertices() {
@@ -193,8 +203,9 @@ void ModuleModel::LoadModelChildren(aiMesh** const mMeshes, unsigned int program
 		game_object->SetName(node->mChildren[i]->mName.C_Str());
 
 		ComponentTransform* component_transform = new ComponentTransform();
+		component_transform->SetOwner(game_object);
+		game_object->SetParent(father);
 		component_transform->SetTransform(node->mChildren[i]->mTransformation);
-
 		game_object->AddComponent(component_transform);
 
 		if (node->mChildren[i]->mNumMeshes == 1) {
@@ -214,9 +225,10 @@ void ModuleModel::LoadModelChildren(aiMesh** const mMeshes, unsigned int program
 
 			ComponentMesh* mesh_component = new ComponentMesh();
 			mesh_component->SetMesh(mesh);
-
+			mesh_component->SetOwner(game_object);
 			game_object->AddComponent(mesh_component);
 		}
+		LoadModelChildren(mMeshes, program, node->mChildren[i], game_object);
 		father->AddChild(game_object);
 	}
 	App->camera->SetFocusToModel(GetModelCenterPoint(), GetModelRadius());
@@ -237,14 +249,6 @@ float3 ModuleModel::GetModelCenterPoint() {
 
 float ModuleModel::GetModelRadius() {
 	return float3(max_x - min_x, max_y - min_y, max_z - min_z).Length() / 2;
-}
-
-void ModuleModel::Draw() {
-	model_matrix = float4x4::identity;
-
-	for (unsigned int i = 0; i < meshes.size(); i++) {
-		meshes[i].Draw(textures, model_matrix);
-	}
 }
 
 bool ModuleModel::CleanUp() {

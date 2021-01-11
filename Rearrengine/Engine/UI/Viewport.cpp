@@ -13,7 +13,6 @@ Viewport::Viewport() {
 Viewport::~Viewport() {}
 
 void Viewport::Draw() {
-
 	if (ImGui::Begin(title, &visible, ImGuiWindowFlags_NoCollapse)) {
 		is_viewport_focused = ImGui::IsWindowFocused();
 

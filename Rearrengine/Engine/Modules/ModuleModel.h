@@ -23,6 +23,7 @@ public:
 	unsigned int CreateProgram(const char* vertex_shader_path, const char* fragment_shader_path);
 
 	void LoadTextures(aiMaterial** const mMaterials, unsigned int mNumMaterials, const char* src_path);
+	bool SearchTexture(const char* texture_path, const char* src_path);
 	void LoadModelChildren(aiMesh** const mMeshes, unsigned int program, aiNode* node, GameObject* father);
 
 	void SetMinMax(Mesh* _mesh);
@@ -30,8 +31,6 @@ public:
 	float3 GetModelCenterPoint();
 
 	float GetModelRadius();
-
-	void Draw();
 
 	unsigned int GetNumVertices();
 	bool CleanUp() override;

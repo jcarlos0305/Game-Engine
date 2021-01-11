@@ -34,6 +34,8 @@ bool ModuleRender::Init() {
 	glEnable(GL_CULL_FACE);
 	glFrontFace(GL_CCW);
 
+	SDL_GL_SetSwapInterval(true);
+
 	glGenFramebuffers(1, &fbo);
 
 	return true;
@@ -114,6 +116,10 @@ void ModuleRender::RenderToViewport(unsigned int width, unsigned int height) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
+void ModuleRender::EnableVsync(bool enabled) {
+	SDL_GL_SetSwapInterval(enabled);
+}
+
 // Called before quitting
 bool ModuleRender::CleanUp() {
 	LOG("Destroying renderer");
@@ -128,5 +134,3 @@ bool ModuleRender::CleanUp() {
 
 	return true;
 }
-
-void ModuleRender::WindowResized(unsigned width, unsigned height) {}

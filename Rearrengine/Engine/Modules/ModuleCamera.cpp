@@ -15,6 +15,7 @@
 #include "Debug Draw/ModuleDebugDraw.h"
 
 bool ModuleCamera::Init() {
+<<<<<<< HEAD
 
 	// Creation componentCamera representing the viewport
 	sceneCamera = new ComponentCamera();
@@ -27,6 +28,13 @@ bool ModuleCamera::Init() {
 
 	// By default, the active camera be the scene camera
 	SetActiveCamera(sceneCamera);
+=======
+	frustum.SetKind(FrustumSpaceGL, FrustumRightHanded);
+	frustum.SetViewPlaneDistances(0.1f, 1000.0f);
+	frustum.SetHorizontalFovAndAspectRatio(DEGTORAD(90.0f), 1.3f);
+	frustum.SetFront(-float3::unitZ);
+	frustum.SetUp(float3::unitY);
+>>>>>>> master
 
 	return true;
 }
