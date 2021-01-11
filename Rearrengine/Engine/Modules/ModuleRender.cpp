@@ -104,7 +104,7 @@ void ModuleRender::RenderToViewport(unsigned int width, unsigned int height) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	// Drawing the model
-	App->model->Draw();
+	// App->model->Draw();
 
 	// Change draw to send all the gameobjects that obb is inside the frustrum
 	App->scene->Draw(*App->scene->GetRoot());

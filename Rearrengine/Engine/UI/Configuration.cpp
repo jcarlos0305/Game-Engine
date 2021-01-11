@@ -184,19 +184,7 @@ void Configuration::Draw() {
 			rotation_vector = component_transform->GetRotation();
 			DrawModifiableVector(rotation_vector, component_transform);
 			ImGui::Text("Rotation");  ImGui::NextColumn();
-
-<<<<<<< HEAD
-	if (ImGui::CollapsingHeader("Geometry")) {
-		std::vector<Mesh> meshes = App->model->meshes;
-		// std::vector<Mesh> meshes = App->scene->GetRoot();
-		for (unsigned int i = 0; i < meshes.size(); i++) {
-			ImGui::Text("Mesh %i", i);
-			ImGui::Separator();
-			ImGui::Text("Vertices: %u", meshes[i].num_vertices, 0);
-			ImGui::Text("Triangles: %u", meshes[i].num_faces, 0);
-=======
 			ImGui::Columns(1);
->>>>>>> master
 			ImGui::NewLine();
 		}
 

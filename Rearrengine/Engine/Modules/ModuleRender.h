@@ -17,13 +17,8 @@ public:
 
 	bool CleanUp() override;
 
-<<<<<<< HEAD
-	void WindowResized(unsigned width, unsigned height);
-	
-=======
 	void EnableVsync(bool enabled);
 
->>>>>>> master
 	void* context = nullptr;
 	unsigned int fbo = 0;
 	unsigned int texture = 0;

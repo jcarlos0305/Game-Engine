@@ -30,6 +30,7 @@ public:
 	inline void SetFront(float3& _vector) { frustum.SetFront(_vector); }
 	inline void SetUp(float3& _vector) { frustum.SetUp(_vector); }
 	inline void SetPos(float3& _vector) { frustum.SetPos(_vector); }
+	inline void SetViewPlaneDistances(float _nearPlaneDistance, float _farPlaneDistance) { frustum.SetViewPlaneDistances(_nearPlaneDistance, _farPlaneDistance); }
 	inline void Translate(float3& _vector) { frustum.Translate(_vector); }
 
 	void SetAspectRatio(float aspect_ratio);

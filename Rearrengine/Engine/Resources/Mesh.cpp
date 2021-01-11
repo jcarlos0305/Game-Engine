@@ -101,14 +101,9 @@ void Mesh::CreateVAO() {
 }
 
 void Mesh::Draw(const std::vector<unsigned>& model_textures, const float4x4 model) {
-<<<<<<< HEAD
 
 	float4x4 proj  = App->camera->GetActiveCamera()->GetCamera()->GetProjectionMatrix();
 	float4x4 view  = App->camera->GetActiveCamera()->GetCamera()->GetViewMatrix();
-=======
-	float4x4 proj = App->camera->GetProjectionMatrix();
-	float4x4 view = App->camera->GetViewMatrix();
->>>>>>> master
 
 	glUseProgram(program);
 
