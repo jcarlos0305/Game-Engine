@@ -622,10 +622,10 @@ void ModuleDebugDraw::Draw(const float4x4& view, const float4x4& proj, unsigned 
     dd::flush();
 }
 
-void ModuleDebugDraw::DrawQuad()
+void ModuleDebugDraw::DrawQuad(const float& max_x, const float& max_y, const float& max_z, const float& min_x, const float& min_y, const float& min_z)
 {
-    float3 mins = float3(1,1,1);
-    float3 maxs = float3(-1,-1,-1);
+    float3 mins = float3(min_x, min_y, min_z);
+    float3 maxs = float3(max_x, max_y, max_z);
     dd::aabb(mins, maxs, dd::colors::HotPink);
 }
 

@@ -109,9 +109,6 @@ void ModuleRender::RenderToViewport(unsigned int width, unsigned int height) {
 	// Drawing the grid with debug draw
 	App->debug_draw->Draw(view, proj, w, h);
 
-	// Drawing quads from GameObject to check its hitbox
-	if (showQuad) App->debug_draw->DrawQuad();
-
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }

@@ -19,11 +19,10 @@ public:
 
 	void WindowResized(unsigned width, unsigned height);
 	
-	
 	void* context = nullptr;
 	unsigned int fbo = 0;
 	unsigned int texture = 0;
 	unsigned int rbo = 0;
-	bool showQuad = true;
 
+	bool showQuad = true;
 };

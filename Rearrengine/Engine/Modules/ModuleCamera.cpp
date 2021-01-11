@@ -18,9 +18,9 @@ bool ModuleCamera::Init() {
 
 	// Creation componentCamera representing the viewport
 	sceneCamera = new ComponentCamera();
-	sceneCamera->GetCamera()->SetFront(float3(0.5,-0.5,-0.8));
-	sceneCamera->GetCamera()->SetUp(float3(0.3, 0.9, -0.4));
-	sceneCamera->GetCamera()->SetPos(float3(-8.3, 8.7, 11.8));
+	sceneCamera->GetCamera()->SetFront(float3(0.5,-0.5,-0.6));
+	sceneCamera->GetCamera()->SetUp(float3(0.4, 0.8, -0.3));
+	sceneCamera->GetCamera()->SetPos(float3(-7.2, 9.4, 9.0));
 	//sceneCamera->SetEnabled(true);
 
 	testCamera = new ComponentCamera();
@@ -147,7 +147,7 @@ UpdateStatus ModuleCamera::Update() {
 	// Check if the actual camera changed
 	isGameCamera ? SetActiveCamera(testCamera) : SetActiveCamera(sceneCamera);
 	// Drawing frustum camera - Testing
-	App->camera->isGameCamera ? App->debug_draw->DrawFrustumCamera(App->camera->GetSceneCamera()->GetCamera()->GetViewProj()) : App->debug_draw->DrawFrustumCamera(App->camera->GetTestCamera()->GetCamera()->GetViewProj());
+	App->camera->isGameCamera ? true : App->debug_draw->DrawFrustumCamera(App->camera->GetTestCamera()->GetCamera()->GetViewProj());
 
 	return UpdateStatus::kUpdateContinue;
 }
