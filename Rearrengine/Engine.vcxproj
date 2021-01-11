@@ -142,6 +142,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\Resources\Camera.h" />
     <ClInclude Include="Engine\Components\Component.h" />
     <ClInclude Include="Engine\Components\ComponentCamera.h" />
     <ClInclude Include="Engine\Components\ComponentMesh.h" />
@@ -263,6 +264,8 @@
     <ClInclude Include="Engine\UI\Viewport.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\Resources\Camera.cpp" />
+    <ClCompile Include="Engine\Components\ComponentCamera.cpp" />
     <ClCompile Include="Engine\Components\ComponentMesh.cpp" />
     <ClCompile Include="Engine\Components\ComponentTransform.cpp" />
     <ClCompile Include="Engine\Modules\ModuleScene.cpp" />

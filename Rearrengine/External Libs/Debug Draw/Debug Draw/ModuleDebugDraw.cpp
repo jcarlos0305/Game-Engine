@@ -622,4 +622,17 @@ void ModuleDebugDraw::Draw(const float4x4& view, const float4x4& proj, unsigned 
     dd::flush();
 }
 
+void ModuleDebugDraw::DrawQuad()
+{
+    float3 mins = float3(1,1,1);
+    float3 maxs = float3(-1,-1,-1);
+    dd::aabb(mins, maxs, dd::colors::HotPink);
+}
+
+void ModuleDebugDraw::DrawFrustumCamera(const float4x4& viewProjMatrix)
+{
+    const float4x4 frustumMatrix = viewProjMatrix;
+    dd::frustum(frustumMatrix.Inverted(), dd::colors::DarkOrange);
+}
+
 

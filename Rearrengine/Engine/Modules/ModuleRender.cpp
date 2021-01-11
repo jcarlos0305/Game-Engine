@@ -65,8 +65,8 @@ void ModuleRender::RenderToViewport(unsigned int width, unsigned int height) {
 	int w, h;
 	SDL_GetWindowSize(App->window->window, &w, &h);
 
-	float4x4 proj = App->camera->GetProjectionMatrix();
-	float4x4 view = App->camera->GetViewMatrix();
+	float4x4 proj = App->camera->GetSceneCamera()->GetCamera()->GetProjectionMatrix();
+	float4x4 view = App->camera->GetSceneCamera()->GetCamera()->GetViewMatrix();
 
 	// Framebuffer
 	glBindFramebuffer(GL_FRAMEBUFFER, fbo);
@@ -102,11 +102,15 @@ void ModuleRender::RenderToViewport(unsigned int width, unsigned int height) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	// Drawing the model
-	//App->model->Draw();
+	App->model->Draw();
+	// Change draw to sen all the gameobjects that obb is inside the frustrum
 	App->scene->Draw(*App->scene->GetRoot());
 
 	// Drawing the grid with debug draw
 	App->debug_draw->Draw(view, proj, w, h);
+
+	// Drawing quads from GameObject to check its hitbox
+	if (showQuad) App->debug_draw->DrawQuad();
 
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

@@ -111,6 +111,8 @@
     <ClCompile Include="External Libs\MathGeoLib\Math\TransformOps.cpp" />
     <ClCompile Include="External Libs\MathGeoLib\Time\Clock.cpp" />
     <ClCompile Include="External Libs\Debug Draw\Debug Draw\ModuleDebugDraw.cpp" />
+    <ClCompile Include="Engine\Components\ComponentCamera.cpp" />
+    <ClCompile Include="Engine\Resources\Camera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Main\Application.h" />
@@ -280,6 +282,7 @@
     <ClInclude Include="External Libs\Debug Draw\Debug Draw\ModuleDebugDraw.h" />
     <ClInclude Include="Engine\Resources\Timer.h" />
     <ClInclude Include="Engine\Resources\PerformanceTimer.h" />
+    <ClInclude Include="Engine\Resources\Camera.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Modules">

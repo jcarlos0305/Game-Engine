@@ -24,4 +24,6 @@ public:
 	unsigned int fbo = 0;
 	unsigned int texture = 0;
 	unsigned int rbo = 0;
+	bool showQuad = true;
+
 };
