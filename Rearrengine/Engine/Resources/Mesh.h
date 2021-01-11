@@ -5,7 +5,6 @@
 #include <vector>
 
 class Mesh {
-
 public:
 	Mesh(unsigned int program);
 	~Mesh();
@@ -14,6 +13,7 @@ public:
 	void LoadEBO(const aiMesh* mesh);
 	void CreateVAO();
 	void Draw(const std::vector<unsigned>& model_textures, float4x4 model);
+	void ToJson() const;
 
 	unsigned int num_vertices = 0;
 	unsigned int num_faces = 0;

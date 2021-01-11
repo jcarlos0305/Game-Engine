@@ -40,7 +40,8 @@ bool ModuleModel::Init() {
 	aiAttachLogStream(&stream);
 
 	//Load("assets/BakerHouse.fbx", "assets/vertex.glsl", "assets/fragment.glsl");
-	Load("assets/Street_Environment/Street_environment_V01.fbx", "assets/vertex.glsl", "assets/fragment.glsl");
+	//Load("assets/Street_Environment/Street_environment_V01.fbx", "assets/vertex.glsl", "assets/fragment.glsl");
+	Load("assets/Robot/Robot.FBX", "assets/vertex.glsl", "assets/fragment.glsl");
 
 	return true;
 }

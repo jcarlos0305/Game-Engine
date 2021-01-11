@@ -118,3 +118,6 @@ void Mesh::Draw(const std::vector<unsigned>& model_textures, const float4x4 mode
 
 	glBindVertexArray(0);
 }
+
+void Mesh::ToJson() const {
+}

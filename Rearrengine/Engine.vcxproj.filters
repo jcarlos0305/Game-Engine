@@ -290,6 +290,8 @@
     <ClInclude Include="External Libs\jsoncpp\include\json\value.h" />
     <ClInclude Include="External Libs\jsoncpp\include\json\version.h" />
     <ClInclude Include="External Libs\jsoncpp\include\json\writer.h" />
+    <ClInclude Include="Engine\Utils\UUID.h" />
+    <ClInclude Include="Engine\Utils\Utils.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Modules">

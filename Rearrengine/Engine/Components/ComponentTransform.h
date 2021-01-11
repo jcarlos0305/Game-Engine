@@ -14,6 +14,8 @@ public:
 	void SetTransform(const aiMatrix4x4& matrix);
 	void SetTransform(float3 position_vector, float3 rotation_vector, float3 scale_vector);
 
+	bool ToJSON() const override;
+
 	inline float3 GetScale() { return scale; };
 	inline float3 GetRotation() { return rotation; };
 	inline float3 GetTranslate() { return translate; };

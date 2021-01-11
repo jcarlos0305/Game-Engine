@@ -1,10 +1,14 @@
 #include "ComponentTransform.h"
 #include "Resources/GameObject.h"
+#include "Utils/UUID.h"
+#include "Utils/Utils.h"
 
 #include <assimp/cimport.h>
 
 ComponentTransform::ComponentTransform() {
 	type = ComponentTypes::kTransform;
+	SetUUID(custom_UUID::generate());
+	ToJSON();
 }
 
 void ComponentTransform::SetTransform(const aiMatrix4x4& matrix) {
@@ -29,9 +33,33 @@ void ComponentTransform::SetTransform(float3 translate_vector, float3 rotation_v
 	rotation = rotation_vector;
 	translate = translate_vector;
 
-	//rotation_quat = Quat(rotation_vector.x, rotation_vector.y, rotation_vector.z, 1.0f);
 	rotation_quat = Quat::FromEulerXYZ(rotation_vector.x, rotation_vector.y, rotation_vector.z);
 
 	local_matrix = float4x4::FromTRS(translate, rotation_quat, scale);
 	global_matrix = game_object->GetParent() != nullptr ? game_object->GetParent()->GetGlobalMatrix() * local_matrix : local_matrix;
+}
+
+bool ComponentTransform::ToJSON() const {
+	Json::Value component_transform_root;
+
+	Json::Value _scale(Json::arrayValue);
+	Float3ToJson(_scale, scale);
+
+	Json::Value _rotation(Json::arrayValue);
+	Float3ToJson(_rotation, rotation);
+
+	Json::Value _translate(Json::arrayValue);
+	Float3ToJson(_translate, translate);
+
+	component_transform_root["Component Transform"][JSON_PROPERTY_UUID] = UUID;
+	component_transform_root["Component Transform"][JSON_PROPERTY_TYPE] = (int)type;
+
+	component_transform_root["Component Transform"][JSON_PROPERTY_SCALE] = _scale;
+	component_transform_root["Component Transform"][JSON_PROPERTY_ROTATION] = _rotation;
+	component_transform_root["Component Transform"][JSON_PROPERTY_TRANSLATE] = _translate;
+
+	std::string name = "component_transform_" + UUID;
+	PrintToFile(name, component_transform_root);
+
+	return true;
 }

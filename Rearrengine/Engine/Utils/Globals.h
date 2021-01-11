@@ -63,3 +63,10 @@ enum class ComponentTypes {
 	kTransform,
 	kUndefined
 };
+
+// JSON property names
+#define JSON_PROPERTY_ROTATION	"rotation"
+#define JSON_PROPERTY_SCALE		"scale"
+#define JSON_PROPERTY_TRANSLATE "translate"
+#define JSON_PROPERTY_TYPE		"type"
+#define JSON_PROPERTY_UUID		"UUID"
