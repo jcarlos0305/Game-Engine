@@ -1,5 +1,6 @@
 #include "Information.h"
 #include "Main/Application.h"
+#include "Modules/ModuleRender.h"
 
 #include "ImGui/imgui.h"
 
@@ -28,13 +29,12 @@ void Information::Draw() {
 	}
 
 	if (ImGui::CollapsingHeader("Hardware")) {
-
 		ImGui::Text("CPUs: %i", SDL_GetCPUCount());
 		ImGui::SameLine();
 		ImGui::Text("(Cache: %i Kb)", SDL_GetCPUCacheLineSize());
 		ImGui::Text("System RAM: %.1f Gb", (SDL_GetSystemRAM() / 1024.0f));
 
-		std::map<char*, SDL_bool> caps = { 
+		std::map<char*, SDL_bool> caps = {
 			{"3DNow", SDL_Has3DNow()},
 			{"AVX", SDL_HasAVX()},
 			{"AVX2", SDL_HasAVX2()},
@@ -75,6 +75,8 @@ void Information::Draw() {
 		ImGui::Text("VRAM usage: %.2f Mb", (nTotalMemoryInKB - nCurAvailMemoryInKB) / 1024.0f);
 
 		ImGui::Text("FPS: %.2f", App->fps);
+
+		if (ImGui::Checkbox("VSYNC", &vsync)) App->render->EnableVsync(vsync);
 	}
 
 	ImGui::End();

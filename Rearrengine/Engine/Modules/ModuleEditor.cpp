@@ -39,9 +39,9 @@ bool ModuleEditor::Init() {
 	windows.push_back(console);
 	windows.push_back(configuration = new Configuration());
 	windows.push_back(about = new About());
-	windows.push_back(viewport = new Viewport());
 	windows.push_back(information = new Information());
 	windows.push_back(hierarchy = new Hierarchy());
+	windows.push_back(viewport = new Viewport());
 
 	ImGuiIO& io = ImGui::GetIO();
 	io.ConfigFlags = ImGuiConfigFlags_DockingEnable;

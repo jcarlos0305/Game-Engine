@@ -10,4 +10,7 @@ public:
 	void Draw();
 
 	bool CleanUp();
+
+private:
+	bool vsync = true;
 };

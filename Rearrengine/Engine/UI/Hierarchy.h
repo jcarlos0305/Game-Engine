@@ -7,7 +7,7 @@
 
 class Hierarchy : public UIWindow {
 public:
-	Hierarchy(); 
+	Hierarchy();
 	~Hierarchy();
 
 	void Draw();
