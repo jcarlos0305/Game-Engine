@@ -65,8 +65,8 @@ void ModuleRender::RenderToViewport(unsigned int width, unsigned int height) {
 	int w, h;
 	SDL_GetWindowSize(App->window->window, &w, &h);
 
-	float4x4 proj = App->camera->GetSceneCamera()->GetCamera()->GetProjectionMatrix();
-	float4x4 view = App->camera->GetSceneCamera()->GetCamera()->GetViewMatrix();
+	float4x4 proj = App->camera->GetActiveCamera()->GetCamera()->GetProjectionMatrix();
+	float4x4 view = App->camera->GetActiveCamera()->GetCamera()->GetViewMatrix();
 
 	// Framebuffer
 	glBindFramebuffer(GL_FRAMEBUFFER, fbo);

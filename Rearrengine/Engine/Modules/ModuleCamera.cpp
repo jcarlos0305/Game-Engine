@@ -12,6 +12,8 @@
 
 #include "Utils/LeakTest.h"
 
+#include "Debug Draw/ModuleDebugDraw.h"
+
 bool ModuleCamera::Init() {
 
 	// Creation componentCamera representing the viewport
@@ -19,7 +21,9 @@ bool ModuleCamera::Init() {
 	sceneCamera->GetCamera()->SetFront(float3(0.5,-0.5,-0.8));
 	sceneCamera->GetCamera()->SetUp(float3(0.3, 0.9, -0.4));
 	sceneCamera->GetCamera()->SetPos(float3(-8.3, 8.7, 11.8));
-	sceneCamera->SetEnabled(true);
+	//sceneCamera->SetEnabled(true);
+
+	testCamera = new ComponentCamera();
 
 	// By default, the active camera be the scene camera
 	SetActiveCamera(sceneCamera);
@@ -139,6 +143,11 @@ UpdateStatus ModuleCamera::Update() {
 		ZoomCamera(x, y);
 		ResetCameraPosition();
 	}
+
+	// Check if the actual camera changed
+	isGameCamera ? SetActiveCamera(testCamera) : SetActiveCamera(sceneCamera);
+	// Drawing frustum camera - Testing
+	App->camera->isGameCamera ? App->debug_draw->DrawFrustumCamera(App->camera->GetSceneCamera()->GetCamera()->GetViewProj()) : App->debug_draw->DrawFrustumCamera(App->camera->GetTestCamera()->GetCamera()->GetViewProj());
 
 	return UpdateStatus::kUpdateContinue;
 }

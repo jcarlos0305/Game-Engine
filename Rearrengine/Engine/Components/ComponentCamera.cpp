@@ -5,9 +5,6 @@ ComponentCamera::ComponentCamera()
 {
 	type = ComponentTypes::kCamera;
 	camera = new Camera();
-
-	// Drawing frustum camera
-	// App->debug_draw->DrawFrustumCamera(App->camera->GetTest());
 }
 
 ComponentCamera::~ComponentCamera()

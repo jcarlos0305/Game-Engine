@@ -17,8 +17,6 @@ public:
 
 	void SetFocusToModel(float3 model_center, float radius = 1.0);
 
-	void SetPos(float3 position);
-
 	UpdateStatus PreUpdate() override;
 	UpdateStatus Update() override;
 	UpdateStatus PostUpdate() override;
@@ -28,6 +26,8 @@ public:
 	inline ComponentCamera* GetActiveCamera() { return activeCamera; }
 	inline ComponentCamera* GetSceneCamera() const { return sceneCamera; }
 
+	inline ComponentCamera* GetTestCamera() const { return testCamera; }
+
 	inline void SetActiveCamera(ComponentCamera* _camera) { activeCamera = _camera; }
 	
 	bool isGameCamera = false;
@@ -35,6 +35,7 @@ public:
 private:
 	ComponentCamera* activeCamera = nullptr;
 	ComponentCamera* sceneCamera = nullptr;
+	ComponentCamera* testCamera = nullptr;
 	float speed_modifier = 1.0f;
 	
 	void Rotate(const float3x3& rotationMatrix);
