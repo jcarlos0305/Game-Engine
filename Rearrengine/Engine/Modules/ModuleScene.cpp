@@ -20,7 +20,7 @@ void ModuleScene::Draw(GameObject& game_object) {
 		// Object by object -> IMPROVE
 		bool isMeshInsideFrustum = App->camera->GetTestCamera()->GetFrustum().Intersects(game_object.GetAABB());
 		if (isMeshInsideFrustum) {
-			// Drawing quads from mesh to check its hitbox --> Maybe do it with aabb/obb from gameobject?
+			// Drawing quads from mesh to check its hitbox
 			if (App->render->showQuad) App->debug_draw->DrawQuad(float3(game_object.GetAABB().MaxX(), game_object.GetAABB().MaxY(), game_object.GetAABB().MaxZ()), float3(game_object.GetAABB().MinX(), game_object.GetAABB().MinY(), game_object.GetAABB().MinZ()));
 			component_mesh->Draw();
 		}

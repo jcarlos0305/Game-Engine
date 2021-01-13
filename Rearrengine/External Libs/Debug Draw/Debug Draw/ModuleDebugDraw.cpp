@@ -613,7 +613,7 @@ UpdateStatus ModuleDebugDraw::Update()
 void ModuleDebugDraw::Draw(const float4x4& view, const float4x4& proj, unsigned width, unsigned height)
 {
     dd::axisTriad(float4x4::identity, 0.1f, 1.0f);
-    dd::xzSquareGrid(-10, 10, 0.0f, 1.0f, dd::colors::Gray);
+    dd::xzSquareGrid(-100, 100, -0.1f, 1.0f, dd::colors::Gray, 0);
 
     implementation->width     = width;
     implementation->height    = height;
@@ -626,6 +626,7 @@ void ModuleDebugDraw::DrawQuad(const float3& _maxs, const float3& _mins) {
     float3 mins = _mins;
     float3 maxs = _maxs;
     dd::aabb(mins, maxs, dd::colors::HotPink);
+    // dd::box(); // OBB?
 }
 
 void ModuleDebugDraw::DrawFrustumCamera(const float4x4& viewProjMatrix)

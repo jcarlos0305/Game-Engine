@@ -2,6 +2,8 @@
 #include "Resources/GameObject.h"
 
 #include <assimp/cimport.h>
+#include <Components/ComponentMesh.h>
+
 
 ComponentTransform::ComponentTransform() {
 	type = ComponentTypes::kTransform;
@@ -37,4 +39,27 @@ void ComponentTransform::SetTransform(float3 translate_vector, float3 rotation_v
 
 void ComponentTransform::UpdateGlobalMatrix() {
 	global_matrix = game_object->GetParent() != nullptr ? game_object->GetParent()->GetGlobalMatrix() * local_matrix : local_matrix;
+}
+
+void ComponentTransform::UpdateBoundingBox()
+{
+	// TODO: Optimize this method
+	if (game_object->GetChildrenCount() > 0) {
+		std::vector<GameObject*> children = game_object->GetChildren();
+		for (GameObject* _gameObject : children) {
+			AABB aabb = game_object->GetAABB();
+			// Gets the AABB from Max-Min Mesh's Vertex
+			ComponentMesh* component_mesh = static_cast<ComponentMesh*>(game_object->GetComponentType(ComponentTypes::kMesh));
+			float3 mins = float3(component_mesh->GetMinsVertex().x * scale.x, component_mesh->GetMinsVertex().y * scale.y, component_mesh->GetMinsVertex().z * scale.z);
+			float3 maxs = float3(component_mesh->GetMaxsVertex().x * scale.x, component_mesh->GetMaxsVertex().y * scale.y, component_mesh->GetMaxsVertex().z * scale.z);
+			aabb = AABB(mins, maxs);
+			game_object->SetAABB(aabb);
+		}
+	}
+	/*AABB aabb = game_object->GetAABB();
+	// Gets the AABB from Max-Min Mesh's Vertex
+	ComponentMesh* component_mesh = static_cast<ComponentMesh*>(game_object->GetComponentType(ComponentTypes::kMesh));
+	float3 mins = float3(component_mesh->GetMinsVertex().x * scale.x, component_mesh->GetMinsVertex().y * scale.y, component_mesh->GetMinsVertex().z * scale.z);
+	float3 maxs = float3(component_mesh->GetMaxsVertex().x * scale.x, component_mesh->GetMaxsVertex().y * scale.y, component_mesh->GetMaxsVertex().z * scale.z);
+	aabb = AABB(mins, maxs);*/
 }

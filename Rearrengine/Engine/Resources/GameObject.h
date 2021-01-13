@@ -33,6 +33,7 @@ public:
 	void UpdateChildrenGlobalMatrix();
 
 	inline AABB GetAABB() { return aabb; }
+	inline void SetAABB(AABB& _aabb) { aabb = _aabb; }
 	// inline OBB GetOBB() { return new OBB(aabb); } // Not do it yet transform with World Matrix
 
 private:
