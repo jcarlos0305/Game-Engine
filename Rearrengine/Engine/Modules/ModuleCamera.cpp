@@ -4,6 +4,8 @@
 #include "ModuleInput.h"
 #include "ModuleEditor.h"
 #include "ModuleModel.h"
+#include "ModuleScene.h"
+#include "Resources/GameObject.h"
 #include "UI/Viewport.h"
 
 #include <SDL.h>
@@ -22,8 +24,6 @@ bool ModuleCamera::Init() {
 	sceneCamera->GetCamera()->SetUp(float3(0.4, 0.8, -0.3));
 	sceneCamera->GetCamera()->SetPos(float3(-7.2, 9.4, 9.0));
 	//sceneCamera->SetEnabled(true);
-
-	testCamera = new ComponentCamera();
 
 	// By default, the active camera be the scene camera
 	SetActiveCamera(sceneCamera);
@@ -145,12 +145,30 @@ UpdateStatus ModuleCamera::Update() {
 	}
 
 	// Check if the actual camera changed
-	isGameCamera ? SetActiveCamera(testCamera) : SetActiveCamera(sceneCamera);
-	// Drawing frustum camera - Testing
-	App->camera->isGameCamera ? true : App->debug_draw->DrawFrustumCamera(App->camera->GetTestCamera()->GetCamera()->GetViewProj());
+	isGameCamera ? SetActiveCamera(GetGameCamera()) : SetActiveCamera(sceneCamera);
 
+	// Drawing frustum game camera
+	if (GetGameCamera()) {
+		isGameCamera ? true : App->debug_draw->DrawFrustumCamera(GetGameCamera()->GetCamera()->GetViewProj());
+	}
+	
 	return UpdateStatus::kUpdateContinue;
 }
+
+void ModuleCamera::CreateCameraGameObject()
+{
+	GameObject* gameObject_newCamera = new GameObject();
+	gameObject_newCamera->SetName("Camera");
+	gameObject_newCamera->SetParent(App->scene->GetRoot());
+
+	ComponentCamera* newCamera = new ComponentCamera();
+	gameObject_newCamera->AddComponent(newCamera);
+
+	SetGameCamera(newCamera);
+
+	App->scene->GetRoot()->AddChild(gameObject_newCamera);
+}
+
 
 UpdateStatus ModuleCamera::PostUpdate() {
 	return UpdateStatus::kUpdateContinue;
@@ -159,3 +177,4 @@ UpdateStatus ModuleCamera::PostUpdate() {
 bool ModuleCamera::CleanUp() {
 	return true;
 }
+

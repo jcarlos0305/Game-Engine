@@ -24,18 +24,20 @@ public:
 	bool CleanUp() override;
 
 	inline ComponentCamera* GetActiveCamera() { return activeCamera; }
-	inline ComponentCamera* GetSceneCamera() const { return sceneCamera; }
-
-	inline ComponentCamera* GetTestCamera() const { return testCamera; }
-
 	inline void SetActiveCamera(ComponentCamera* _camera) { activeCamera = _camera; }
+	inline ComponentCamera* GetSceneCamera() const { return sceneCamera; }
+	inline ComponentCamera* GetGameCamera() const { return gameCamera; }
+	inline void SetGameCamera(ComponentCamera* _camera) { gameCamera = _camera; }
+
+	void CreateCameraGameObject();
 	
 	bool isGameCamera = false;
 
 private:
 	ComponentCamera* activeCamera = nullptr;
 	ComponentCamera* sceneCamera = nullptr;
-	ComponentCamera* testCamera = nullptr;
+	ComponentCamera* gameCamera = nullptr;
+
 	float speed_modifier = 1.0f;
 	
 	void Rotate(const float3x3& rotationMatrix);
