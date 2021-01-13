@@ -15,7 +15,7 @@ public:
 	void SetTransform(float3 position_vector, float3 rotation_vector, float3 scale_vector);
 
 	void UpdateGlobalMatrix();
-	void UpdateBoundingBox();
+	void RecursiveUpdateBoundingBox(GameObject* game_object);
 
 	inline float3 GetScale() { return scale; };
 	inline float3 GetRotation() { return rotation; };

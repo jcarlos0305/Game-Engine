@@ -55,6 +55,5 @@ void GameObject::UpdateChildrenGlobalMatrix() {
 	for (GameObject* child : children) {
 		ComponentTransform* transform = static_cast<ComponentTransform*>(child->GetComponentType(ComponentTypes::kTransform));
 		transform->UpdateGlobalMatrix();
-		transform->UpdateBoundingBox();
 	}
 }
