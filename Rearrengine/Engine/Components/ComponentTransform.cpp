@@ -47,13 +47,16 @@ void ComponentTransform::RecursiveUpdateBoundingBox(GameObject* game_object)
 	for (GameObject* child : game_object->GetChildren()) {
 		RecursiveUpdateBoundingBox(child);
 	}
+	// We only want change bounding boxes to children
+	if (game_object->HasComponentType(ComponentTypes::kMesh)) {
+		ComponentMesh* component_mesh = static_cast<ComponentMesh*>(game_object->GetComponentType(ComponentTypes::kMesh));
+		// Dont like me because create so many aabb -> less performance ->> TESTING
+		// Gets the AABB from Max-Min Mesh's Vertex
+		float3 mins = float3(component_mesh->GetMinsVertex().x, component_mesh->GetMinsVertex().y, component_mesh->GetMinsVertex().z);
+		float3 maxs = float3(component_mesh->GetMaxsVertex().x, component_mesh->GetMaxsVertex().y, component_mesh->GetMaxsVertex().z);
+		AABB _aabb = AABB(mins, maxs);
+		_aabb.TransformAsAABB(GetGlobalMatrix());
+		game_object->SetAABB(_aabb);
+	}
 
-	ComponentMesh* component_mesh = static_cast<ComponentMesh*>(game_object->GetComponentType(ComponentTypes::kMesh));
-	// Dont like me because create so many aabb -> less performance ->> TESTING
-			// Gets the AABB from Max-Min Mesh's Vertex
-	float3 mins = float3(component_mesh->GetMinsVertex().x, component_mesh->GetMinsVertex().y, component_mesh->GetMinsVertex().z);
-	float3 maxs = float3(component_mesh->GetMaxsVertex().x, component_mesh->GetMaxsVertex().y, component_mesh->GetMaxsVertex().z);
-	AABB _aabb = AABB(mins, maxs);
-	_aabb.TransformAsAABB(GetGlobalMatrix());
-	game_object->SetAABB(_aabb);
 }
