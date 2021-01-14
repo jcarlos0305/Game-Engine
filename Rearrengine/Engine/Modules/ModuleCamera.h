@@ -32,6 +32,7 @@ public:
 	void CreateCameraGameObject();
 	
 	bool isGameCamera = false;
+	bool showFrustumGameCamera = true;
 
 private:
 	ComponentCamera* activeCamera = nullptr;

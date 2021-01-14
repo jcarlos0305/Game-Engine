@@ -7,6 +7,7 @@
 #include "ModuleScene.h"
 #include "Resources/GameObject.h"
 #include "UI/Viewport.h"
+#include "Debug Draw/ModuleDebugDraw.h"
 
 #include <SDL.h>
 #include "Math/float3x3.h"
@@ -14,7 +15,8 @@
 
 #include "Utils/LeakTest.h"
 
-#include "Debug Draw/ModuleDebugDraw.h"
+#include <stdlib.h>
+#include <string> 
 
 bool ModuleCamera::Init() {
 	// Creation componentCamera representing the viewport
@@ -27,6 +29,9 @@ bool ModuleCamera::Init() {
 
 	// By default, the active camera be the scene camera
 	SetActiveCamera(sceneCamera);
+
+	// Insert Game Camera
+	CreateCameraGameObject();
 
 	return true;
 }
@@ -149,7 +154,7 @@ UpdateStatus ModuleCamera::Update() {
 
 	// Drawing frustum game camera
 	if (GetGameCamera()) {
-		isGameCamera ? true : App->debug_draw->DrawFrustumCamera(GetGameCamera()->GetCamera()->GetViewProj());
+		showFrustumGameCamera ? App->debug_draw->DrawFrustumCamera(GetGameCamera()->GetCamera()->GetViewProj()) : false;
 	}
 	
 	return UpdateStatus::kUpdateContinue;
@@ -158,12 +163,22 @@ UpdateStatus ModuleCamera::Update() {
 void ModuleCamera::CreateCameraGameObject()
 {
 	GameObject* gameObject_newCamera = new GameObject();
-	gameObject_newCamera->SetName("Camera");
+	// Im sure that exists a better way to do this xD
+	char str1[12];
+	char str2[3];
+	strcpy(str1, "Camera ");
+	std::string s = std::to_string(rand() % 100);
+	const char* pchar = s.c_str();
+	strcpy(str2, pchar);
+	strcat(str1, str2);
+	gameObject_newCamera->SetName(str1);
+
 	gameObject_newCamera->SetParent(App->scene->GetRoot());
 
 	ComponentCamera* newCamera = new ComponentCamera();
 	gameObject_newCamera->AddComponent(newCamera);
 
+	//SetGameCamera(static_cast<ComponentCamera*>(gameObject_newCamera->GetComponentType(ComponentTypes::kCamera)));
 	SetGameCamera(newCamera);
 
 	App->scene->GetRoot()->AddChild(gameObject_newCamera);

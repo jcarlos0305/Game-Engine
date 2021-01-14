@@ -33,6 +33,8 @@ void Configuration::Draw() {
 
 	if (ImGui::CollapsingHeader("Viewport")) {
 		ImGui::Checkbox("Show Quad", &App->render->showQuad);
+		ImGui::Checkbox("Show Frustum Game Camera", &App->camera->showFrustumGameCamera);
+		/* Show info Camera Scene
 		if (ImGui::TreeNode("Camera Information"))
 		{
 			// Column header
@@ -93,7 +95,7 @@ void Configuration::Draw() {
 			ImGui::PopItemFlag();
 			ImGui::Columns(1);
 			ImGui::TreePop();
-		}
+		}*/
 	}
 
 	if (selected_game_object) {
@@ -130,8 +132,8 @@ void Configuration::Draw() {
 
 		ComponentCamera* component_camera = static_cast<ComponentCamera*>(selected_game_object->GetComponentType(ComponentTypes::kCamera));
 		if (component_camera) {
+			ImGui::Checkbox("Change Camera Viewport", &App->camera->isGameCamera);
 			if (ImGui::CollapsingHeader("Camera")) {
-				ImGui::Checkbox("Game Camera", &App->camera->isGameCamera);
 				// Column header
 				ImGui::Columns(4, NULL, false);
 				ImGui::Text("    x    "); ImGui::NextColumn();
