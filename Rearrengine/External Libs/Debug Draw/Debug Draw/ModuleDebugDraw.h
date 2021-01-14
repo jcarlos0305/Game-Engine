@@ -5,6 +5,8 @@
 #include "Utils/Globals.h"
 #include "Math/float4x4.h"
 
+#include <Geometry/OBB.h>
+
 class DDRenderInterfaceCoreGL;
 class Camera;
 
@@ -21,7 +23,8 @@ public:
 	bool            CleanUp();
 
     void            Draw(const float4x4& view, const float4x4& proj, unsigned width, unsigned height);
-    void            DrawQuad(const float3& _maxs, const float3& _mins);
+    void            DrawAABB(const float3& _maxs, const float3& _mins);
+    void            DrawOBB(OBB _obb);
     void            DrawFrustumCamera(const float4x4& viewProjMatrix);
 private:
 

@@ -132,8 +132,8 @@ void Configuration::Draw() {
 
 		ComponentCamera* component_camera = static_cast<ComponentCamera*>(selected_game_object->GetComponentType(ComponentTypes::kCamera));
 		if (component_camera) {
-			ImGui::Checkbox("Change Camera Viewport", &App->camera->isGameCamera);
 			if (ImGui::CollapsingHeader("Camera")) {
+				ImGui::Checkbox("Change Camera Viewport", &App->camera->isGameCamera);
 				// Column header
 				ImGui::Columns(4, NULL, false);
 				ImGui::Text("    x    "); ImGui::NextColumn();

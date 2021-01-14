@@ -262,6 +262,7 @@
     <ClInclude Include="Engine\Utils\Timmers\Timer.h" />
     <ClInclude Include="Engine\UI\UIWindow.h" />
     <ClInclude Include="Engine\UI\Viewport.h" />
+    <ClInclude Include="Engine\Resources\Quadtree.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Resources\Camera.cpp" />
@@ -340,6 +341,7 @@
     <ClCompile Include="Engine\Resources\PerformanceTimer.cpp" />
     <ClCompile Include="Engine\Resources\Timer.cpp" />
     <ClCompile Include="Engine\UI\Viewport.cpp" />
+    <ClCompile Include="Engine\Resources\Quadtree.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="External Libs\MathGeoLib\Geometry\KDTree.inl" />

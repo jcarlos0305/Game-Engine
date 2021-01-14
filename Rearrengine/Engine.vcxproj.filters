@@ -113,6 +113,7 @@
     <ClCompile Include="External Libs\Debug Draw\Debug Draw\ModuleDebugDraw.cpp" />
     <ClCompile Include="Engine\Components\ComponentCamera.cpp" />
     <ClCompile Include="Engine\Resources\Camera.cpp" />
+    <ClCompile Include="Engine\Resources\Quadtree.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Main\Application.h" />
@@ -283,6 +284,7 @@
     <ClInclude Include="Engine\Resources\Timer.h" />
     <ClInclude Include="Engine\Resources\PerformanceTimer.h" />
     <ClInclude Include="Engine\Resources\Camera.h" />
+    <ClInclude Include="Engine\Resources\Quadtree.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Modules">

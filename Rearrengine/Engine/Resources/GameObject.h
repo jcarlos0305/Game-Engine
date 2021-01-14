@@ -6,6 +6,7 @@
 
 #include <vector>
 #include <Geometry/AABB.h>
+#include <Geometry/OBB.h>
 
 class GameObject {
 public:
@@ -34,11 +35,13 @@ public:
 
 	inline AABB GetAABB() { return aabb; }
 	inline void SetAABB(AABB& _aabb) { aabb = _aabb; }
-	// inline OBB GetOBB() { return new OBB(aabb); } // Not do it yet transform with World Matrix
+	inline OBB GetOBB() { return obb; } // Not do it yet transform with World Matrix
+	inline void SetOBB(OBB& _obb) { obb = _obb; }
 
 private:
 	char* name = "";
 	AABB aabb;
+	OBB obb;
 	std::vector<GameObject*> children;
 	std::vector<Component*>  components;
 

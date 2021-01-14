@@ -171,15 +171,14 @@ void ModuleCamera::CreateCameraGameObject()
 	const char* pchar = s.c_str();
 	strcpy(str2, pchar);
 	strcat(str1, str2);
+	// Correct when put uuid to componentCamera
 	gameObject_newCamera->SetName(str1);
-
 	gameObject_newCamera->SetParent(App->scene->GetRoot());
 
 	ComponentCamera* newCamera = new ComponentCamera();
 	gameObject_newCamera->AddComponent(newCamera);
 
-	//SetGameCamera(static_cast<ComponentCamera*>(gameObject_newCamera->GetComponentType(ComponentTypes::kCamera)));
-	SetGameCamera(newCamera);
+	SetGameCamera(static_cast<ComponentCamera*>(gameObject_newCamera->GetComponentType(ComponentTypes::kCamera)));
 
 	App->scene->GetRoot()->AddChild(gameObject_newCamera);
 }

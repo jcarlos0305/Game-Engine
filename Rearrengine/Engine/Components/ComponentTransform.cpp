@@ -55,8 +55,8 @@ void ComponentTransform::RecursiveUpdateBoundingBox(GameObject* game_object)
 		float3 mins = float3(component_mesh->GetMinsVertex().x, component_mesh->GetMinsVertex().y, component_mesh->GetMinsVertex().z);
 		float3 maxs = float3(component_mesh->GetMaxsVertex().x, component_mesh->GetMaxsVertex().y, component_mesh->GetMaxsVertex().z);
 		AABB _aabb = AABB(mins, maxs);
-		_aabb.TransformAsAABB(GetGlobalMatrix());
 		game_object->SetAABB(_aabb);
+		game_object->SetOBB(_aabb.Transform(GetGlobalMatrix()));
 	}
 
 }

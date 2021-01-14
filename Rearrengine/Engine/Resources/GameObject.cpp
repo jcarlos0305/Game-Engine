@@ -19,14 +19,11 @@ void GameObject::AddComponent(Component* _component)
 	// Create GameObject's AABB if the component is a Mesh
 	if (_component->GetType() == ComponentTypes::kMesh) {
 		ComponentMesh* component_mesh = static_cast<ComponentMesh*>(_component);
-		// Get ComponentTransform from GameObject
-		ComponentTransform* component_transform = static_cast<ComponentTransform*>(GetComponentType(ComponentTypes::kTransform));
-
 		// Gets the AABB from Max-Min Mesh's Vertex
 		float3 mins = float3(component_mesh->GetMinsVertex().x, component_mesh->GetMinsVertex().y, component_mesh->GetMinsVertex().z);
 		float3 maxs = float3(component_mesh->GetMaxsVertex().x, component_mesh->GetMaxsVertex().y, component_mesh->GetMaxsVertex().z);
 		aabb = AABB(mins, maxs);
-		aabb.TransformAsAABB(component_transform->GetGlobalMatrix());
+		obb = aabb.Transform(GetGlobalMatrix());
 	}
 	// Save the component
 	components.push_back(_component);
