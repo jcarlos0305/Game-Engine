@@ -142,13 +142,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Engine\Resources\Camera.h" />
     <ClInclude Include="Engine\Components\Component.h" />
     <ClInclude Include="Engine\Components\ComponentCamera.h" />
     <ClInclude Include="Engine\Components\ComponentMesh.h" />
     <ClInclude Include="Engine\Components\ComponentTransform.h" />
     <ClInclude Include="Engine\Modules\ModuleScene.h" />
+    <ClInclude Include="Engine\Resources\Camera.h" />
     <ClInclude Include="Engine\Resources\GameObject.h" />
+    <ClInclude Include="Engine\Resources\Mesh.h" />
     <ClInclude Include="Engine\Resources\PerformanceTimer.h" />
     <ClInclude Include="Engine\Resources\Timer.h" />
     <ClInclude Include="Engine\UI\About.h" />
@@ -247,7 +248,6 @@
     <ClInclude Include="Engine\UI\Information.h" />
     <ClInclude Include="Engine\Utils\LeakTest.h" />
     <ClInclude Include="Engine\UI\MainMenu.h" />
-    <ClInclude Include="Engine\Resources\Mesh.h" />
     <ClInclude Include="Engine\Modules\Module.h" />
     <ClInclude Include="Engine\Modules\ModuleCamera.h" />
     <ClInclude Include="Engine\Modules\ModuleEditor.h" />
@@ -263,14 +263,18 @@
     <ClInclude Include="Engine\UI\UIWindow.h" />
     <ClInclude Include="Engine\UI\Viewport.h" />
     <ClInclude Include="Engine\Resources\Quadtree.h" />
+    <ClInclude Include="Engine\Resources\QuadtreeNode.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Engine\Resources\Camera.cpp" />
     <ClCompile Include="Engine\Components\ComponentCamera.cpp" />
     <ClCompile Include="Engine\Components\ComponentMesh.cpp" />
     <ClCompile Include="Engine\Components\ComponentTransform.cpp" />
     <ClCompile Include="Engine\Modules\ModuleScene.cpp" />
+    <ClCompile Include="Engine\Resources\Camera.cpp" />
     <ClCompile Include="Engine\Resources\GameObject.cpp" />
+    <ClCompile Include="Engine\Resources\Mesh.cpp" />
+    <ClCompile Include="Engine\Resources\PerformanceTimer.cpp" />
+    <ClCompile Include="Engine\Resources\Timer.cpp" />
     <ClCompile Include="Engine\UI\About.cpp" />
     <ClCompile Include="Engine\Main\Application.cpp" />
     <ClCompile Include="Engine\UI\Configuration.cpp" />
@@ -329,7 +333,6 @@
     <ClCompile Include="Engine\Utils\log.cpp" />
     <ClCompile Include="Engine\Main\Main.cpp" />
     <ClCompile Include="Engine\UI\MainMenu.cpp" />
-    <ClCompile Include="Engine\Resources\Mesh.cpp" />
     <ClCompile Include="Engine\Modules\ModuleCamera.cpp" />
     <ClCompile Include="Engine\Modules\ModuleEditor.cpp" />
     <ClCompile Include="Engine\Modules\ModuleInput.cpp" />
@@ -338,10 +341,9 @@
     <ClCompile Include="Engine\Modules\ModuleRender.cpp" />
     <ClCompile Include="Engine\Modules\ModuleTexture.cpp" />
     <ClCompile Include="Engine\Modules\ModuleWindow.cpp" />
-    <ClCompile Include="Engine\Resources\PerformanceTimer.cpp" />
-    <ClCompile Include="Engine\Resources\Timer.cpp" />
     <ClCompile Include="Engine\UI\Viewport.cpp" />
     <ClCompile Include="Engine\Resources\Quadtree.cpp" />
+    <ClCompile Include="Engine\Resources\QuadtreeNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="External Libs\MathGeoLib\Geometry\KDTree.inl" />
