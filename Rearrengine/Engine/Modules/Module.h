@@ -29,4 +29,7 @@ public:
 	virtual bool CleanUp() {
 		return true;
 	}
+
+	virtual void ToJSON() const {};
+	virtual void FromJSON() {};
 };

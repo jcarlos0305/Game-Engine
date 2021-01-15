@@ -3,12 +3,18 @@
 #include "Components/ComponentMesh.h"
 #include "Components/ComponentTransform.h"
 
-ModuleScene::ModuleScene() : root(new GameObject()) {
-	root->SetName("root");
-	root->AddComponent(new ComponentTransform());
-}
+#include "Utils/Utils.h"
+
+ModuleScene::ModuleScene() {}
 
 ModuleScene::~ModuleScene() {}
+
+GameObject* ModuleScene::InitializeRoot() {
+	root = new GameObject();
+	root->SetName("root");
+	root->AddComponent(new ComponentTransform());
+	return root;
+}
 
 void ModuleScene::Draw(GameObject& game_object) {
 	if (game_object.HasComponentType(ComponentTypes::kMesh)) {
@@ -32,4 +38,21 @@ bool ModuleScene::CleanUp() {
 	RecursiveDelete(root);
 	root = nullptr;
 	return true;
+}
+
+void ModuleScene::ToJSON() const {
+	Json::Value scene_root;
+	root->ToJson(scene_root, root);
+	PrintToFile("scene", "", scene_root);
+}
+
+void ModuleScene::FromJSON() {
+	Json::Value scene_root;
+	std::string path = JSON_ROOT_PATH;
+	std::string extension = JSON_FILE_EXTENSION;
+	path.append("scene" + extension);
+	LoadFromFile(path, scene_root);
+	//root = new GameObject(scene_root["root"][JSON_PROPERTY_GAME_OBJECT_UUID].asCString(), scene_root["root"][JSON_PROPERTY_GAME_OBJECT_NAME].asCString());
+	root = new GameObject(scene_root["root"]);
+	//root->FromJson();
 }

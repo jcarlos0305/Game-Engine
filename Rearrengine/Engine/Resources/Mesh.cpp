@@ -2,16 +2,22 @@
 #include "Main/Application.h"
 #include "Modules/ModuleCamera.h"
 #include "Modules/ModuleRender.h"
+#include "Utils/Utils.h"
+#include "Utils/UUID.h"
 
 #include <GL/glew.h>
 #include "Math/float2.h"
 
 #include "Utils/LeakTest.h"
 
-Mesh::Mesh(unsigned int program) : program(program) {
+Mesh::Mesh(unsigned int program) : program(program), UUID(custom_UUID::generate()) {
 	min_x = 0.0; max_x = 0.0;
 	min_y = 0.0; max_y = 0.0;
 	min_z = 0.0; max_z = 0.0;
+}
+
+Mesh::Mesh(std::string _mesh_path) {
+	FromJson(_mesh_path);
 }
 
 Mesh::~Mesh() {
@@ -27,7 +33,11 @@ void Mesh::LoadVBO(const aiMesh* mesh) {
 
 	unsigned vertex_size = (sizeof(float) * 3 + sizeof(float) * 2);
 	unsigned vertices_size = vertex_size * mesh->mNumVertices;
+
+	name = mesh->mName.C_Str();
 	material_index = mesh->mMaterialIndex;
+	num_vertices = mesh->mNumVertices;
+	num_faces = mesh->mNumFaces;
 
 	glBufferData(GL_ARRAY_BUFFER, vertices_size, nullptr, GL_STATIC_DRAW);
 
@@ -35,6 +45,8 @@ void Mesh::LoadVBO(const aiMesh* mesh) {
 
 	min_x = mesh->mVertices[0].x; min_y = mesh->mVertices[0].y; min_z = mesh->mVertices[0].z;
 	max_x = mesh->mVertices[0].x; max_y = mesh->mVertices[0].y; max_z = mesh->mVertices[0].z;
+
+	Json::Value vbo_json(Json::arrayValue);
 
 	for (unsigned i = 0, position = 0; i < mesh->mNumVertices; ++i) {
 		if (mesh->mVertices[i].x > max_x) max_x = mesh->mVertices[i].x;
@@ -45,23 +57,24 @@ void Mesh::LoadVBO(const aiMesh* mesh) {
 		if (mesh->mVertices[i].z < min_z) min_z = mesh->mVertices[i].z;
 
 		// vertices
-		uvs[position++] = mesh->mVertices[i].x;
-		uvs[position++] = mesh->mVertices[i].y;
-		uvs[position++] = mesh->mVertices[i].z;
+		uvs[position++] = mesh->mVertices[i].x; vbo_json.append(mesh->mVertices[i].x);
+		uvs[position++] = mesh->mVertices[i].y; vbo_json.append(mesh->mVertices[i].y);
+		uvs[position++] = mesh->mVertices[i].z; vbo_json.append(mesh->mVertices[i].z);
+
 		// UV
 		if (mesh->mTextureCoords[0]) {
-			uvs[position++] = mesh->mTextureCoords[0][i].x;
-			uvs[position++] = mesh->mTextureCoords[0][i].y;
+			uvs[position++] = mesh->mTextureCoords[0][i].x; vbo_json.append(mesh->mTextureCoords[0][i].x);
+			uvs[position++] = mesh->mTextureCoords[0][i].y; vbo_json.append(mesh->mTextureCoords[0][i].y);
 		}
 		else {
-			uvs[position++] = 0;
-			uvs[position++] = 0;
+			uvs[position++] = 0; vbo_json.append(0);
+			uvs[position++] = 0; vbo_json.append(0);
 		}
 	}
+	ToJson();
+	mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_VBO] = vbo_json;
 
 	glUnmapBuffer(GL_ARRAY_BUFFER);
-	num_vertices = mesh->mNumVertices;
-	num_faces = mesh->mNumFaces;
 }
 
 void Mesh::LoadEBO(const aiMesh* mesh) {
@@ -72,14 +85,21 @@ void Mesh::LoadEBO(const aiMesh* mesh) {
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, index_size, nullptr, GL_STATIC_DRAW);
 	unsigned* indices = (unsigned*)(glMapBufferRange(GL_ELEMENT_ARRAY_BUFFER, 0, index_size, GL_MAP_WRITE_BIT));
 
+	Json::Value ebo_json(Json::arrayValue);
+
 	for (unsigned i = 0; i < mesh->mNumFaces; ++i) {
 		for (unsigned j = 0; j < mesh->mFaces[i].mNumIndices; j++) {
-			*(indices++) = mesh->mFaces[i].mIndices[j];
+			*(indices++) = mesh->mFaces[i].mIndices[j]; ebo_json.append(mesh->mFaces[i].mIndices[j]);
 		}
 	}
-
 	glUnmapBuffer(GL_ELEMENT_ARRAY_BUFFER);
+
 	num_indices = mesh->mNumFaces * 3;
+	mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_NUM_INDICES] = num_indices;
+
+	mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_EBO] = ebo_json;
+
+	PrintToFile(name, JSON_MESH_DIRECTORY, mesh_root);
 }
 
 void Mesh::CreateVAO() {
@@ -119,5 +139,19 @@ void Mesh::Draw(const std::vector<unsigned>& model_textures, const float4x4 mode
 	glBindVertexArray(0);
 }
 
-void Mesh::ToJson() const {
+void Mesh::ToJson() {
+	mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_NAME] = name;
+	mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_NUM_FACES] = num_faces;
+	mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_NUM_VERTICES] = num_vertices;
+	mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_MATERIAL_INDEX] = material_index;
+
+	mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_MIN_X] = min_x;
+	mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_MIN_Y] = min_y;
+	mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_MIN_Z] = min_z;
+
+	mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_MAX_X] = max_x;
+	mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_MAX_Y] = max_y;
+	mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_MAX_Z] = max_z;
 }
+
+void Mesh::FromJson(std::string _mesh_path) {}

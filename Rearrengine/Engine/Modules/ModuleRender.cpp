@@ -105,7 +105,7 @@ void ModuleRender::RenderToViewport(unsigned int width, unsigned int height) {
 
 	// Drawing the model
 	//App->model->Draw();
-	App->scene->Draw(*App->scene->GetRoot());
+	if (App->scene->GetRoot()) App->scene->Draw(*App->scene->GetRoot());
 
 	// Drawing the grid with debug draw
 	App->debug_draw->Draw(view, proj, w, h);
@@ -116,6 +116,8 @@ void ModuleRender::RenderToViewport(unsigned int width, unsigned int height) {
 
 void ModuleRender::EnableVsync(bool enabled) {
 	SDL_GL_SetSwapInterval(enabled);
+	App->scene->FromJSON(); // TODO: remove this
+	//App->scene->ToJSON(); // TODO: remove this
 }
 
 // Called before quitting

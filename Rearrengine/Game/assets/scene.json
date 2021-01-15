@@ -1,0 +1,1169 @@
+{
+	"root" : 
+	{
+		"Children" : 
+		{
+			"Street_environment_V01" : 
+			{
+				"Children" : 
+				{
+					"Camera001.Target_$AssimpFbx$_Translation" : 
+					{
+						"Children" : 
+						{
+							"Camera001.Target_$AssimpFbx$_PreRotation" : 
+							{
+								"Children" : 
+								{
+									"Camera001.Target_$AssimpFbx$_Rotation" : 
+									{
+										"Children" : 
+										{
+											"Camera001.Target" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ 0.0, 1.0, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ 0.0, 0.0, 0.0 ],
+														"Type" : 2,
+														"UUID" : "23ef6446-22a2-a42e-cf9c-086000515aac"
+													}
+												],
+												"Name" : "Camera001.Target",
+												"Parent UUID" : "d2a0d31b-4a51-208c-8a7f-13c6370df9a1",
+												"UUID" : "9aacfa37-6aef-dee2-eab9-8a2e00fa8396"
+											}
+										},
+										"Components" : 
+										[
+											{
+												"Rotation" : [ -0.62932068109512329, -0.22721533477306366, 0.74318820238113403 ],
+												"Scale" : [ 1.0, 0.99999994039535522, 1.0 ],
+												"Translate" : [ 0.0, 0.0, 0.0 ],
+												"Type" : 2,
+												"UUID" : "0498bfaa-f2b3-e8d3-c6f9-ebce5b0055de"
+											}
+										],
+										"Name" : "Camera001.Target_$AssimpFbx$_Rotation",
+										"Parent UUID" : "985a869a-5dd4-5768-c822-02d9a0c82a89",
+										"UUID" : "d2a0d31b-4a51-208c-8a7f-13c6370df9a1"
+									}
+								},
+								"Components" : 
+								[
+									{
+										"Rotation" : [ 0.0, -4.3711388286737929e-08, 1.0 ],
+										"Scale" : [ 1.0, 1.0, 1.0 ],
+										"Translate" : [ 0.0, 0.0, 0.0 ],
+										"Type" : 2,
+										"UUID" : "7283ffc6-f955-c57b-9878-5328bdf72d95"
+									}
+								],
+								"Name" : "Camera001.Target_$AssimpFbx$_PreRotation",
+								"Parent UUID" : "9bccd48e-fff0-7163-d15d-8a6453a44eac",
+								"UUID" : "985a869a-5dd4-5768-c822-02d9a0c82a89"
+							}
+						},
+						"Components" : 
+						[
+							{
+								"Rotation" : [ 0.0, 1.0, 0.0 ],
+								"Scale" : [ 1.0, 1.0, 1.0 ],
+								"Translate" : [ -28.132621765136719, 20.873329162597656, -35.064212799072266 ],
+								"Type" : 2,
+								"UUID" : "e95416c1-cd0a-4fc2-338f-311aa0ff7c9f"
+							}
+						],
+						"Name" : "Camera001.Target_$AssimpFbx$_Translation",
+						"Parent UUID" : "2f51d79b-62c0-3bae-6508-38f294e4a0f4",
+						"UUID" : "9bccd48e-fff0-7163-d15d-8a6453a44eac"
+					},
+					"Camera001_$AssimpFbx$_Translation" : 
+					{
+						"Children" : 
+						{
+							"Camera001_$AssimpFbx$_PreRotation" : 
+							{
+								"Children" : 
+								{
+									"Camera001_$AssimpFbx$_Rotation" : 
+									{
+										"Children" : 
+										{
+											"Camera001" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ 0.0, 1.0, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ 0.0, 0.0, 0.0 ],
+														"Type" : 2,
+														"UUID" : "2f282e25-eb88-9e2d-46c9-8891f32697cc"
+													}
+												],
+												"Name" : "Camera001",
+												"Parent UUID" : "5a2f85c5-6b51-ac36-f9f1-9d6d55630b1e",
+												"UUID" : "0ec85297-d85a-48bb-b509-2797a219cf0b"
+											}
+										},
+										"Components" : 
+										[
+											{
+												"Rotation" : [ -0.62932050228118896, -0.22721534967422485, 0.74318832159042358 ],
+												"Scale" : [ 1.0, 0.99999994039535522, 0.99999994039535522 ],
+												"Translate" : [ 0.0, 0.0, 0.0 ],
+												"Type" : 2,
+												"UUID" : "d411aaeb-a69d-af3e-72b0-e8e8c26bacf4"
+											}
+										],
+										"Name" : "Camera001_$AssimpFbx$_Rotation",
+										"Parent UUID" : "0e31438e-8aa6-784c-0aef-10440a9c8921",
+										"UUID" : "5a2f85c5-6b51-ac36-f9f1-9d6d55630b1e"
+									}
+								},
+								"Components" : 
+								[
+									{
+										"Rotation" : [ 0.0, -4.3711388286737929e-08, 1.0 ],
+										"Scale" : [ 1.0, 1.0, 1.0 ],
+										"Translate" : [ 0.0, 0.0, 0.0 ],
+										"Type" : 2,
+										"UUID" : "67e301d1-2dfe-a5fb-9d7b-dcba1ff2043e"
+									}
+								],
+								"Name" : "Camera001_$AssimpFbx$_PreRotation",
+								"Parent UUID" : "44a88526-e0a3-6be1-74a8-8b826a8cf5bc",
+								"UUID" : "0e31438e-8aa6-784c-0aef-10440a9c8921"
+							}
+						},
+						"Components" : 
+						[
+							{
+								"Rotation" : [ 0.0, 1.0, 0.0 ],
+								"Scale" : [ 1.0, 1.0, 1.0 ],
+								"Translate" : [ -78.312431335449219, 45.251216888427734, -97.031112670898438 ],
+								"Type" : 2,
+								"UUID" : "728e8295-3af1-8ab7-8156-d8b6bbadcb0e"
+							}
+						],
+						"Name" : "Camera001_$AssimpFbx$_Translation",
+						"Parent UUID" : "2f51d79b-62c0-3bae-6508-38f294e4a0f4",
+						"UUID" : "44a88526-e0a3-6be1-74a8-8b826a8cf5bc"
+					},
+					"Dummy001_$AssimpFbx$_PreRotation" : 
+					{
+						"Children" : 
+						{
+							"Dummy001_$AssimpFbx$_Rotation" : 
+							{
+								"Children" : 
+								{
+									"Dummy001" : 
+									{
+										"Children" : 
+										{
+											"City_building_001" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ 0.0, 1.0, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ 17.707164764404297, 20.053276062011719, 2.1210729528320371e-07 ],
+														"Type" : 2,
+														"UUID" : "0bf70c08-f568-0815-e597-2058a2006321"
+													},
+													{
+														"Mesh Path" : "assets/Meshes/City_building_001.json",
+														"Type" : 0,
+														"UUID" : "City_building_001"
+													}
+												],
+												"Name" : "City_building_001",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "97b2ca5d-e1ba-dc1a-cd09-90a32d975546"
+											},
+											"City_building_004" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ 0.0, 1.0, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ -41.47589111328125, 21.01409912109375, 0.0 ],
+														"Type" : 2,
+														"UUID" : "975a2a43-226c-c7fd-5290-25d5f5322179"
+													},
+													{
+														"Mesh Path" : "assets/Meshes/City_building_004.json",
+														"Type" : 0,
+														"UUID" : "City_building_004"
+													}
+												],
+												"Name" : "City_building_004",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "8ed7c0bd-2b45-caf2-f446-ffd32001ec80"
+											},
+											"City_building_007" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ 0.0, 1.0, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ 16.010492324829102, 37.4932861328125, -1.5106878663573298e-06 ],
+														"Type" : 2,
+														"UUID" : "8ee92b7f-113a-4e05-4c42-c8085995159e"
+													},
+													{
+														"Mesh Path" : "assets/Meshes/City_building_007.json",
+														"Type" : 0,
+														"UUID" : "City_building_007"
+													}
+												],
+												"Name" : "City_building_007",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "2337d347-9e11-c8c9-21e2-1c2cc0410d96"
+											},
+											"City_building_008" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ 1.0, -4.3711388286737929e-08, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ 40.979995727539063, 18.270824432373047, -2.0522466002148576e-06 ],
+														"Type" : 2,
+														"UUID" : "6b7fa971-272b-c7e7-b621-437135ce96e2"
+													},
+													{
+														"Mesh Path" : "assets/Meshes/City_building_008.json",
+														"Type" : 0,
+														"UUID" : "City_building_008"
+													}
+												],
+												"Name" : "City_building_008",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "452b4c92-82fd-3eb0-477c-7f92146c1cf9"
+											},
+											"City_building_010" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ 1.0, -4.3711388286737929e-08, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ 25.154010772705078, -39.153720855712891, 8.5538641769744572e-07 ],
+														"Type" : 2,
+														"UUID" : "c52d772c-9cda-c327-cd88-d943b234ffd0"
+													}
+												],
+												"Name" : "City_building_010",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "994c8e87-a561-d896-6edd-d2fce206c42b"
+											},
+											"City_building_011" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ 0.0, 1.0, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ 30.134540557861328, 37.4932861328125, -1.5106878663573298e-06 ],
+														"Type" : 2,
+														"UUID" : "01f3e686-5f7f-9b03-50bd-09d2a1db777f"
+													},
+													{
+														"Mesh Path" : "assets/Meshes/City_building_007.json",
+														"Type" : 0,
+														"UUID" : "City_building_007"
+													}
+												],
+												"Name" : "City_building_011",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "ba4ff0f1-d6c1-3b73-c723-9454c48772bd"
+											},
+											"City_building_013" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ 1.0, -4.3711388286737929e-08, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ -42.288055419921875, 33.201576232910156, 5.0146070407208754e-07 ],
+														"Type" : 2,
+														"UUID" : "7babf8b6-4f21-af67-c62b-42162b5bec06"
+													},
+													{
+														"Mesh Path" : "assets/Meshes/City_building_013.json",
+														"Type" : 0,
+														"UUID" : "City_building_013"
+													}
+												],
+												"Name" : "City_building_013",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "979a382b-87a3-0733-fc1a-4ef0180ef8df"
+											},
+											"City_building_014" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ -8.7422776573475858e-08, -1.0, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ -19.439706802368164, 32.061729431152344, 0.0 ],
+														"Type" : 2,
+														"UUID" : "f513cf52-3ce6-9942-3b09-7eda2082f6c9"
+													},
+													{
+														"Mesh Path" : "assets/Meshes/City_building_014.json",
+														"Type" : 0,
+														"UUID" : "City_building_014"
+													}
+												],
+												"Name" : "City_building_014",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "358c3c7b-8070-33d7-fe65-867da79c1397"
+											},
+											"City_building_016" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ -8.7422776573475858e-08, -1.0, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ 34.270423889160156, -41.972747802734375, 8.5538641769744572e-07 ],
+														"Type" : 2,
+														"UUID" : "cde719b1-9c52-400c-6a33-c311617f61b2"
+													}
+												],
+												"Name" : "City_building_016",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "18cb9a46-5ac5-61e2-d096-951596602a64"
+											},
+											"City_building_017" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ 1.0, -4.3711388286737929e-08, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ 44.260082244873047, -39.153720855712891, 8.5538641769744572e-07 ],
+														"Type" : 2,
+														"UUID" : "617b3cf1-8d19-6121-e5f5-2592e7c584e4"
+													}
+												],
+												"Name" : "City_building_017",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "c00a1675-3f61-ddd8-c110-14b427a0d682"
+											},
+											"City_building_022" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ 3.8941436741879443e-07, -1.0, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ -20.831323623657227, -27.426488876342773, 0.0 ],
+														"Type" : 2,
+														"UUID" : "3f2ce2f7-1de3-ad29-67b5-5c6bee003a54"
+													},
+													{
+														"Mesh Path" : "assets/Meshes/City_building_022.json",
+														"Type" : 0,
+														"UUID" : "City_building_022"
+													}
+												],
+												"Name" : "City_building_022",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "53d8069d-dd94-ebe5-3fc3-c27d84b4b39e"
+											},
+											"City_building_023" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ 0.0, 1.0, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ 42.130641937255859, 37.4932861328125, -1.5106878663573298e-06 ],
+														"Type" : 2,
+														"UUID" : "e762e890-cfa8-1c20-f544-13a233d24127"
+													},
+													{
+														"Mesh Path" : "assets/Meshes/City_building_007.json",
+														"Type" : 0,
+														"UUID" : "City_building_007"
+													}
+												],
+												"Name" : "City_building_023",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "28fd335d-58ad-ac90-20b9-632609bc4ebd"
+											},
+											"City_building_024" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ 8.7422776573475858e-08, -1.0, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ -20.572771072387695, 43.060829162597656, -0.069194458425045013 ],
+														"Type" : 2,
+														"UUID" : "714ca675-8634-6ae7-79ab-a2a95ba4d900"
+													},
+													{
+														"Mesh Path" : "assets/Meshes/City_building_008.json",
+														"Type" : 0,
+														"UUID" : "City_building_008"
+													}
+												],
+												"Name" : "City_building_024",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "3f082da2-4ce5-9329-0603-0a6b5fa59dad"
+											},
+											"City_building_026" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ 8.7422776573475858e-08, -1.0, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ 31.51188850402832, -16.446016311645508, 0.0 ],
+														"Type" : 2,
+														"UUID" : "5029ac53-a824-f8f3-6ad7-99071339268a"
+													},
+													{
+														"Mesh Path" : "assets/Meshes/City_building_026.json",
+														"Type" : 0,
+														"UUID" : "City_building_026"
+													}
+												],
+												"Name" : "City_building_026",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "1cd25901-c394-6b65-cfff-36b2b14cebfc"
+											},
+											"City_building_028" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ 0.0, 1.0, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ 13.38798999786377, -33.755039215087891, -9.3834518111179932e-07 ],
+														"Type" : 2,
+														"UUID" : "34095294-99b9-ce33-cb7c-c249faab5978"
+													},
+													{
+														"Mesh Path" : "assets/Meshes/City_building_028.json",
+														"Type" : 0,
+														"UUID" : "City_building_028"
+													}
+												],
+												"Name" : "City_building_028",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "746a43bc-9b42-721f-4b37-c38f7320d842"
+											},
+											"City_building_030" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ -1.0, -4.3711388286737929e-08, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ -42.807239532470703, -41.835563659667969, -9.3834518111179932e-07 ],
+														"Type" : 2,
+														"UUID" : "22a2efc0-f822-54b2-ff82-3595ad7ee9ff"
+													},
+													{
+														"Mesh Path" : "assets/Meshes/City_building_028.json",
+														"Type" : 0,
+														"UUID" : "City_building_028"
+													}
+												],
+												"Name" : "City_building_030",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "7b3a0d44-02fb-fe34-4843-18901290b426"
+											},
+											"City_building_031" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ -1.0, -4.3711388286737929e-08, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ -34.679481506347656, -41.835563659667969, -9.3834518111179932e-07 ],
+														"Type" : 2,
+														"UUID" : "b87fb74d-aabb-3733-84e3-f133af490c41"
+													},
+													{
+														"Mesh Path" : "assets/Meshes/City_building_028.json",
+														"Type" : 0,
+														"UUID" : "City_building_028"
+													}
+												],
+												"Name" : "City_building_031",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "fe47ecdb-f887-a7a6-19aa-6828eba71ace"
+											},
+											"City_building_032" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ 0.0, 1.0, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ -29.478403091430664, 21.01409912109375, 0.0 ],
+														"Type" : 2,
+														"UUID" : "a7f14496-db29-41d0-d59f-c08e6d90dae7"
+													},
+													{
+														"Mesh Path" : "assets/Meshes/City_building_004.json",
+														"Type" : 0,
+														"UUID" : "City_building_004"
+													}
+												],
+												"Name" : "City_building_032",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "33053878-ad4a-843c-b144-18d9a4e4ec9c"
+											},
+											"City_building_033" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ 0.0, 1.0, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ -32.361495971679688, 42.37042236328125, 5.0146070407208754e-07 ],
+														"Type" : 2,
+														"UUID" : "e234c675-e49a-4b15-7533-fc2ddc60b5af"
+													},
+													{
+														"Mesh Path" : "assets/Meshes/City_building_033.json",
+														"Type" : 0,
+														"UUID" : "City_building_033"
+													}
+												],
+												"Name" : "City_building_033",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "6708393a-ba5c-d846-f5cc-c91655cafe37"
+											},
+											"City_building_034" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ -1.0, -2.8212997449372779e-07, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ 16.049516677856445, -16.696884155273438, 0.0 ],
+														"Type" : 2,
+														"UUID" : "c8da8929-1664-7b84-dd6d-f3b217dd7e34"
+													},
+													{
+														"Mesh Path" : "assets/Meshes/City_building_034.json",
+														"Type" : 0,
+														"UUID" : "City_building_034"
+													}
+												],
+												"Name" : "City_building_034",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "5217b638-fef1-f9db-08f3-4271af22c8ef"
+											},
+											"City_building_035" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ 0.0, 1.0, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ 13.38798999786377, -40.802516937255859, -9.3834518111179932e-07 ],
+														"Type" : 2,
+														"UUID" : "838747ed-fc63-9ffb-38db-62ea20780cc5"
+													},
+													{
+														"Mesh Path" : "assets/Meshes/City_building_028.json",
+														"Type" : 0,
+														"UUID" : "City_building_028"
+													}
+												],
+												"Name" : "City_building_035",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "b74a09fe-a814-af90-472e-dbf8198313f7"
+											},
+											"City_building_036" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ -1.0, -4.3711388286737929e-08, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ -31.216331481933594, 33.201576232910156, 5.0146070407208754e-07 ],
+														"Type" : 2,
+														"UUID" : "cf4eae18-ca35-23a6-6c63-4b2d115861ab"
+													},
+													{
+														"Mesh Path" : "assets/Meshes/City_building_013.json",
+														"Type" : 0,
+														"UUID" : "City_building_013"
+													}
+												],
+												"Name" : "City_building_036",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "e3d3850b-8620-830f-806c-561db8cbebb9"
+											},
+											"City_building_037" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ 3.8941436741879443e-07, -1.0, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ -20.317693710327148, -16.163608551025391, 0.0 ],
+														"Type" : 2,
+														"UUID" : "c96a5d80-2440-f062-d642-2b68bcc007eb"
+													},
+													{
+														"Mesh Path" : "assets/Meshes/City_building_037.json",
+														"Type" : 0,
+														"UUID" : "City_building_037"
+													}
+												],
+												"Name" : "City_building_037",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "d16cdbea-77f7-29ec-2099-e817de6eac9a"
+											},
+											"City_building_038" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ -1.0, -2.8212997449372779e-07, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ -41.649002075195313, -16.495393753051758, 0.0 ],
+														"Type" : 2,
+														"UUID" : "e0e1945c-6805-440a-bcd3-d4ed1c914633"
+													},
+													{
+														"Mesh Path" : "assets/Meshes/City_building_038.json",
+														"Type" : 0,
+														"UUID" : "City_building_038"
+													}
+												],
+												"Name" : "City_building_038",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "ba8af409-eb93-2854-e61a-2a9c08a9a139"
+											},
+											"City_building_039" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ -1.0, -4.3711388286737929e-08, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ -42.807239532470703, -30.643888473510742, -9.3834518111179932e-07 ],
+														"Type" : 2,
+														"UUID" : "4df240d9-c452-d87e-2417-dab8271004a1"
+													},
+													{
+														"Mesh Path" : "assets/Meshes/City_building_028.json",
+														"Type" : 0,
+														"UUID" : "City_building_028"
+													}
+												],
+												"Name" : "City_building_039",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "991d7617-c9c7-8d8e-9872-9322ace2ecfd"
+											},
+											"City_building_040" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ -1.0, -4.3711388286737929e-08, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ -34.679481506347656, -30.643888473510742, -9.3834518111179932e-07 ],
+														"Type" : 2,
+														"UUID" : "b045c098-da57-860a-d71c-66e95b848295"
+													},
+													{
+														"Mesh Path" : "assets/Meshes/City_building_028.json",
+														"Type" : 0,
+														"UUID" : "City_building_028"
+													}
+												],
+												"Name" : "City_building_040",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "ddb2bc44-d05b-baeb-250b-d8d076a8b14b"
+											},
+											"City_building_041" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ 1.0, -4.3711388286737929e-08, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ 30.695278167724609, 21.612646102905273, 2.1210729528320371e-07 ],
+														"Type" : 2,
+														"UUID" : "e42d059f-1e70-6993-e0be-80c1d105df2f"
+													},
+													{
+														"Mesh Path" : "assets/Meshes/City_building_001.json",
+														"Type" : 0,
+														"UUID" : "City_building_001"
+													}
+												],
+												"Name" : "City_building_041",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "424a2df2-c71c-1e11-b7dd-bebceb91e2a8"
+											},
+											"Line002" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ -1.0, -4.3711388286737929e-08, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ -2.1597719192504883, 1.8538382053375244, 0.0 ],
+														"Type" : 2,
+														"UUID" : "98a86133-e19f-257b-eef6-744b5d9be77d"
+													},
+													{
+														"Mesh Path" : "assets/Meshes/Line002.json",
+														"Type" : 0,
+														"UUID" : "Line002"
+													}
+												],
+												"Name" : "Line002",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "14c30d7c-a3ee-71be-d134-44f0080fd12c"
+											},
+											"Object010_$AssimpFbx$_Translation" : 
+											{
+												"Children" : 
+												{
+													"Object010_$AssimpFbx$_GeometricTranslation" : 
+													{
+														"Children" : 
+														{
+															"Object010" : 
+															{
+																"Children" : null,
+																"Components" : 
+																[
+																	{
+																		"Rotation" : [ 0.0, 1.0, 0.0 ],
+																		"Scale" : [ 1.0, 1.0, 1.0 ],
+																		"Translate" : [ 0.0, 0.0, 0.0 ],
+																		"Type" : 2,
+																		"UUID" : "866b0c0c-b2b4-9967-d5bf-bd93b3b61562"
+																	},
+																	{
+																		"Mesh Path" : "assets/Meshes/Object010.json",
+																		"Type" : 0,
+																		"UUID" : "Object010"
+																	}
+																],
+																"Name" : "Object010",
+																"Parent UUID" : "711cb68d-5add-651f-ec4c-2258b6fdfa6b",
+																"UUID" : "052814c8-8684-6141-2555-63558d2a3327"
+															}
+														},
+														"Components" : 
+														[
+															{
+																"Rotation" : [ 0.0, 1.0, 0.0 ],
+																"Scale" : [ 1.0, 1.0, 1.0 ],
+																"Translate" : [ 18.101520538330078, 11.734103202819824, 0.47595983743667603 ],
+																"Type" : 2,
+																"UUID" : "9123d484-cddb-d80a-dfc1-de8a462d42ae"
+															}
+														],
+														"Name" : "Object010_$AssimpFbx$_GeometricTranslation",
+														"Parent UUID" : "6c03edcd-63d6-9043-e137-3b3619016190",
+														"UUID" : "711cb68d-5add-651f-ec4c-2258b6fdfa6b"
+													}
+												},
+												"Components" : 
+												[
+													{
+														"Rotation" : [ 0.0, 1.0, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ -20.604873657226563, 4.0667424201965332, -0.47595983743667603 ],
+														"Type" : 2,
+														"UUID" : "20ac86c7-732f-842a-d34e-a08192918889"
+													}
+												],
+												"Name" : "Object010_$AssimpFbx$_Translation",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "6c03edcd-63d6-9043-e137-3b3619016190"
+											},
+											"Plane001" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ 0.0, 0.97061645984649658, 0.0 ],
+														"Scale" : [ 0.99663525819778442, 0.97061645984649658, 0.99663525819778442 ],
+														"Translate" : [ -0.02860260009765625, 0.026032090187072754, 0.0 ],
+														"Type" : 2,
+														"UUID" : "b50b8020-2706-eb56-974a-9d949dd9172c"
+													},
+													{
+														"Mesh Path" : "assets/Meshes/Plane001.json",
+														"Type" : 0,
+														"UUID" : "Plane001"
+													}
+												],
+												"Name" : "Plane001",
+												"Parent UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a",
+												"UUID" : "3c79fea8-6200-31b4-2430-ce3ea21b9d8f"
+											}
+										},
+										"Components" : 
+										[
+											{
+												"Rotation" : [ 0.0, 1.0, 0.0 ],
+												"Scale" : [ 1.0, 1.0, 1.0 ],
+												"Translate" : [ 0.0, 0.0, 0.0 ],
+												"Type" : 2,
+												"UUID" : "69cc407d-2cfa-f979-8aa7-1803870bedfb"
+											}
+										],
+										"Name" : "Dummy001",
+										"Parent UUID" : "4fd66045-d487-eacb-6df2-0c5d25f24f58",
+										"UUID" : "1a422d70-2cbd-a317-c3de-baf0eada9e2a"
+									}
+								},
+								"Components" : 
+								[
+									{
+										"Rotation" : [ 0.0, 1.0, 0.0 ],
+										"Scale" : [ 1.0, 1.0, 1.0 ],
+										"Translate" : [ 0.0, 0.0, 0.0 ],
+										"Type" : 2,
+										"UUID" : "ddc0f99d-0236-55c4-6bf9-460e2bbbd55e"
+									}
+								],
+								"Name" : "Dummy001_$AssimpFbx$_Rotation",
+								"Parent UUID" : "4cc420a6-7e94-e8c5-375d-d1751a89b3e2",
+								"UUID" : "4fd66045-d487-eacb-6df2-0c5d25f24f58"
+							}
+						},
+						"Components" : 
+						[
+							{
+								"Rotation" : [ 0.0, -4.3711388286737929e-08, 1.0 ],
+								"Scale" : [ 1.0, 1.0, 1.0 ],
+								"Translate" : [ 0.0, 0.0, 0.0 ],
+								"Type" : 2,
+								"UUID" : "a5a0d8b7-cbda-df57-0550-eecdd1305102"
+							}
+						],
+						"Name" : "Dummy001_$AssimpFbx$_PreRotation",
+						"Parent UUID" : "2f51d79b-62c0-3bae-6508-38f294e4a0f4",
+						"UUID" : "4cc420a6-7e94-e8c5-375d-d1751a89b3e2"
+					},
+					"Sky001_$AssimpFbx$_Translation" : 
+					{
+						"Children" : 
+						{
+							"Sky001_$AssimpFbx$_PreRotation" : 
+							{
+								"Children" : 
+								{
+									"Sky001_$AssimpFbx$_PostRotation" : 
+									{
+										"Children" : 
+										{
+											"Sky001" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ 0.0, 1.0, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ 0.0, 0.0, 0.0 ],
+														"Type" : 2,
+														"UUID" : "947bdf2a-1148-e3a4-5e2c-8039edfb0c33"
+													}
+												],
+												"Name" : "Sky001",
+												"Parent UUID" : "241c0336-a8d4-8392-18f0-14d07d8140a5",
+												"UUID" : "c598c2ef-5240-a558-873f-22bf34368dec"
+											}
+										},
+										"Components" : 
+										[
+											{
+												"Rotation" : [ -0.0, -4.3711388286737929e-08, -1.0 ],
+												"Scale" : [ 1.0, 1.0, 1.0 ],
+												"Translate" : [ -0.0, 0.0, -0.0 ],
+												"Type" : 2,
+												"UUID" : "df0a3e5f-1b50-a6c6-3796-ffddb5230739"
+											}
+										],
+										"Name" : "Sky001_$AssimpFbx$_PostRotation",
+										"Parent UUID" : "7387a747-d17f-5381-5015-f235be851ab2",
+										"UUID" : "241c0336-a8d4-8392-18f0-14d07d8140a5"
+									}
+								},
+								"Components" : 
+								[
+									{
+										"Rotation" : [ 0.0, -4.3711388286737929e-08, 1.0 ],
+										"Scale" : [ 1.0, 1.0, 1.0 ],
+										"Translate" : [ 0.0, 0.0, 0.0 ],
+										"Type" : 2,
+										"UUID" : "afbea68d-af1b-5a35-a165-8ae9afcb532e"
+									}
+								],
+								"Name" : "Sky001_$AssimpFbx$_PreRotation",
+								"Parent UUID" : "7e38412a-8488-df8b-c820-3eafe615b432",
+								"UUID" : "7387a747-d17f-5381-5015-f235be851ab2"
+							}
+						},
+						"Components" : 
+						[
+							{
+								"Rotation" : [ 0.0, 1.0, 0.0 ],
+								"Scale" : [ 1.0, 1.0, 1.0 ],
+								"Translate" : [ 18.153732299804688, 0.0, 58.960910797119141 ],
+								"Type" : 2,
+								"UUID" : "ff299490-33d8-4541-1a61-d373d37dadea"
+							}
+						],
+						"Name" : "Sky001_$AssimpFbx$_Translation",
+						"Parent UUID" : "2f51d79b-62c0-3bae-6508-38f294e4a0f4",
+						"UUID" : "7e38412a-8488-df8b-c820-3eafe615b432"
+					},
+					"Spot001.Target_$AssimpFbx$_Translation" : 
+					{
+						"Children" : 
+						{
+							"Spot001.Target_$AssimpFbx$_PreRotation" : 
+							{
+								"Children" : 
+								{
+									"Spot001.Target_$AssimpFbx$_Rotation" : 
+									{
+										"Children" : 
+										{
+											"Spot001.Target" : 
+											{
+												"Children" : null,
+												"Components" : 
+												[
+													{
+														"Rotation" : [ 0.0, 1.0, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ 0.0, 0.0, 0.0 ],
+														"Type" : 2,
+														"UUID" : "51b1c035-6e77-1b5f-d227-aaff459e8c40"
+													}
+												],
+												"Name" : "Spot001.Target",
+												"Parent UUID" : "72341ef7-9b73-9c75-9064-488221731fbd",
+												"UUID" : "dd39aea6-2e61-6a03-451d-b573b2ac71df"
+											}
+										},
+										"Components" : 
+										[
+											{
+												"Rotation" : [ 0.0, -1.6292068494294654e-07, -1.0 ],
+												"Scale" : [ 1.0, 1.0, 1.0 ],
+												"Translate" : [ 0.0, 0.0, 0.0 ],
+												"Type" : 2,
+												"UUID" : "e5e24a57-cb0c-7b8b-7fb3-6b12587f72fb"
+											}
+										],
+										"Name" : "Spot001.Target_$AssimpFbx$_Rotation",
+										"Parent UUID" : "2a48dae6-f0d7-fd84-31b0-548025b740fb",
+										"UUID" : "72341ef7-9b73-9c75-9064-488221731fbd"
+									}
+								},
+								"Components" : 
+								[
+									{
+										"Rotation" : [ 0.0, -4.3711388286737929e-08, 1.0 ],
+										"Scale" : [ 1.0, 1.0, 1.0 ],
+										"Translate" : [ 0.0, 0.0, 0.0 ],
+										"Type" : 2,
+										"UUID" : "f859faf8-1457-a945-01d9-f3d77bf770ed"
+									}
+								],
+								"Name" : "Spot001.Target_$AssimpFbx$_PreRotation",
+								"Parent UUID" : "1b8ba185-1e4f-b0bc-e24c-f404aa9b0c22",
+								"UUID" : "2a48dae6-f0d7-fd84-31b0-548025b740fb"
+							}
+						},
+						"Components" : 
+						[
+							{
+								"Rotation" : [ 0.0, 1.0, 0.0 ],
+								"Scale" : [ 1.0, 1.0, 1.0 ],
+								"Translate" : [ 28.890945434570313, -60.963882446289063, -2.6648158382158726e-06 ],
+								"Type" : 2,
+								"UUID" : "0ea04096-5a3d-b8cb-b74f-c2cd8e929651"
+							}
+						],
+						"Name" : "Spot001.Target_$AssimpFbx$_Translation",
+						"Parent UUID" : "2f51d79b-62c0-3bae-6508-38f294e4a0f4",
+						"UUID" : "1b8ba185-1e4f-b0bc-e24c-f404aa9b0c22"
+					},
+					"Spot001_$AssimpFbx$_Translation" : 
+					{
+						"Children" : 
+						{
+							"Spot001_$AssimpFbx$_PreRotation" : 
+							{
+								"Children" : 
+								{
+									"Spot001_$AssimpFbx$_Rotation" : 
+									{
+										"Children" : 
+										{
+											"Spot001_$AssimpFbx$_PostRotation" : 
+											{
+												"Children" : 
+												{
+													"Spot001" : 
+													{
+														"Children" : null,
+														"Components" : 
+														[
+															{
+																"Rotation" : [ 0.0, 1.0, 0.0 ],
+																"Scale" : [ 1.0, 1.0, 1.0 ],
+																"Translate" : [ 0.0, 0.0, 0.0 ],
+																"Type" : 2,
+																"UUID" : "d95f7d2f-96e6-e407-6837-03d3480cd8de"
+															}
+														],
+														"Name" : "Spot001",
+														"Parent UUID" : "6373d9ed-5df6-1f61-cdd8-472ed58448ab",
+														"UUID" : "7ffab9e5-be63-df2f-00b4-c35e0182e65d"
+													}
+												},
+												"Components" : 
+												[
+													{
+														"Rotation" : [ -0.0, -4.3711388286737929e-08, -1.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ -0.0, 0.0, -0.0 ],
+														"Type" : 2,
+														"UUID" : "237d8c64-fa3f-e29d-0f80-e1de6bdefbac"
+													}
+												],
+												"Name" : "Spot001_$AssimpFbx$_PostRotation",
+												"Parent UUID" : "fead26fe-a13a-ee1b-0498-2efa168ce0e0",
+												"UUID" : "6373d9ed-5df6-1f61-cdd8-472ed58448ab"
+											}
+										},
+										"Components" : 
+										[
+											{
+												"Rotation" : [ -1.0, 1.7613092495594174e-07, -8.2998688810675958e-08 ],
+												"Scale" : [ 1.0, 1.0, 1.0 ],
+												"Translate" : [ 0.0, 0.0, 0.0 ],
+												"Type" : 2,
+												"UUID" : "ab8cb944-ccde-11f9-4e3b-8ca50b15a085"
+											}
+										],
+										"Name" : "Spot001_$AssimpFbx$_Rotation",
+										"Parent UUID" : "8e2251a4-cf3e-d9c2-703b-774a2b013685",
+										"UUID" : "fead26fe-a13a-ee1b-0498-2efa168ce0e0"
+									}
+								},
+								"Components" : 
+								[
+									{
+										"Rotation" : [ 0.0, -4.3711388286737929e-08, 1.0 ],
+										"Scale" : [ 1.0, 1.0, 1.0 ],
+										"Translate" : [ 0.0, 0.0, 0.0 ],
+										"Type" : 2,
+										"UUID" : "8a8c4fdb-31e0-cc1b-9171-bf15534fc25c"
+									}
+								],
+								"Name" : "Spot001_$AssimpFbx$_PreRotation",
+								"Parent UUID" : "5a5cb0c6-d75b-fcdf-4f85-d90ea44b8b7d",
+								"UUID" : "8e2251a4-cf3e-d9c2-703b-774a2b013685"
+							}
+						},
+						"Components" : 
+						[
+							{
+								"Rotation" : [ 0.0, 1.0, 0.0 ],
+								"Scale" : [ 1.0, 1.0, 1.0 ],
+								"Translate" : [ -66.721267700195313, 141.93412780761719, 6.2041376622801181e-06 ],
+								"Type" : 2,
+								"UUID" : "7c737ed0-d788-9908-faf4-c30b3e686d6f"
+							}
+						],
+						"Name" : "Spot001_$AssimpFbx$_Translation",
+						"Parent UUID" : "2f51d79b-62c0-3bae-6508-38f294e4a0f4",
+						"UUID" : "5a5cb0c6-d75b-fcdf-4f85-d90ea44b8b7d"
+					}
+				},
+				"Components" : 
+				[
+					{
+						"Rotation" : [ 0.0, 0.0, 0.0 ],
+						"Scale" : [ 1.0, 1.0, 1.0 ],
+						"Translate" : [ 0.0, 0.0, 0.0 ],
+						"Type" : 2,
+						"UUID" : "2a4a5a37-a8fc-b3bc-e3eb-8e395fa65007"
+					}
+				],
+				"Name" : "Street_environment_V01",
+				"Parent UUID" : "NULL",
+				"UUID" : "2f51d79b-62c0-3bae-6508-38f294e4a0f4"
+			}
+		},
+		"Components" : 
+		[
+			{
+				"Rotation" : [ 0.0, 0.0, 0.0 ],
+				"Scale" : [ 1.0, 1.0, 1.0 ],
+				"Translate" : [ 0.0, 0.0, 0.0 ],
+				"Type" : 2,
+				"UUID" : "b3a4afff-9994-5fc0-2336-63f2f3b5526c"
+			}
+		],
+		"Name" : "root",
+		"Parent UUID" : "NULL",
+		"UUID" : "4ee5e367-afc0-a2e9-f637-e97aaa226186"
+	}
+}

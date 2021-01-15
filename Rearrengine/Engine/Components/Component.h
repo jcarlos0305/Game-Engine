@@ -3,6 +3,7 @@
 #include "Utils/Globals.h"
 
 #include <string>
+#include <json/json.h>
 
 class GameObject;
 
@@ -21,9 +22,13 @@ public:
 	// Component owner
 	inline void SetOwner(GameObject* _game_object) { game_object = _game_object; }
 
-	// Component JSON methods
+	// Component UUID
+	inline std::string GetUUID() const { return UUID; };
 	inline void SetUUID(std::string _uuid) { UUID = _uuid; };
-	virtual bool ToJSON() const { return false; };
+
+	// Component JSON methods
+	virtual void ToJson(Json::Value& _owner_root) const {};
+	virtual void FromJson(Json::Value& _component_data) {};
 
 protected:
 	bool enabled = false;

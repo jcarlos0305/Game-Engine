@@ -8,7 +8,11 @@
 ComponentTransform::ComponentTransform() {
 	type = ComponentTypes::kTransform;
 	SetUUID(custom_UUID::generate());
-	ToJSON();
+}
+
+ComponentTransform::ComponentTransform(Json::Value& _component_data, GameObject* _game_object) {
+	SetOwner(_game_object);
+	FromJson(_component_data);
 }
 
 void ComponentTransform::SetTransform(const aiMatrix4x4& matrix) {
@@ -39,11 +43,27 @@ void ComponentTransform::SetTransform(float3 translate_vector, float3 rotation_v
 	UpdateGlobalMatrix();
 }
 
+void ComponentTransform::FromJson(Json::Value& _component_data) {
+	SetTransform(
+		float3(_component_data[JSON_PROPERTY_TRANSLATE][0].asFloat(),
+		_component_data[JSON_PROPERTY_TRANSLATE][1].asFloat(),
+		_component_data[JSON_PROPERTY_TRANSLATE][2].asFloat()),
+
+		float3(_component_data[JSON_PROPERTY_ROTATION][0].asFloat(),
+		_component_data[JSON_PROPERTY_ROTATION][1].asFloat(),
+		_component_data[JSON_PROPERTY_ROTATION][2].asFloat()),
+
+		float3(_component_data[JSON_PROPERTY_SCALE][0].asFloat(),
+		_component_data[JSON_PROPERTY_SCALE][1].asFloat(),
+		_component_data[JSON_PROPERTY_SCALE][2].asFloat())
+	);
+}
+
 void ComponentTransform::UpdateGlobalMatrix() {
 	global_matrix = game_object->GetParent() != nullptr ? game_object->GetParent()->GetGlobalMatrix() * local_matrix : local_matrix;
 }
 
-bool ComponentTransform::ToJSON() const {
+void ComponentTransform::ToJson(Json::Value& _owner_root) const {
 	Json::Value component_transform_root;
 
 	Json::Value _scale(Json::arrayValue);
@@ -55,15 +75,14 @@ bool ComponentTransform::ToJSON() const {
 	Json::Value _translate(Json::arrayValue);
 	Float3ToJson(_translate, translate);
 
-	component_transform_root["Component Transform"][JSON_PROPERTY_UUID] = UUID;
-	component_transform_root["Component Transform"][JSON_PROPERTY_TYPE] = (int)type;
+	component_transform_root[JSON_PROPERTY_UUID] = UUID;
+	component_transform_root[JSON_PROPERTY_TYPE] = (int)type;
+	component_transform_root[JSON_PROPERTY_SCALE] = _scale;
+	component_transform_root[JSON_PROPERTY_ROTATION] = _rotation;
+	component_transform_root[JSON_PROPERTY_TRANSLATE] = _translate;
 
-	component_transform_root["Component Transform"][JSON_PROPERTY_SCALE] = _scale;
-	component_transform_root["Component Transform"][JSON_PROPERTY_ROTATION] = _rotation;
-	component_transform_root["Component Transform"][JSON_PROPERTY_TRANSLATE] = _translate;
+	_owner_root.append(component_transform_root);
 
-	std::string name = "component_transform_" + UUID;
-	PrintToFile(name, component_transform_root);
-
-	return true;
+	//std::string name = "component_transform_" + UUID;
+	//PrintToFile(name, component_transform_root);
 }

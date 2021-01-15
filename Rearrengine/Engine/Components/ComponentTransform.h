@@ -5,16 +5,19 @@
 #include "Math/float3.h"
 #include "Math/float4x4.h"
 #include "Math/Quat.h"
+
 #include <assimp/matrix4x4.h>
 
 class ComponentTransform : public Component {
 public:
 	ComponentTransform();
+	ComponentTransform(Json::Value& _component_transform_data, GameObject* _game_object);
 
 	void SetTransform(const aiMatrix4x4& matrix);
 	void SetTransform(float3 position_vector, float3 rotation_vector, float3 scale_vector);
 
-	bool ToJSON() const override;
+	void ToJson(Json::Value& _owner_root) const override;
+	void FromJson(Json::Value& _component_data) override;
 	void UpdateGlobalMatrix();
 
 	inline float3 GetScale() { return scale; };
