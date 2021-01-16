@@ -16,7 +16,9 @@ Hierarchy::~Hierarchy() {}
 
 void Hierarchy::Draw() {
 	if (ImGui::Begin(title, &visible, ImGuiWindowFlags_NoCollapse)) {
-		DrawRecursive(*App->scene->GetRoot());
+		if (App->scene->GetRoot()) {
+			DrawRecursive(*App->scene->GetRoot());
+		};
 		ImGui::End();
 	}
 }

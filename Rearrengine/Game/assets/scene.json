@@ -1,0 +1,299 @@
+[
+	{
+		"root" : 
+		{
+			"Children" : 
+			[
+				{
+					"BakerHouse - 8189196a-124c-123d-aca5-a1c4205b1020" : 
+					{
+						"Children" : 
+						[
+							{
+								"Chimney - 0ef76424-859b-fb0b-dec3-2715da2f0bc5" : 
+								{
+									"Children" : [],
+									"Components" : 
+									[
+										{
+											"Rotation" : [ 0.0, 0.0, 0.0 ],
+											"Scale" : [ 1.0, 1.0, 1.0 ],
+											"Translate" : [ 4.0, 0.0, 4.0 ],
+											"Type" : 2,
+											"UUID" : "2218a789-dccf-beac-2d96-aab204f82990"
+										},
+										{
+											"Mesh Path" : "assets/Meshes/Untitled.001.json",
+											"Name" : "Untitled.001",
+											"Type" : 0
+										}
+									],
+									"Name" : "Chimney",
+									"Parent UUID" : "8189196a-124c-123d-aca5-a1c4205b1020",
+									"UUID" : "0ef76424-859b-fb0b-dec3-2715da2f0bc5"
+								}
+							},
+							{
+								"Baker_house - a1e129da-0710-5418-b075-69cf0b02a81a" : 
+								{
+									"Children" : [],
+									"Components" : 
+									[
+										{
+											"Rotation" : [ 0.0, 0.0, 0.0 ],
+											"Scale" : [ 1.0, 1.0, 1.0 ],
+											"Translate" : [ 4.0, 0.0, 4.0 ],
+											"Type" : 2,
+											"UUID" : "ff80aecc-4fb7-3332-1699-2eb9611ba81e"
+										},
+										{
+											"Mesh Path" : "assets/Meshes/Untitled.json",
+											"Name" : "Untitled",
+											"Type" : 0
+										}
+									],
+									"Name" : "Baker_house",
+									"Parent UUID" : "8189196a-124c-123d-aca5-a1c4205b1020",
+									"UUID" : "a1e129da-0710-5418-b075-69cf0b02a81a"
+								}
+							}
+						],
+						"Components" : 
+						[
+							{
+								"Rotation" : [ 0.0, 0.0, 0.0 ],
+								"Scale" : [ 1.0, 1.0, 1.0 ],
+								"Translate" : [ 0.0, 0.0, 0.0 ],
+								"Type" : 2,
+								"UUID" : "5a0859ba-dbf1-72ca-a4f4-64faa9048a8c"
+							}
+						],
+						"Name" : "BakerHouse",
+						"Parent UUID" : "5d7d1ea7-f584-228d-09d1-05aae3183915",
+						"UUID" : "8189196a-124c-123d-aca5-a1c4205b1020"
+					}
+				},
+				{
+					"BakerHouse - 56174f58-aae4-b638-7dc1-86d8c08352be" : 
+					{
+						"Children" : 
+						[
+							{
+								"Chimney - 8fd77d44-000d-94ff-50c5-04edef19ba25" : 
+								{
+									"Children" : [],
+									"Components" : 
+									[
+										{
+											"Rotation" : [ 0.0, 0.0, 0.0 ],
+											"Scale" : [ 1.0, 1.0, 1.0 ],
+											"Translate" : [ -4.0, 0.0, -4.0 ],
+											"Type" : 2,
+											"UUID" : "77d059f9-b67d-f309-f916-abf19394e52e"
+										},
+										{
+											"Mesh Path" : "assets/Meshes/Untitled.001.json",
+											"Name" : "Untitled.001",
+											"Type" : 0
+										}
+									],
+									"Name" : "Chimney",
+									"Parent UUID" : "56174f58-aae4-b638-7dc1-86d8c08352be",
+									"UUID" : "8fd77d44-000d-94ff-50c5-04edef19ba25"
+								}
+							},
+							{
+								"Baker_house - 031184f5-2d3c-32a0-1e74-9816b9b27f1b" : 
+								{
+									"Children" : [],
+									"Components" : 
+									[
+										{
+											"Rotation" : [ 0.0, 0.0, 0.0 ],
+											"Scale" : [ 1.0, 1.0, 1.0 ],
+											"Translate" : [ -4.0, 0.0, -4.0 ],
+											"Type" : 2,
+											"UUID" : "9a8fdded-7caf-5054-5d64-6bfb2e9b9d1d"
+										},
+										{
+											"Mesh Path" : "assets/Meshes/Untitled.json",
+											"Name" : "Untitled",
+											"Type" : 0
+										}
+									],
+									"Name" : "Baker_house",
+									"Parent UUID" : "56174f58-aae4-b638-7dc1-86d8c08352be",
+									"UUID" : "031184f5-2d3c-32a0-1e74-9816b9b27f1b"
+								}
+							}
+						],
+						"Components" : 
+						[
+							{
+								"Rotation" : [ 0.0, 0.0, 0.0 ],
+								"Scale" : [ 1.0, 1.0, 1.0 ],
+								"Translate" : [ 0.0, 0.0, 0.0 ],
+								"Type" : 2,
+								"UUID" : "d0e5506b-df60-a49d-482d-ea9f41ba61a1"
+							}
+						],
+						"Name" : "BakerHouse",
+						"Parent UUID" : "5d7d1ea7-f584-228d-09d1-05aae3183915",
+						"UUID" : "56174f58-aae4-b638-7dc1-86d8c08352be"
+					}
+				},
+				{
+					"BakerHouse - 94fe1055-fbab-5669-71d1-b1089a1c0124" : 
+					{
+						"Children" : 
+						[
+							{
+								"Chimney - ec64203c-d384-9cc4-3e17-014f03b17c90" : 
+								{
+									"Children" : [],
+									"Components" : 
+									[
+										{
+											"Rotation" : [ 0.0, 0.0, 0.0 ],
+											"Scale" : [ 1.0, 1.0, 1.0 ],
+											"Translate" : [ -4.0, 0.0, 4.0 ],
+											"Type" : 2,
+											"UUID" : "e9acdf0f-b07e-6bc9-c3b0-c7ba9796858f"
+										},
+										{
+											"Mesh Path" : "assets/Meshes/Untitled.001.json",
+											"Name" : "Untitled.001",
+											"Type" : 0
+										}
+									],
+									"Name" : "Chimney",
+									"Parent UUID" : "94fe1055-fbab-5669-71d1-b1089a1c0124",
+									"UUID" : "ec64203c-d384-9cc4-3e17-014f03b17c90"
+								}
+							},
+							{
+								"Baker_house - 19807072-29f2-bc9d-d4de-88f10f2d21c7" : 
+								{
+									"Children" : [],
+									"Components" : 
+									[
+										{
+											"Rotation" : [ 0.0, 0.0, 0.0 ],
+											"Scale" : [ 1.0, 1.0, 1.0 ],
+											"Translate" : [ -4.0, 0.0, 4.0 ],
+											"Type" : 2,
+											"UUID" : "90cb3e94-e22d-c71f-2a94-95da98f57609"
+										},
+										{
+											"Mesh Path" : "assets/Meshes/Untitled.json",
+											"Name" : "Untitled",
+											"Type" : 0
+										}
+									],
+									"Name" : "Baker_house",
+									"Parent UUID" : "94fe1055-fbab-5669-71d1-b1089a1c0124",
+									"UUID" : "19807072-29f2-bc9d-d4de-88f10f2d21c7"
+								}
+							}
+						],
+						"Components" : 
+						[
+							{
+								"Rotation" : [ 0.0, 0.0, 0.0 ],
+								"Scale" : [ 1.0, 1.0, 1.0 ],
+								"Translate" : [ 0.0, 0.0, 0.0 ],
+								"Type" : 2,
+								"UUID" : "9174c91a-e8ce-e40c-0c62-ddedc9c3aaa5"
+							}
+						],
+						"Name" : "BakerHouse",
+						"Parent UUID" : "5d7d1ea7-f584-228d-09d1-05aae3183915",
+						"UUID" : "94fe1055-fbab-5669-71d1-b1089a1c0124"
+					}
+				},
+				{
+					"BakerHouse - df53361c-e25d-6d14-1b8a-62953e34773b" : 
+					{
+						"Children" : 
+						[
+							{
+								"Chimney - d17a8966-fcf7-be69-9c7c-410930fecddb" : 
+								{
+									"Children" : [],
+									"Components" : 
+									[
+										{
+											"Rotation" : [ 0.0, 0.0, 0.0 ],
+											"Scale" : [ 1.0, 1.0, 1.0 ],
+											"Translate" : [ 4.0, 0.0, -4.0 ],
+											"Type" : 2,
+											"UUID" : "33db4d84-e752-f904-38ba-e9c35979551c"
+										},
+										{
+											"Mesh Path" : "assets/Meshes/Untitled.001.json",
+											"Name" : "Untitled.001",
+											"Type" : 0
+										}
+									],
+									"Name" : "Chimney",
+									"Parent UUID" : "df53361c-e25d-6d14-1b8a-62953e34773b",
+									"UUID" : "d17a8966-fcf7-be69-9c7c-410930fecddb"
+								}
+							},
+							{
+								"Baker_house - d8bc0d2c-bb1f-85bb-ebf7-df42fc0fc396" : 
+								{
+									"Children" : [],
+									"Components" : 
+									[
+										{
+											"Rotation" : [ 1.0, 1.0, 1.0 ],
+											"Scale" : [ 1.0, 1.0, 1.0 ],
+											"Translate" : [ 4.0, 0.0, -4.0 ],
+											"Type" : 2,
+											"UUID" : "6b64b486-c9fd-eac4-cdb0-c64b9490f59b"
+										},
+										{
+											"Mesh Path" : "assets/Meshes/Untitled.json",
+											"Name" : "Untitled",
+											"Type" : 0
+										}
+									],
+									"Name" : "Baker_house",
+									"Parent UUID" : "df53361c-e25d-6d14-1b8a-62953e34773b",
+									"UUID" : "d8bc0d2c-bb1f-85bb-ebf7-df42fc0fc396"
+								}
+							}
+						],
+						"Components" : 
+						[
+							{
+								"Rotation" : [ 0.0, 0.0, 0.0 ],
+								"Scale" : [ 1.0, 1.0, 1.0 ],
+								"Translate" : [ 0.0, 0.0, 0.0 ],
+								"Type" : 2,
+								"UUID" : "ab765cdd-817c-1b40-ace4-2dfc1c19af38"
+							}
+						],
+						"Name" : "BakerHouse",
+						"Parent UUID" : "5d7d1ea7-f584-228d-09d1-05aae3183915",
+						"UUID" : "df53361c-e25d-6d14-1b8a-62953e34773b"
+					}
+				}
+			],
+			"Components" : 
+			[
+				{
+					"Rotation" : [ 0.0, 0.0, 0.0 ],
+					"Scale" : [ 1.0, 1.0, 1.0 ],
+					"Translate" : [ 0.0, 0.0, 0.0 ],
+					"Type" : 2,
+					"UUID" : "92d0bb03-7d91-fae8-4066-005bb2e8c877"
+				}
+			],
+			"Name" : "root",
+			"Parent UUID" : "NULL",
+			"UUID" : "5d7d1ea7-f584-228d-09d1-05aae3183915"
+		}
+	}
+]

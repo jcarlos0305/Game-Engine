@@ -4,11 +4,15 @@
 #include "Components/Component.h"
 #include "Math/float4x4.h"
 
+#include <json/json.h>
+#include <string>
 #include <vector>
 
 class GameObject {
 public:
 	GameObject();
+	GameObject(const char* _uuid, const char* _name);
+	GameObject(Json::Value& _game_object_data);
 	~GameObject();
 
 	void SetName(const char* _name) { name = _strdup(_name); };
@@ -31,7 +35,14 @@ public:
 	inline void SetParent(GameObject* _parent) { parent = _parent; };
 	void UpdateChildrenGlobalMatrix();
 
+	void ToJson(Json::Value& _root, GameObject* _game_object);
+	void FromJson(Json::Value& _game_object_data);
+
+	std::string GetUUID() const { return UUID; };
+	void SetUUID(const char* _uuid) { UUID = _uuid; };
+
 private:
+	std::string UUID;
 	char* name = "";
 	std::vector<GameObject*> children;
 	std::vector<Component*>  components;

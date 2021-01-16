@@ -280,6 +280,18 @@
     <ClInclude Include="External Libs\Debug Draw\Debug Draw\ModuleDebugDraw.h" />
     <ClInclude Include="Engine\Resources\Timer.h" />
     <ClInclude Include="Engine\Resources\PerformanceTimer.h" />
+    <ClInclude Include="External Libs\jsoncpp\include\json\allocator.h" />
+    <ClInclude Include="External Libs\jsoncpp\include\json\assertions.h" />
+    <ClInclude Include="External Libs\jsoncpp\include\json\config.h" />
+    <ClInclude Include="External Libs\jsoncpp\include\json\forwards.h" />
+    <ClInclude Include="External Libs\jsoncpp\include\json\json.h" />
+    <ClInclude Include="External Libs\jsoncpp\include\json\json_features.h" />
+    <ClInclude Include="External Libs\jsoncpp\include\json\reader.h" />
+    <ClInclude Include="External Libs\jsoncpp\include\json\value.h" />
+    <ClInclude Include="External Libs\jsoncpp\include\json\version.h" />
+    <ClInclude Include="External Libs\jsoncpp\include\json\writer.h" />
+    <ClInclude Include="Engine\Utils\UUID.h" />
+    <ClInclude Include="Engine\Utils\Utils.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Modules">

@@ -40,7 +40,8 @@ bool ModuleModel::Init() {
 	aiAttachLogStream(&stream);
 
 	//Load("assets/BakerHouse.fbx", "assets/vertex.glsl", "assets/fragment.glsl");
-	Load("assets/Street_Environment/Street_environment_V01.fbx", "assets/vertex.glsl", "assets/fragment.glsl");
+	//Load("assets/Street_Environment/Street_environment_V01.fbx", "assets/vertex.glsl", "assets/fragment.glsl");
+	//Load("assets/Robot/Robot.FBX", "assets/vertex.glsl", "assets/fragment.glsl");
 
 	return true;
 }
@@ -89,7 +90,8 @@ void ModuleModel::Load(const char* model_path, const char* vertex_shader_path, c
 		LoadModelChildren(scene->mMeshes, program, scene->mRootNode, game_object);
 		LOG("Model loaded successfully!\n");
 
-		App->scene->GetRoot()->AddChild(game_object);
+		GameObject* root = App->scene->InitializeRoot();
+		root->AddChild(game_object);
 	}
 	else {
 		LOG("Error loading %s: %s", model_path, aiGetErrorString());
@@ -182,6 +184,12 @@ bool ModuleModel::SearchTexture(const char* texture_path, const char* src_path) 
 			}
 			else {
 				LOG("Well.. we tried!\n");
+				loaded_texture = App->texture->LoadTexture(DEFAULT_TEXTURE_PATH);
+				if (loaded_texture) {
+					LOG("Default texture loaded successfully!\n");
+					textures.push_back(loaded_texture);
+					return true;
+				}
 			}
 		}
 	}
