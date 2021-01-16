@@ -39,6 +39,8 @@ bool ModuleModel::Init() {
 	stream.callback = AssimpLog;
 	aiAttachLogStream(&stream);
 
+	unsigned int loaded_texture = App->texture->LoadTexture(DEFAULT_TEXTURE_PATH);
+	textures.push_back(loaded_texture);
 	//Load("assets/BakerHouse.fbx", "assets/vertex.glsl", "assets/fragment.glsl");
 	//Load("assets/Street_Environment/Street_environment_V01.fbx", "assets/vertex.glsl", "assets/fragment.glsl");
 	//Load("assets/Robot/Robot.FBX", "assets/vertex.glsl", "assets/fragment.glsl");
@@ -79,9 +81,17 @@ void ModuleModel::Load(const char* model_path, const char* vertex_shader_path, c
 		char model_name[_MAX_FNAME];
 		_splitpath_s(model_path, NULL, 0, NULL, 0, model_name, _MAX_FNAME, NULL, 0);
 
+		GameObject* root = nullptr;
+
+		if (!App->scene->GetRoot()) {
+			root = App->scene->InitializeRoot();
+		}
+		else {
+			root = App->scene->GetRoot();
+		}
 		GameObject* game_object = new GameObject();
 		game_object->SetName(model_name);
-		game_object->SetParent(App->scene->GetRoot());
+		game_object->SetParent(root);
 
 		ComponentTransform* component_transform = new ComponentTransform();
 		component_transform->SetOwner(game_object);
@@ -90,7 +100,6 @@ void ModuleModel::Load(const char* model_path, const char* vertex_shader_path, c
 		LoadModelChildren(scene->mMeshes, program, scene->mRootNode, game_object);
 		LOG("Model loaded successfully!\n");
 
-		GameObject* root = App->scene->InitializeRoot();
 		root->AddChild(game_object);
 	}
 	else {
@@ -235,6 +244,38 @@ void ModuleModel::LoadModelChildren(aiMesh** const mMeshes, unsigned int program
 			mesh_component->SetMesh(mesh);
 			mesh_component->SetOwner(game_object);
 			game_object->AddComponent(mesh_component);
+		}
+		else if (node->mChildren[i]->mNumMeshes > 1) {
+			for (unsigned int j = 0; j < node->mChildren[i]->mNumMeshes; j++) {
+				GameObject* child = new GameObject();
+				child->SetName(node->mChildren[i]->mName.C_Str());
+
+				ComponentTransform* component_transform = new ComponentTransform();
+				component_transform->SetOwner(child);
+				child->SetParent(game_object);
+				component_transform->SetTransform(node->mChildren[i]->mTransformation);
+				child->AddComponent(component_transform);
+
+				Mesh* mesh = new Mesh(program);
+				mesh->LoadVBO(mMeshes[node->mChildren[i]->mMeshes[j]]);
+				mesh->LoadEBO(mMeshes[node->mChildren[i]->mMeshes[j]]);
+				mesh->CreateVAO();
+
+				if (i == 0) {
+					max_x = mesh->max_x; min_x = mesh->min_x;
+					max_y = mesh->max_y; min_y = mesh->min_y;
+					max_z = mesh->max_z; min_z = mesh->min_z;
+				}
+				else {
+					SetMinMax(mesh);
+				}
+
+				ComponentMesh* mesh_component = new ComponentMesh();
+				mesh_component->SetMesh(mesh);
+				mesh_component->SetOwner(child);
+				child->AddComponent(mesh_component);
+				game_object->AddChild(child);
+			}
 		}
 		LoadModelChildren(mMeshes, program, node->mChildren[i], game_object);
 		father->AddChild(game_object);

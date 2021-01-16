@@ -2,6 +2,7 @@
 #include "Main/Application.h"
 #include "Modules/ModuleCamera.h"
 #include "Modules/ModuleRender.h"
+#include "Modules/ModuleModel.h"
 #include "Utils/Utils.h"
 #include "Utils/UUID.h"
 
@@ -77,6 +78,25 @@ void Mesh::LoadVBO(const aiMesh* mesh) {
 	glUnmapBuffer(GL_ARRAY_BUFFER);
 }
 
+void Mesh::LoadVBO(Json::Value& _vbo_data) {
+	glGenBuffers(1, &vbo);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+
+	unsigned vertex_size = (sizeof(float) * 3 + sizeof(float) * 2);
+	unsigned vertices_size = vertex_size * num_vertices;
+
+	glBufferData(GL_ARRAY_BUFFER, vertices_size, nullptr, GL_STATIC_DRAW);
+
+	float* uvs = (float*)(glMapBufferRange(GL_ARRAY_BUFFER, 0, vertices_size, GL_MAP_WRITE_BIT));
+	unsigned int i = 0;
+
+	for (Json::Value vbo_vertex : _vbo_data) {
+		uvs[i++] = vbo_vertex.asFloat();
+	}
+
+	glUnmapBuffer(GL_ARRAY_BUFFER);
+}
+
 void Mesh::LoadEBO(const aiMesh* mesh) {
 	glGenBuffers(1, &ebo);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
@@ -100,6 +120,21 @@ void Mesh::LoadEBO(const aiMesh* mesh) {
 	mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_EBO] = ebo_json;
 
 	PrintToFile(name, JSON_MESH_DIRECTORY, mesh_root);
+}
+
+void Mesh::LoadEBO(Json::Value& _ebo_data) {
+	glGenBuffers(1, &ebo);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+	unsigned index_size = sizeof(unsigned) * num_faces * 3;
+
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, index_size, nullptr, GL_STATIC_DRAW);
+	unsigned* indices = (unsigned*)(glMapBufferRange(GL_ELEMENT_ARRAY_BUFFER, 0, index_size, GL_MAP_WRITE_BIT));
+	unsigned int i = 0;
+
+	for (Json::Value ebo_index : _ebo_data) {
+		indices[i++] = ebo_index.asFloat();
+	}
+	glUnmapBuffer(GL_ELEMENT_ARRAY_BUFFER);
 }
 
 void Mesh::CreateVAO() {
@@ -132,7 +167,8 @@ void Mesh::Draw(const std::vector<unsigned>& model_textures, const float4x4 mode
 
 	glBindVertexArray(vao);
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, model_textures[material_index]);
+	//glBindTexture(GL_TEXTURE_2D, model_textures[material_index]); TODO: This will be updated with the materials
+	glBindTexture(GL_TEXTURE_2D, model_textures[0]);
 
 	glDrawElements(GL_TRIANGLES, num_indices, GL_UNSIGNED_INT, nullptr);
 
@@ -154,4 +190,27 @@ void Mesh::ToJson() {
 	mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_MAX_Z] = max_z;
 }
 
-void Mesh::FromJson(std::string _mesh_path) {}
+void Mesh::FromJson(std::string _mesh_path) {
+	Json::Value mesh_root;
+	LoadFromFile(_mesh_path, mesh_root);
+
+	name = _strdup(mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_NAME].asCString());
+	num_faces = mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_NUM_FACES].asInt();
+	num_vertices = mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_NUM_VERTICES].asInt();
+	material_index = mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_MATERIAL_INDEX].asInt();
+	num_indices = mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_NUM_INDICES].asInt();
+
+	min_x = mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_MIN_X].asFloat();
+	min_y = mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_MIN_Y].asFloat();
+	min_z = mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_MIN_Z].asFloat();
+
+	max_x = mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_MAX_X].asFloat();
+	max_y = mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_MAX_Y].asFloat();
+	max_z = mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_MAX_Z].asFloat();
+
+	program = App->model->CreateProgram("assets/vertex.glsl", "assets/fragment.glsl");
+
+	LoadVBO(mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_VBO]);
+	LoadEBO(mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_EBO]);
+	CreateVAO();
+}

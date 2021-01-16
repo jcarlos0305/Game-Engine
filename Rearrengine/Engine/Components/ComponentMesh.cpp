@@ -12,8 +12,9 @@ ComponentMesh::ComponentMesh() {
 }
 
 ComponentMesh::ComponentMesh(Json::Value& _component_mesh_data, GameObject* _game_object) {
-	FromJson(_component_mesh_data);
+	type = ComponentTypes::kMesh;
 	SetOwner(_game_object);
+	FromJson(_component_mesh_data);
 }
 
 ComponentMesh::~ComponentMesh() {

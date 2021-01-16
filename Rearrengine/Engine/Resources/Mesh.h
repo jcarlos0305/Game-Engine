@@ -14,7 +14,9 @@ public:
 	~Mesh();
 
 	void LoadVBO(const aiMesh* mesh);
+	void LoadVBO(Json::Value& _vbo_data);
 	void LoadEBO(const aiMesh* mesh);
+	void LoadEBO(Json::Value& _ebo_data);
 	void CreateVAO();
 	void Draw(const std::vector<unsigned>& model_textures, float4x4 model);
 	void ToJson();

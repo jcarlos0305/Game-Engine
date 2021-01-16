@@ -11,6 +11,7 @@ ComponentTransform::ComponentTransform() {
 }
 
 ComponentTransform::ComponentTransform(Json::Value& _component_data, GameObject* _game_object) {
+	type = ComponentTypes::kTransform;
 	SetOwner(_game_object);
 	FromJson(_component_data);
 }
@@ -37,7 +38,7 @@ void ComponentTransform::SetTransform(float3 translate_vector, float3 rotation_v
 	rotation = rotation_vector;
 	translate = translate_vector;
 
-	rotation_quat = Quat::FromEulerXYZ(rotation_vector.x, rotation_vector.y, rotation_vector.z);
+	rotation_quat = Quat::FromEulerXYZ(DEGTORAD(rotation_vector.x), DEGTORAD(rotation_vector.y), DEGTORAD(rotation_vector.z));
 
 	local_matrix = float4x4::FromTRS(translate, rotation_quat, scale);
 	UpdateGlobalMatrix();
