@@ -1,15 +1,18 @@
 #pragma once
 
 #include "QuadtreeNode.h"
+#include "Utils/Globals.h"
 
 class Quadtree
 {
 public:
-	Quadtree();
+	Quadtree(const AABB aabb);
 	~Quadtree();
+
+	void Draw();
 
 private:
 	QuadtreeNode* root = nullptr;
-	int depth = 3;
+	int depth = DEPTH_QUADTREE;
 };
 

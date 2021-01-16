@@ -3,6 +3,7 @@
 #include "Module.h"
 
 #include "Resources/GameObject.h"
+#include "Resources/Quadtree.h"
 
 class ModuleScene : public Module {
 public:
@@ -14,8 +15,10 @@ public:
 
 	void RecursiveDelete(GameObject* game_object);
 
+	UpdateStatus Update() override;
 	bool CleanUp();
 
 private:
 	GameObject* root = nullptr;
+	Quadtree* quadtree = nullptr;
 };

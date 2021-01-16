@@ -23,8 +23,8 @@ public:
 	bool            CleanUp();
 
     void            Draw(const float4x4& view, const float4x4& proj, unsigned width, unsigned height);
-    void            DrawAABB(const float3& _maxs, const float3& _mins);
-    void            DrawOBB(OBB _obb);
+    void            DrawAABB(const float3& _maxs, const float3& _mins, const float3 color);
+    void            DrawOBB(OBB _obb, const float3 color);
     void            DrawFrustumCamera(const float4x4& viewProjMatrix);
 private:
 

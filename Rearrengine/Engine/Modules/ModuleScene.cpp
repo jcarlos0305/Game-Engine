@@ -7,9 +7,12 @@
 #include "Components/ComponentMesh.h"
 #include "Components/ComponentTransform.h"
 
+typedef math::float3 ddVec3;
+
 ModuleScene::ModuleScene() : root(new GameObject()) {
 	root->SetName("root");
 	root->AddComponent(new ComponentTransform());
+	quadtree = new Quadtree(AABB(float3(-100,-100,-100),float3(100,100,100)));
 }
 
 ModuleScene::~ModuleScene() {}
@@ -23,8 +26,9 @@ void ModuleScene::Draw(GameObject& game_object) {
 			bool isMeshInsideFrustum = App->camera->GetGameCamera()->GetFrustum().Intersects(game_object.GetAABB());
 			if (isMeshInsideFrustum) {
 				// Drawing quads from mesh to check its hitbox - AABB
-				// if (App->render->showQuad) App->debug_draw->DrawAABB(float3(game_object.GetAABB().MaxX(), game_object.GetAABB().MaxY(), game_object.GetAABB().MaxZ()), float3(game_object.GetAABB().MinX(), game_object.GetAABB().MinY(), game_object.GetAABB().MinZ()));
-				if (App->render->showQuad) App->debug_draw->DrawOBB(game_object.GetOBB());
+				//if (App->render->showQuad) App->debug_draw->DrawAABB(float3(game_object.GetAABB().MaxX(), game_object.GetAABB().MaxY(), game_object.GetAABB().MaxZ()), 
+					//float3(game_object.GetAABB().MinX(), game_object.GetAABB().MinY(), game_object.GetAABB().MinZ()), float3(1.000000f, 0.411765f, 0.705882f));
+				if (App->render->showQuad) App->debug_draw->DrawOBB(game_object.GetOBB(), float3(0.372549f, 0.619608f, 0.627451f));
 				component_mesh->Draw();
 			}
 		}
@@ -40,6 +44,12 @@ void ModuleScene::RecursiveDelete(GameObject* game_object) {
 		RecursiveDelete(child);
 	}
 	delete game_object;
+}
+
+UpdateStatus ModuleScene::Update()
+{
+	quadtree->Draw();
+	return UpdateStatus::kUpdateContinue;
 }
 
 bool ModuleScene::CleanUp() {

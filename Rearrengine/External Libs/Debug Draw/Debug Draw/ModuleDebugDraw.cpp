@@ -622,20 +622,18 @@ void ModuleDebugDraw::Draw(const float4x4& view, const float4x4& proj, unsigned 
     dd::flush();
 }
 
-void ModuleDebugDraw::DrawAABB(const float3& _maxs, const float3& _mins) {
+void ModuleDebugDraw::DrawAABB(const float3& _maxs, const float3& _mins, const float3 color) {
     float3 mins = _mins;
     float3 maxs = _maxs;
-    dd::aabb(mins, maxs, dd::colors::HotPink);
+    dd::aabb(mins, maxs, color);
 }
 
-void ModuleDebugDraw::DrawOBB(OBB _obb)
+void ModuleDebugDraw::DrawOBB(OBB _obb, const float3 color)
 {
     float3 points[8] = { float3(_obb.CornerPoint(0)), float3(_obb.CornerPoint(1)), float3(_obb.CornerPoint(2)), float3(_obb.CornerPoint(3)), 
                            float3(_obb.CornerPoint(4)), float3(_obb.CornerPoint(5)), float3(_obb.CornerPoint(6)), float3(_obb.CornerPoint(7)) };
-    dd::box(points, dd::colors::AliceBlue);
+    dd::box(points, color);
 }
-
-
 
 void ModuleDebugDraw::DrawFrustumCamera(const float4x4& viewProjMatrix)
 {

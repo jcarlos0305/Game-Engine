@@ -63,3 +63,6 @@ enum class ComponentTypes {
 	kTransform,
 	kUndefined
 };
+
+// Depth Quadtree
+#define DEPTH_QUADTREE 3;
