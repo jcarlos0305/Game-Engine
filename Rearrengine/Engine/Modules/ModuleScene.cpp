@@ -52,7 +52,5 @@ void ModuleScene::FromJSON() {
 	std::string extension = JSON_FILE_EXTENSION;
 	path.append("scene" + extension);
 	LoadFromFile(path, scene_root);
-	//root = new GameObject(scene_root["root"][JSON_PROPERTY_GAME_OBJECT_UUID].asCString(), scene_root["root"][JSON_PROPERTY_GAME_OBJECT_NAME].asCString());
-	root = new GameObject(scene_root["root"]);
-	//root->FromJson();
+	root = new GameObject(scene_root[0]["root"]);
 }
