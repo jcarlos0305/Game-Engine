@@ -12,6 +12,7 @@ public:
 	~ModuleScene();
 
 	inline GameObject* GetRoot() { return root; };
+	inline Quadtree* GetQuadtree() { return quadtree; };
 	void Draw(GameObject& game_object);
 	void DrawQuadtree(QuadtreeNode* quadtreeNode);
 

@@ -10,10 +10,11 @@ public:
 	QuadtreeNode(const AABB aabb, QuadtreeNode* _parent, int _index);
 	~QuadtreeNode();
 
+	inline AABB GetBoundingBox() { return boundingBox; };
 	void Draw();
 	void CreateChildrenNodes();
 	inline std::vector<QuadtreeNode*> GetChildren() { return children; };
-	void InsertIntersectGameObjects();
+	void InsertGameObject(GameObject* gameObject);
 	inline int GetIndex() { return index; };
 
 private:

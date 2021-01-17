@@ -227,6 +227,7 @@ void ModuleModel::LoadModelChildren(aiMesh** const mMeshes, unsigned int program
 			mesh_component->SetMesh(mesh);
 			mesh_component->SetOwner(game_object);
 			game_object->AddComponent(mesh_component);
+			App->scene->GetQuadtree()->InsertGameObject(game_object);
 		}
 		LoadModelChildren(mMeshes, program, node->mChildren[i], game_object);
 		father->AddChild(game_object);

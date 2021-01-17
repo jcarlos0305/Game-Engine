@@ -11,6 +11,8 @@ public:
 
 	inline QuadtreeNode* GetRoot() { return root; };
 
+	void InsertGameObject(GameObject* gameObject);
+
 private:
 	QuadtreeNode* root = nullptr;
 };

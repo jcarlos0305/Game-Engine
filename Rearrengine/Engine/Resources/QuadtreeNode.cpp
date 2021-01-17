@@ -8,11 +8,6 @@ QuadtreeNode::QuadtreeNode(const AABB aabb)
 	boundingBox = aabb;
 	index = 0;
 	isDivided = false;
-	int depth = DEPTH_QUADTREE;
-	if (index < depth) {
-		CreateChildrenNodes();
-	}
-	InsertIntersectGameObjects();
 }
 
 QuadtreeNode::QuadtreeNode(const AABB aabb, QuadtreeNode* _parent, int _index)
@@ -20,11 +15,7 @@ QuadtreeNode::QuadtreeNode(const AABB aabb, QuadtreeNode* _parent, int _index)
 	boundingBox = aabb;
 	index = _index;
 	parent = _parent;
-	int depth = DEPTH_QUADTREE;
-	if (index < depth) {
-		CreateChildrenNodes();
-	}
-	InsertIntersectGameObjects();
+	isDivided = false;
 }
 
 QuadtreeNode::~QuadtreeNode()
@@ -77,6 +68,21 @@ void QuadtreeNode::CreateChildrenNodes()
 	this->isDivided = true;
 }
 
-void QuadtreeNode::InsertIntersectGameObjects()
+void QuadtreeNode::InsertGameObject(GameObject* gameObject)
 {
+	if (!isDivided) { // If the node is not divided -> insert and divided 
+		gameObjects.push_back(gameObject);
+		int limitDepth = DEPTH_QUADTREE;
+		if (index < limitDepth) { // If reack the last possible level 
+			CreateChildrenNodes();
+		}
+	}
+	else { // Check in which leaf should be insert
+		AABB boundingBoxGameObject = gameObject->GetAABB();
+		for (QuadtreeNode* child : GetChildren()) {
+			if (child->GetBoundingBox().Intersects(boundingBoxGameObject)) {
+				child->InsertGameObject(gameObject);
+			}
+		}
+	}
 }
