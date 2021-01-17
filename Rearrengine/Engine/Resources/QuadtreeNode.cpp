@@ -92,3 +92,37 @@ void QuadtreeNode::InsertGameObject(GameObject* gameObject)
 		}
 	}
 }
+
+std::vector<GameObject*> QuadtreeNode::CheckMousePicking(QuadtreeNode* node, LineSegment ray)
+{
+	std::vector<GameObject*> hitGameObject;
+	if (ray.Intersects(GetBoundingBox())) { // ray vs. AABB
+		for (GameObject* gameObject : GetGameObjects()) {
+			hitGameObject.push_back(gameObject);
+		}
+	}
+	else {
+		for (QuadtreeNode* child : GetChildren()) {
+			CheckMousePicking(child, ray);
+		}
+	}
+	return hitGameObject;
+}
+
+std::vector<GameObject*> QuadtreeNode::CheckMousePicking(LineSegment ray)
+{
+	std::vector<GameObject*> hitGameObject;
+	if (ray.Intersects(GetBoundingBox())) { // ray vs. AABB
+		for (GameObject* gameObject : GetGameObjects()) {
+			hitGameObject.push_back(gameObject);
+		}
+	}
+	else {
+		for (QuadtreeNode* child : GetChildren()) {
+			CheckMousePicking(child, ray);
+		}
+	}
+	return hitGameObject;
+}
+
+

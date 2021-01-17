@@ -5,12 +5,15 @@
 #include "ModuleEditor.h"
 #include "ModuleModel.h"
 #include "ModuleScene.h"
+#include "ModuleWindow.h"
 #include "Resources/GameObject.h"
 #include "UI/Viewport.h"
+#include "UI/Configuration.h"
 #include "Debug Draw/ModuleDebugDraw.h"
 
 #include <SDL.h>
 #include "Math/float3x3.h"
+#include "../MathGeoLib/Geometry/LineSegment.h"
 #include "Math/Quat.h"
 
 #include "Utils/LeakTest.h"
@@ -144,6 +147,7 @@ UpdateStatus ModuleCamera::Update() {
 		KeyboardRotation();
 		ZoomCamera(x, y);
 		ResetCameraPosition();
+		MousePicking();
 	}
 
 	// Check if the actual camera changed
@@ -182,6 +186,28 @@ void ModuleCamera::CreateCameraGameObject()
 	gameObject_newCamera->SetName(str1);
 
 	App->scene->GetRoot()->AddChild(gameObject_newCamera);
+}
+
+void ModuleCamera::MousePicking()
+{
+	int w, h;
+	SDL_GetWindowSize(App->window->window, &w, &h);
+
+	iPoint mouse_motion = App->input->GetMouseMotion();
+	if (!isGameCamera) { // Only if is Viewport Camera
+		if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::kKeyRepeat) {
+			//clickPos(200,300) and resolution(800,600) => normalized(0.25,0.5)
+			int normalized_x = mouse_motion.x / w;
+			int normalized_y = mouse_motion.y / h;
+			LineSegment picking = GetActiveCamera()->GetFrustum().UnProjectLineSegment(normalized_x, normalized_y);
+
+			// Checking the quadtree
+			std::vector<GameObject*> gameObjects = App->scene->GetQuadtree()->GetRoot()->CheckMousePicking(picking);
+			if (!gameObjects.empty()) {
+				App->editor->GetConfiguration()->SetSelectedGameObject(gameObjects[0]); // Testing
+			}
+		}
+	}
 }
 
 

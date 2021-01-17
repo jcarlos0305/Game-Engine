@@ -24,6 +24,7 @@ public:
 	UpdateStatus PostUpdate() override;
 
 	void AddLog(const char* log);
+	Configuration* GetConfiguration() { return configuration; };
 
 	// Clean up
 	bool CleanUp() override;

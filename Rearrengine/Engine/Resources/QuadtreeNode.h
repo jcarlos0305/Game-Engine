@@ -2,6 +2,7 @@
 
 #include <Geometry/AABB.h>
 #include <Geometry/OBB.h>
+#include "../MathGeoLib/Geometry/LineSegment.h"
 #include <Resources/GameObject.h>
 
 class QuadtreeNode
@@ -20,6 +21,8 @@ public:
 
 	inline std::vector<GameObject*> GetGameObjects() { return gameObjects; };
 	void InsertGameObject(GameObject* gameObject);
+	std::vector<GameObject*> CheckMousePicking(QuadtreeNode* node, LineSegment ray);
+	std::vector<GameObject*> CheckMousePicking(LineSegment ray);
 
 	inline int GetIndex() { return index; };
 

@@ -21,6 +21,7 @@ public:
 	inline KeyState GetMouseButtonDown(int id) const { return mouse_buttons[id - 1]; }
 	inline bool     GetWindowEvent(WindowEvent ev) const { return window_events[static_cast<unsigned int>(ev)]; }
 	inline int      GetMouseWheel() const { return mouse_wheel; }
+	inline iPoint	GetMouseMotion() const { return mouse_motion; }
 
 private:
 	bool      window_events[static_cast<unsigned int>(WindowEvent::kCount)];

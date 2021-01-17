@@ -109,6 +109,14 @@
     <ClCompile Include="Engine\Resources\Timer.cpp" />
     <ClCompile Include="Engine\Resources\Quadtree.cpp" />
     <ClCompile Include="Engine\Resources\QuadtreeNode.cpp" />
+    <ClCompile Include="External Libs\ImGui\ImGuizmo\example\imgui.cpp" />
+    <ClCompile Include="External Libs\ImGui\ImGuizmo\example\imgui_draw.cpp" />
+    <ClCompile Include="External Libs\ImGui\ImGuizmo\example\imgui_widgets.cpp" />
+    <ClCompile Include="External Libs\ImGui\ImGuizmo\example\main.cpp" />
+    <ClCompile Include="External Libs\ImGui\ImGuizmo\ImCurveEdit.cpp" />
+    <ClCompile Include="External Libs\ImGui\ImGuizmo\ImGradient.cpp" />
+    <ClCompile Include="External Libs\ImGui\ImGuizmo\ImGuizmo.cpp" />
+    <ClCompile Include="External Libs\ImGui\ImGuizmo\ImSequencer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Main\Application.h" />
@@ -292,6 +300,19 @@
     <ClInclude Include="External Libs\jsoncpp\include\json\writer.h" />
     <ClInclude Include="Engine\Utils\UUID.h" />
     <ClInclude Include="Engine\Utils\Utils.h" />
+    <ClInclude Include="External Libs\ImGui\ImGuizmo\example\ImApp.h" />
+    <ClInclude Include="External Libs\ImGui\ImGuizmo\example\imconfig.h" />
+    <ClInclude Include="External Libs\ImGui\ImGuizmo\example\imgui.h" />
+    <ClInclude Include="External Libs\ImGui\ImGuizmo\example\imgui_internal.h" />
+    <ClInclude Include="External Libs\ImGui\ImGuizmo\example\imstb_rectpack.h" />
+    <ClInclude Include="External Libs\ImGui\ImGuizmo\example\imstb_textedit.h" />
+    <ClInclude Include="External Libs\ImGui\ImGuizmo\example\imstb_truetype.h" />
+    <ClInclude Include="External Libs\ImGui\ImGuizmo\example\stb_image.h" />
+    <ClInclude Include="External Libs\ImGui\ImGuizmo\ImCurveEdit.h" />
+    <ClInclude Include="External Libs\ImGui\ImGuizmo\ImGradient.h" />
+    <ClInclude Include="External Libs\ImGui\ImGuizmo\ImGuizmo.h" />
+    <ClInclude Include="External Libs\ImGui\ImGuizmo\ImSequencer.h" />
+    <ClInclude Include="External Libs\ImGui\ImGuizmo\ImZoomSlider.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Modules">

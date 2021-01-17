@@ -30,6 +30,8 @@ public:
 	inline void SetGameCamera(ComponentCamera* _camera) { gameCamera = _camera; }
 
 	void CreateCameraGameObject();
+
+	void MousePicking();
 	
 	bool isGameCamera = false;
 	bool showFrustumGameCamera = true;
