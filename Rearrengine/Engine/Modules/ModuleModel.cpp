@@ -39,8 +39,8 @@ bool ModuleModel::Init() {
 	stream.callback = AssimpLog;
 	aiAttachLogStream(&stream);
 
-	Load("assets/BakerHouse.fbx", "assets/vertex.glsl", "assets/fragment.glsl");
-	// Load("assets/Street_Environment/Street_environment_V01.fbx", "assets/vertex.glsl", "assets/fragment.glsl");
+	//Load("assets/BakerHouse.fbx", "assets/vertex.glsl", "assets/fragment.glsl");
+	Load("assets/Street_Environment/Street_environment_V01.fbx", "assets/vertex.glsl", "assets/fragment.glsl");
 
 	return true;
 }

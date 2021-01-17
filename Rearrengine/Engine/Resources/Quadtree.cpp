@@ -13,7 +13,7 @@ Quadtree::~Quadtree()
 void Quadtree::InsertGameObject(GameObject* gameObject)
 {
 	if (root != nullptr) {
-		if (gameObject->GetAABB().Intersects(root->GetBoundingBox())) {
+		if (gameObject->GetOBB().Intersects(root->GetBoundingBox())) {
 			root->InsertGameObject(gameObject);
 		}
 	}

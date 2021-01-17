@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Geometry/AABB.h>
+#include <Geometry/OBB.h>
 #include <Resources/GameObject.h>
 
 class QuadtreeNode
@@ -14,6 +15,7 @@ public:
 	void Draw();
 	void CreateChildrenNodes();
 	inline std::vector<QuadtreeNode*> GetChildren() { return children; };
+	inline std::vector<GameObject*> GetGameObjects() { return gameObjects; };
 	void InsertGameObject(GameObject* gameObject);
 	inline int GetIndex() { return index; };
 

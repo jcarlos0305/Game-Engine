@@ -78,7 +78,7 @@ void QuadtreeNode::InsertGameObject(GameObject* gameObject)
 		}
 	}
 	else { // Check in which leaf should be insert
-		AABB boundingBoxGameObject = gameObject->GetAABB();
+		OBB boundingBoxGameObject = gameObject->GetOBB();
 		for (QuadtreeNode* child : GetChildren()) {
 			if (child->GetBoundingBox().Intersects(boundingBoxGameObject)) {
 				child->InsertGameObject(gameObject);
