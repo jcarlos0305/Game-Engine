@@ -4,6 +4,8 @@
 #include "Utils/Utils.h"
 
 #include <assimp/cimport.h>
+#include <Components/ComponentMesh.h>
+
 
 ComponentTransform::ComponentTransform() {
 	type = ComponentTypes::kTransform;
@@ -42,6 +44,7 @@ void ComponentTransform::SetTransform(float3 translate_vector, float3 rotation_v
 
 	local_matrix = float4x4::FromTRS(translate, rotation_quat, scale);
 	UpdateGlobalMatrix();
+	RecursiveUpdateBoundingBox(game_object);
 }
 
 void ComponentTransform::FromJson(Json::Value& _component_data) {
@@ -62,6 +65,25 @@ void ComponentTransform::FromJson(Json::Value& _component_data) {
 
 void ComponentTransform::UpdateGlobalMatrix() {
 	global_matrix = game_object->GetParent() != nullptr ? game_object->GetParent()->GetGlobalMatrix() * local_matrix : local_matrix;
+}
+
+void ComponentTransform::RecursiveUpdateBoundingBox(GameObject* game_object)
+{
+	for (GameObject* child : game_object->GetChildren()) {
+		RecursiveUpdateBoundingBox(child);
+	}
+	// We only want change bounding boxes to children
+	if (game_object->HasComponentType(ComponentTypes::kMesh)) {
+		ComponentMesh* component_mesh = static_cast<ComponentMesh*>(game_object->GetComponentType(ComponentTypes::kMesh));
+		// Dont like me because create so many aabb -> less performance ->> TESTING
+		// Gets the AABB from Max-Min Mesh's Vertex
+		float3 mins = float3(component_mesh->GetMinsVertex().x, component_mesh->GetMinsVertex().y, component_mesh->GetMinsVertex().z);
+		float3 maxs = float3(component_mesh->GetMaxsVertex().x, component_mesh->GetMaxsVertex().y, component_mesh->GetMaxsVertex().z);
+		AABB _aabb = AABB(mins, maxs);
+		game_object->SetAABB(_aabb);
+		game_object->SetOBB(_aabb.Transform(GetGlobalMatrix()));
+	}
+
 }
 
 void ComponentTransform::ToJson(Json::Value& _owner_root) const {

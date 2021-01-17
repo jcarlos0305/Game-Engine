@@ -613,13 +613,32 @@ UpdateStatus ModuleDebugDraw::Update()
 void ModuleDebugDraw::Draw(const float4x4& view, const float4x4& proj, unsigned width, unsigned height)
 {
     dd::axisTriad(float4x4::identity, 0.1f, 1.0f);
-    dd::xzSquareGrid(-10, 10, 0.0f, 1.0f, dd::colors::Gray);
+    dd::xzSquareGrid(-100, 100, -0.1f, 1.0f, dd::colors::Gray, 0);
 
     implementation->width     = width;
     implementation->height    = height;
     implementation->mvpMatrix = proj * view;
 
     dd::flush();
+}
+
+void ModuleDebugDraw::DrawAABB(const float3& _maxs, const float3& _mins, const float3 color) {
+    float3 mins = _mins;
+    float3 maxs = _maxs;
+    dd::aabb(mins, maxs, color);
+}
+
+void ModuleDebugDraw::DrawOBB(OBB _obb, const float3 color)
+{
+    float3 points[8] = { float3(_obb.CornerPoint(0)), float3(_obb.CornerPoint(1)), float3(_obb.CornerPoint(2)), float3(_obb.CornerPoint(3)), 
+                           float3(_obb.CornerPoint(4)), float3(_obb.CornerPoint(5)), float3(_obb.CornerPoint(6)), float3(_obb.CornerPoint(7)) };
+    dd::box(points, color);
+}
+
+void ModuleDebugDraw::DrawFrustumCamera(const float4x4& viewProjMatrix)
+{
+    const float4x4 frustumMatrix = viewProjMatrix;
+    dd::frustum(frustumMatrix.Inverted(), dd::colors::DarkOrange);
 }
 
 

@@ -7,6 +7,8 @@
 #include <json/json.h>
 #include <string>
 #include <vector>
+#include <Geometry/AABB.h>
+#include <Geometry/OBB.h>
 
 class GameObject {
 public:
@@ -19,7 +21,7 @@ public:
 	const char* GetName() const { return name; };
 
 	void AddChild(GameObject* _child) { children.push_back(_child); };
-	void AddComponent(Component* _component) { components.push_back(_component); };
+	void AddComponent(Component* _component);
 
 	inline std::vector<GameObject*> GetChildren() const { return children; };
 	inline int GetChildrenCount() const { return children.size(); };
@@ -35,6 +37,11 @@ public:
 	inline void SetParent(GameObject* _parent) { parent = _parent; };
 	void UpdateChildrenGlobalMatrix();
 
+	inline AABB GetAABB() { return aabb; }
+	inline void SetAABB(AABB& _aabb) { aabb = _aabb; }
+	inline OBB GetOBB() { return obb; } // Not do it yet transform with World Matrix
+	inline void SetOBB(OBB& _obb) { obb = _obb; }
+
 	void ToJson(Json::Value& _root, GameObject* _game_object);
 	void FromJson(Json::Value& _game_object_data);
 
@@ -44,6 +51,8 @@ public:
 private:
 	std::string UUID;
 	char* name = "";
+	AABB aabb;
+	OBB obb;
 	std::vector<GameObject*> children;
 	std::vector<Component*>  components;
 

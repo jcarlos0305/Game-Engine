@@ -244,6 +244,7 @@ void ModuleModel::LoadModelChildren(aiMesh** const mMeshes, unsigned int program
 			mesh_component->SetMesh(mesh);
 			mesh_component->SetOwner(game_object);
 			game_object->AddComponent(mesh_component);
+			App->scene->GetQuadtree()->InsertGameObject(game_object);
 		}
 		else if (node->mChildren[i]->mNumMeshes > 1) {
 			for (unsigned int j = 0; j < node->mChildren[i]->mNumMeshes; j++) {

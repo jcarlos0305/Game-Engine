@@ -19,6 +19,7 @@ public:
 	void ToJson(Json::Value& _owner_root) const override;
 	void FromJson(Json::Value& _component_data) override;
 	void UpdateGlobalMatrix();
+	void RecursiveUpdateBoundingBox(GameObject* game_object);
 
 	inline float3 GetScale() { return scale; };
 	inline float3 GetRotation() { return rotation; };

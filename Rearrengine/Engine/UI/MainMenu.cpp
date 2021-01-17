@@ -4,6 +4,7 @@
 
 #include "Main/Application.h"
 #include "Modules/ModuleEditor.h"
+#include "Modules/ModuleCamera.h"
 
 #include "ImGui/imgui.h"
 
@@ -24,6 +25,12 @@ UpdateStatus MainMenu::Draw() {
 						window->Show((bool*)!window->visible);
 					}
 				}
+			}
+			ImGui::EndMenu();
+		}
+		if (ImGui::BeginMenu("GameObject")) {
+			if (ImGui::MenuItem("Camera")) {
+				App->camera->CreateCameraGameObject();
 			}
 			ImGui::EndMenu();
 		}

@@ -1,6 +1,7 @@
 #include "Mesh.h"
 #include "Main/Application.h"
 #include "Modules/ModuleCamera.h"
+#include "Debug Draw/ModuleDebugDraw.h"
 #include "Modules/ModuleRender.h"
 #include "Modules/ModuleModel.h"
 #include "Utils/Utils.h"
@@ -154,8 +155,9 @@ void Mesh::CreateVAO() {
 }
 
 void Mesh::Draw(const std::vector<unsigned>& model_textures, const float4x4 model) {
-	float4x4 proj = App->camera->GetProjectionMatrix();
-	float4x4 view = App->camera->GetViewMatrix();
+
+	float4x4 proj  = App->camera->GetActiveCamera()->GetCamera()->GetProjectionMatrix();
+	float4x4 view  = App->camera->GetActiveCamera()->GetCamera()->GetViewMatrix();
 
 	glUseProgram(program);
 

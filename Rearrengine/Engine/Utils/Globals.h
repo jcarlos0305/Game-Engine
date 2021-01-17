@@ -64,6 +64,9 @@ enum class ComponentTypes {
 	kUndefined
 };
 
+// Depth Quadtree
+#define DEPTH_QUADTREE 5;
+
 // Default Texture
 #define DEFAULT_TEXTURE_PATH "assets/GrayTexture.png"
 

@@ -4,6 +4,11 @@
 #include "Utils/Utils.h"
 #include "Utils/UUID.h"
 
+#include "Main/Application.h"
+#include "Modules/ModuleRender.h"
+#include "Debug Draw/ModuleDebugDraw.h"
+#include "Components/ComponentMesh.h"
+
 GameObject::GameObject() : UUID(custom_UUID::generate()) {}
 
 GameObject::GameObject(const char* _uuid, const char* _name) : UUID(_uuid), name(_strdup(_name)) {}
@@ -15,7 +20,22 @@ GameObject::GameObject(Json::Value& _game_object_data) {
 GameObject::~GameObject() {
 	free(name);
 	name = nullptr;
-	for (Component* component : components) delete component;
+	for (Component* component : components) delete component; // ?
+}
+
+void GameObject::AddComponent(Component* _component)
+{
+	// Create GameObject's AABB if the component is a Mesh
+	if (_component->GetType() == ComponentTypes::kMesh) {
+		ComponentMesh* component_mesh = static_cast<ComponentMesh*>(_component);
+		// Gets the AABB from Max-Min Mesh's Vertex
+		float3 mins = float3(component_mesh->GetMinsVertex().x, component_mesh->GetMinsVertex().y, component_mesh->GetMinsVertex().z);
+		float3 maxs = float3(component_mesh->GetMaxsVertex().x, component_mesh->GetMaxsVertex().y, component_mesh->GetMaxsVertex().z);
+		aabb = AABB(mins, maxs);
+		obb = aabb.Transform(GetGlobalMatrix());
+	}
+	// Save the component
+	components.push_back(_component);
 }
 
 bool GameObject::HasComponentType(ComponentTypes _type) const {

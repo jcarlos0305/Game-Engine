@@ -29,7 +29,7 @@ void Viewport::Draw() {
 
 		ImVec2 new_window_size = ImGui::GetWindowSize();
 		if (window_size.x != new_window_size.x || window_size.y != new_window_size.y) {
-			App->camera->SetAspectRatio(new_window_size.x / new_window_size.y);
+			App->camera->GetSceneCamera()->GetCamera()->SetAspectRatio(new_window_size.x / new_window_size.y);
 			window_size = ImGui::GetWindowSize();
 		}
 	}

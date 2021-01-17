@@ -48,16 +48,6 @@
     <ClCompile Include="Engine\Utils\log.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Resources\Mesh.cpp">
-      <Filter>Resources\Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Resources\PerformanceTimer.cpp">
-      <Filter>Utils\Timers</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Resources\Timer.cpp">
-      <Filter>Utils\Timers</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Resources\GameObject.cpp" />
     <ClCompile Include="Engine\Modules\ModuleScene.cpp" />
     <ClCompile Include="Engine\Components\ComponentMesh.cpp" />
     <ClCompile Include="Engine\Components\ComponentTransform.cpp" />
@@ -111,6 +101,14 @@
     <ClCompile Include="External Libs\MathGeoLib\Math\TransformOps.cpp" />
     <ClCompile Include="External Libs\MathGeoLib\Time\Clock.cpp" />
     <ClCompile Include="External Libs\Debug Draw\Debug Draw\ModuleDebugDraw.cpp" />
+    <ClCompile Include="Engine\Components\ComponentCamera.cpp" />
+    <ClCompile Include="Engine\Resources\Camera.cpp" />
+    <ClCompile Include="Engine\Resources\GameObject.cpp" />
+    <ClCompile Include="Engine\Resources\Mesh.cpp" />
+    <ClCompile Include="Engine\Resources\PerformanceTimer.cpp" />
+    <ClCompile Include="Engine\Resources\Timer.cpp" />
+    <ClCompile Include="Engine\Resources\Quadtree.cpp" />
+    <ClCompile Include="Engine\Resources\QuadtreeNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Main\Application.h" />
@@ -184,10 +182,6 @@
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Components\ComponentMesh.h" />
-    <ClInclude Include="Engine\Resources\Mesh.h">
-      <Filter>Resources\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Resources\GameObject.h" />
     <ClInclude Include="Engine\Modules\ModuleScene.h" />
     <ClInclude Include="Engine\Components\ComponentTransform.h" />
     <ClInclude Include="Engine\UI\Hierarchy.h" />
@@ -278,7 +272,13 @@
     <ClInclude Include="External Libs\Debug Draw\Debug Draw\debug_draw.hpp" />
     <ClInclude Include="External Libs\Debug Draw\Debug Draw\debugdraw.h" />
     <ClInclude Include="External Libs\Debug Draw\Debug Draw\ModuleDebugDraw.h" />
+    <ClInclude Include="Engine\Resources\Camera.h" />
+    <ClInclude Include="Engine\Resources\GameObject.h" />
+    <ClInclude Include="Engine\Resources\Mesh.h" />
+    <ClInclude Include="Engine\Resources\PerformanceTimer.h" />
     <ClInclude Include="Engine\Resources\Timer.h" />
+    <ClInclude Include="Engine\Resources\Quadtree.h" />
+    <ClInclude Include="Engine\Resources\QuadtreeNode.h" />
     <ClInclude Include="Engine\Resources\PerformanceTimer.h" />
     <ClInclude Include="External Libs\jsoncpp\include\json\allocator.h" />
     <ClInclude Include="External Libs\jsoncpp\include\json\assertions.h" />
