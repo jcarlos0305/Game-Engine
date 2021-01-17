@@ -9,8 +9,3 @@ Quadtree::~Quadtree()
 {
 	// release quadtree node
 }
-
-void Quadtree::Draw()
-{
-	root->Draw();
-}

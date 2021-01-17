@@ -9,10 +9,9 @@ public:
 	Quadtree(const AABB aabb);
 	~Quadtree();
 
-	void Draw();
+	inline QuadtreeNode* GetRoot() { return root; };
 
 private:
 	QuadtreeNode* root = nullptr;
-	int depth = DEPTH_QUADTREE;
 };
 

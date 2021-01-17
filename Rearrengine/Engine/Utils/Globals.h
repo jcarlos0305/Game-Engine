@@ -65,4 +65,4 @@ enum class ComponentTypes {
 };
 
 // Depth Quadtree
-#define DEPTH_QUADTREE 3;
+#define DEPTH_QUADTREE 4;

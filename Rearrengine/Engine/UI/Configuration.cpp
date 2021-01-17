@@ -32,7 +32,8 @@ void Configuration::Draw() {
 	ImGui::Begin(title, &visible, ImGuiWindowFlags_NoCollapse);
 
 	if (ImGui::CollapsingHeader("Viewport")) {
-		ImGui::Checkbox("Show Quad", &App->render->showQuad);
+		ImGui::Checkbox("Show Bounding Boxes Objects", &App->render->showQuad);
+		ImGui::Checkbox("Show Quadtree", &App->scene->drawQuadtree);
 		ImGui::Checkbox("Show Frustum Game Camera", &App->camera->showFrustumGameCamera);
 		/* Show info Camera Scene
 		if (ImGui::TreeNode("Camera Information"))

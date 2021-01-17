@@ -12,7 +12,7 @@ typedef math::float3 ddVec3;
 ModuleScene::ModuleScene() : root(new GameObject()) {
 	root->SetName("root");
 	root->AddComponent(new ComponentTransform());
-	quadtree = new Quadtree(AABB(float3(-100,-100,-100),float3(100,100,100)));
+	quadtree = new Quadtree(AABB(float3(-30,-30,-30),float3(30,30,30)));
 }
 
 ModuleScene::~ModuleScene() {}
@@ -39,6 +39,17 @@ void ModuleScene::Draw(GameObject& game_object) {
 	}
 }
 
+void ModuleScene::DrawQuadtree(QuadtreeNode* quadtreeNode)
+{
+	int depth = DEPTH_QUADTREE;
+	if (quadtreeNode->GetIndex() < depth) {
+		for (QuadtreeNode* child : quadtreeNode->GetChildren())
+			DrawQuadtree(child);
+	}
+	quadtreeNode->Draw();
+
+}
+
 void ModuleScene::RecursiveDelete(GameObject* game_object) {
 	for (GameObject* child : game_object->GetChildren()) {
 		RecursiveDelete(child);
@@ -48,7 +59,9 @@ void ModuleScene::RecursiveDelete(GameObject* game_object) {
 
 UpdateStatus ModuleScene::Update()
 {
-	quadtree->Draw();
+	if (drawQuadtree) {
+		DrawQuadtree(quadtree->GetRoot());
+	}
 	return UpdateStatus::kUpdateContinue;
 }
 
