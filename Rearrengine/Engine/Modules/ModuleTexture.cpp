@@ -3,13 +3,14 @@
 
 #include <GL/glew.h>
 #include <IL/il.h>
+#include <IL/ilu.h>
 
 #include "Utils/LeakTest.h"
 
 bool ModuleTexture::Init() {
 	ilInit();
-	ilEnable(IL_ORIGIN_SET);
-	ilOriginFunc(IL_ORIGIN_LOWER_LEFT);
+	/*ilEnable(IL_ORIGIN_SET);
+	ilOriginFunc(IL_ORIGIN_LOWER_LEFT);*/
 	return true;
 }
 
@@ -22,8 +23,15 @@ unsigned int ModuleTexture::LoadTexture(const char* path) {
 	bool success = ilLoadImage(path);
 
 	if (success) {
+		ILinfo ilImageInfo;
+		iluGetImageInfo(&ilImageInfo);
+
+		if (ilImageInfo.Origin == IL_ORIGIN_UPPER_LEFT) {
+			iluFlipImage();
+		}
+
 		/* Convert every color component into unsigned byte */
-		success = ilConvertImage(IL_RGB, IL_UNSIGNED_BYTE); 
+		success = ilConvertImage(IL_RGB, IL_UNSIGNED_BYTE);
 
 		if (!success) {
 			return false;
@@ -47,12 +55,13 @@ unsigned int ModuleTexture::LoadTexture(const char* path) {
 			ilGetInteger(IL_IMAGE_FORMAT),
 			GL_UNSIGNED_BYTE,
 			ilGetData()
-		); 
-	} else {
+		);
+	}
+	else {
 		return false;
 	}
 	/* Releasing the memory used by image. */
-	ilDeleteImages(1, &image); 
+	ilDeleteImages(1, &image);
 
 	return texture_id;
 }

@@ -3,6 +3,7 @@
 #include "Utils/Globals.h"
 #include "Main/Application.h"
 #include "Modules/ModuleModel.h"
+#include "Modules/ModuleScene.h"
 #include "Resources/GameObject.h"
 
 #include "Math/float4x4.h"

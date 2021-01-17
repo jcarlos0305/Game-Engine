@@ -16,8 +16,9 @@ bool ModuleCamera::Init() {
 	frustum.SetKind(FrustumSpaceGL, FrustumRightHanded);
 	frustum.SetViewPlaneDistances(0.1f, 1000.0f);
 	frustum.SetHorizontalFovAndAspectRatio(DEGTORAD(90.0f), 1.3f);
-	frustum.SetFront(-float3::unitZ);
+	frustum.SetFront(float3::unitZ);
 	frustum.SetUp(float3::unitY);
+	frustum.SetPos(float3(0.0f, 3.0f, -7.0f));
 
 	return true;
 }
@@ -109,7 +110,8 @@ void ModuleCamera::ResetCameraPosition() {
 }
 
 void ModuleCamera::SetFocusToModel(float3 model_center, float radius) {
-	frustum.SetPos(model_center + frustum.Front().Neg() * radius * 2.5);
+	//frustum.SetPos(model_center + frustum.Front().Neg() * radius * 2.5);
+	frustum.SetPos(float3(0.0f, 2.5f, 7.0f));
 }
 
 void ModuleCamera::SetPos(float3 position) {
@@ -125,7 +127,7 @@ UpdateStatus ModuleCamera::Update() {
 	SDL_GetRelativeMouseState(&x, &y);
 
 	if (App->input->GetKey(SDL_SCANCODE_LSHIFT) == KeyState::kKeyRepeat) {
-		speed_modifier = 2.0f;
+		speed_modifier = 25.0f;
 	}
 	else {
 		speed_modifier = 1.0f;

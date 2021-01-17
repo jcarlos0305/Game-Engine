@@ -5,6 +5,9 @@
 
 #include <assimp/material.h>
 #include "Math/float4x4.h"
+#include "Math/float3.h"
+
+#include <json/json.h>
 
 class GameObject;
 struct aiNode;
@@ -25,8 +28,11 @@ public:
 	void LoadTextures(aiMaterial** const mMaterials, unsigned int mNumMaterials, const char* src_path);
 	bool SearchTexture(const char* texture_path, const char* src_path);
 	void LoadModelChildren(aiMesh** const mMeshes, unsigned int program, aiNode* node, GameObject* father);
+	void LoadDefaultTextures(const char* src_path);
+	void LoadTexturesFromJson(Json::Value& textures_root);
 
 	void SetMinMax(Mesh* _mesh);
+	void UpdateMinMax(float3& vector, Mesh* _mesh);
 
 	float3 GetModelCenterPoint();
 
@@ -43,4 +49,7 @@ public:
 	float min_x, max_x;
 	float min_y, max_y;
 	float min_z, max_z;
+
+private:
+	Json::Value textures_root;
 };
