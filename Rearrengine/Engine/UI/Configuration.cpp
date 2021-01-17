@@ -128,62 +128,74 @@ void Configuration::Draw() {
 			ImGui::Text("Scale");  ImGui::NextColumn();
 			ImGui::Separator();
 
-			// Rotaton
+			// Rotation
 			rotation_vector = component_transform->GetRotation();
 			DrawModifiableVector(rotation_vector, component_transform, 2);
 			ImGui::Text("Rotation");  ImGui::NextColumn();
+		}
 
-				// Front
-				float3 camera_front = App->camera->GetGameCamera()->GetCamera()->GetFront();
-				ImGui::PushItemFlag(ImGuiItemFlags_Disabled, true);
-				ImGui::DragFloat("", &camera_front.x, 0.0f); ImGui::NextColumn();
-				ImGui::DragFloat("", &camera_front.y, 0.0f); ImGui::NextColumn();
-				ImGui::DragFloat("", &camera_front.z, 0.0f); ImGui::NextColumn();
-				ImGui::Text("Front"); ImGui::NextColumn();
+		ComponentCamera* component_camera = static_cast<ComponentCamera*>(selected_game_object->GetComponentType(ComponentTypes::kCamera));
+		if (component_camera) {
+			if (ImGui::CollapsingHeader("Camera")) {
 
-				// Up
-				float3 camera_up = App->camera->GetGameCamera()->GetCamera()->GetUp();
-				ImGui::DragFloat("", &camera_up.x, 0.0f); ImGui::NextColumn();
-				ImGui::DragFloat("", &camera_up.y, 0.0f); ImGui::NextColumn();
-				ImGui::DragFloat("", &camera_up.z, 0.0f); ImGui::NextColumn();
-				ImGui::Text("Up"); ImGui::NextColumn();
-
-				// World
-				float3x4 camera_position = App->camera->GetGameCamera()->GetCamera()->GetWorldMatrix();
-				ImGui::DragFloat("", &camera_position.x, 0.0f); ImGui::NextColumn();
-				ImGui::DragFloat("", &camera_position.y, 0.0f); ImGui::NextColumn();
-				ImGui::DragFloat("", &camera_position.z, 0.0f); ImGui::NextColumn();
-				ImGui::Text("Position"); ImGui::NextColumn();
-
-				ImGui::PopItemFlag();
-				ImGui::NewLine();
-
-				// Near plane
-				ImGui::Columns(2, NULL, false);
-
-				float near_plane = App->camera->GetGameCamera()->GetCamera()->GetNearPlane();
-				ImGui::PushItemFlag(ImGuiItemFlags_Disabled, true);
-				ImGui::DragFloat("", &near_plane, 0.0f); ImGui::NextColumn();
-				ImGui::Text("Near Plane Distance"); ImGui::NextColumn();
-
-				// Far plane
-				float far_plane = App->camera->GetGameCamera()->GetCamera()->GetFarPlane();
-				ImGui::DragFloat("", &far_plane, 0.0f); ImGui::NextColumn();
-				ImGui::Text("Far Plane Distance"); ImGui::NextColumn();
-
-				// Horizontal FOV
-				float field_of_view = App->camera->GetGameCamera()->GetCamera()->GetHorizontalFOV();
-				ImGui::DragFloat("", &field_of_view, 0.0f); ImGui::NextColumn();
-				ImGui::Text("Field of View"); ImGui::NextColumn();
-
-				// Aspect ratio
-				float aspect_ratio = App->camera->GetGameCamera()->GetCamera()->GetAspectRatio();
-				ImGui::DragFloat("", &aspect_ratio, 0.0f); ImGui::NextColumn();
-				ImGui::Text("Aspect Ratio"); ImGui::NextColumn();
-
-				ImGui::PopItemFlag();
-				ImGui::Columns(1);
 			}
+			ImGui::Checkbox("Change Camera Viewport", &App->camera->isGameCamera);
+			// Column header
+			ImGui::Columns(4, NULL, false);
+			ImGui::Text("    x    "); ImGui::NextColumn();
+			ImGui::Text("    y    "); ImGui::NextColumn();
+			ImGui::Text("    z    "); ImGui::NextColumn();
+			ImGui::Text("         "); ImGui::NextColumn();
+			// Front
+			float3 camera_front = App->camera->GetGameCamera()->GetCamera()->GetFront();
+			ImGui::PushItemFlag(ImGuiItemFlags_Disabled, true);
+			ImGui::DragFloat("", &camera_front.x, 0.0f); ImGui::NextColumn();
+			ImGui::DragFloat("", &camera_front.y, 0.0f); ImGui::NextColumn();
+			ImGui::DragFloat("", &camera_front.z, 0.0f); ImGui::NextColumn();
+			ImGui::Text("Front"); ImGui::NextColumn();
+
+			// Up
+			float3 camera_up = App->camera->GetGameCamera()->GetCamera()->GetUp();
+			ImGui::DragFloat("", &camera_up.x, 0.0f); ImGui::NextColumn();
+			ImGui::DragFloat("", &camera_up.y, 0.0f); ImGui::NextColumn();
+			ImGui::DragFloat("", &camera_up.z, 0.0f); ImGui::NextColumn();
+			ImGui::Text("Up"); ImGui::NextColumn();
+
+			// World
+			float3x4 camera_position = App->camera->GetGameCamera()->GetCamera()->GetWorldMatrix();
+			ImGui::DragFloat("", &camera_position.x, 0.0f); ImGui::NextColumn();
+			ImGui::DragFloat("", &camera_position.y, 0.0f); ImGui::NextColumn();
+			ImGui::DragFloat("", &camera_position.z, 0.0f); ImGui::NextColumn();
+			ImGui::Text("Position"); ImGui::NextColumn();
+
+			ImGui::PopItemFlag();
+			ImGui::NewLine();
+
+			// Near plane
+			ImGui::Columns(2, NULL, false);
+
+			float near_plane = App->camera->GetGameCamera()->GetCamera()->GetNearPlane();
+			ImGui::PushItemFlag(ImGuiItemFlags_Disabled, true);
+			ImGui::DragFloat("", &near_plane, 0.0f); ImGui::NextColumn();
+			ImGui::Text("Near Plane Distance"); ImGui::NextColumn();
+
+			// Far plane
+			float far_plane = App->camera->GetGameCamera()->GetCamera()->GetFarPlane();
+			ImGui::DragFloat("", &far_plane, 0.0f); ImGui::NextColumn();
+			ImGui::Text("Far Plane Distance"); ImGui::NextColumn();
+
+			// Horizontal FOV
+			float field_of_view = App->camera->GetGameCamera()->GetCamera()->GetHorizontalFOV();
+			ImGui::DragFloat("", &field_of_view, 0.0f); ImGui::NextColumn();
+			ImGui::Text("Field of View"); ImGui::NextColumn();
+
+			// Aspect ratio
+			float aspect_ratio = App->camera->GetGameCamera()->GetCamera()->GetAspectRatio();
+			ImGui::DragFloat("", &aspect_ratio, 0.0f); ImGui::NextColumn();
+			ImGui::Text("Aspect Ratio"); ImGui::NextColumn();
+
+			ImGui::PopItemFlag();
+			ImGui::Columns(1);
 		}
 
 		ComponentMesh* component_mesh = static_cast<ComponentMesh*>(selected_game_object->GetComponentType(ComponentTypes::kMesh));
@@ -202,8 +214,8 @@ void Configuration::Draw() {
 				ImGui::Image((ImTextureID)App->model->textures[i], ImVec2(128, 128));
 			}
 		}
-
-		ImGui::End();
+	}
+	ImGui::End();
 }
 
 void Configuration::DrawModifiableVector(float3& vector, ComponentTransform* transform, int type) {

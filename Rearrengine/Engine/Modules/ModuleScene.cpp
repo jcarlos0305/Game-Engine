@@ -20,7 +20,7 @@ GameObject* ModuleScene::InitializeRoot() {
 	root = new GameObject();
 	root->SetName("root");
 	root->AddComponent(new ComponentTransform());
-	quadtree = new Quadtree(AABB(float3(-50, -50, -50), float3(50, 50, 50)));
+	quadtree = new Quadtree(AABB(float3(-10, -10, -10), float3(10, 10, 10)));
 	return root;
 }
 

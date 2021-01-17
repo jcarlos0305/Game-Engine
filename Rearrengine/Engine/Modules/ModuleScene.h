@@ -13,6 +13,7 @@ public:
 
 	inline GameObject* GetRoot() { return root; };
 	inline Quadtree* GetQuadtree() { return quadtree; };
+	inline void SetQuadtree(Quadtree* _quadtree) { quadtree = _quadtree; };
 	void Draw(QuadtreeNode* quadtreeNode);
 	void Draw(GameObject& game_object);
 	void DrawMesh(GameObject& game_object);

@@ -19,6 +19,7 @@ UpdateStatus MainMenu::Draw() {
 			}
 
 			if (ImGui::MenuItem("Load")) {
+				App->scene->SetQuadtree(new Quadtree(AABB(float3(-10, -10, -10), float3(10, 10, 10))));
 				App->scene->FromJSON();
 			}
 
