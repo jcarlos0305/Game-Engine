@@ -42,7 +42,7 @@ bool ModuleModel::Init() {
 	unsigned int loaded_texture = App->texture->LoadTexture(DEFAULT_TEXTURE_PATH);
 	textures.push_back(loaded_texture);
 	//Load("assets/BakerHouse.fbx", "assets/vertex.glsl", "assets/fragment.glsl");
-	//Load("assets/Street_Environment/Street_environment_V01.fbx", "assets/vertex.glsl", "assets/fragment.glsl");
+	Load("assets/Street_Environment/Street_environment_V01.fbx", "assets/vertex.glsl", "assets/fragment.glsl");
 	//Load("assets/Robot/Robot.FBX", "assets/vertex.glsl", "assets/fragment.glsl");
 
 	return true;

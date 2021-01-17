@@ -30,9 +30,6 @@ bool ModuleCamera::Init() {
 	// By default, the active camera be the scene camera
 	SetActiveCamera(sceneCamera);
 
-	// Insert Game Camera
-	CreateCameraGameObject();
-
 	return true;
 }
 
