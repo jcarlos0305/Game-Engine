@@ -5,12 +5,205 @@
 			"Children" : 
 			[
 				{
-					"Robot - ce0d23ef-f437-7b03-8e04-4eda0c3f7aee" : 
+					"Wall - 2d5adbb9-e683-c057-8830-e1f53518c4e0" : 
 					{
 						"Children" : 
 						[
 							{
-								"Robot - 29f3e924-d41e-1bbc-bdf6-627c9cc0acd4" : 
+								"Wall - 6ceb448d-4ccc-198d-d819-f4f26480e5f6" : 
+								{
+									"Children" : [],
+									"Components" : 
+									[
+										{
+											"Rotation" : [ 0.0, 0.0, 0.0 ],
+											"Scale" : [ 1.0, 1.0, 1.0 ],
+											"Translate" : [ 0.0, 0.0, 0.0 ],
+											"Type" : 2,
+											"UUID" : ""
+										},
+										{
+											"Mesh Path" : "assets/Meshes/Wall.json",
+											"Name" : "Wall",
+											"Type" : 0
+										}
+									],
+									"Name" : "Wall",
+									"Parent UUID" : "2d5adbb9-e683-c057-8830-e1f53518c4e0",
+									"UUID" : "6ceb448d-4ccc-198d-d819-f4f26480e5f6"
+								}
+							},
+							{
+								"Stars - f00de322-107f-1a1a-1e17-09052d03364a" : 
+								{
+									"Children" : [],
+									"Components" : 
+									[
+										{
+											"Rotation" : [ 0.0, 0.0, 0.0 ],
+											"Scale" : [ 1.0, 1.0, 1.0 ],
+											"Translate" : [ 0.0, 0.0, 0.0 ],
+											"Type" : 2,
+											"UUID" : ""
+										},
+										{
+											"Mesh Path" : "assets/Meshes/Stars.json",
+											"Name" : "Stars",
+											"Type" : 0
+										}
+									],
+									"Name" : "Stars",
+									"Parent UUID" : "2d5adbb9-e683-c057-8830-e1f53518c4e0",
+									"UUID" : "f00de322-107f-1a1a-1e17-09052d03364a"
+								}
+							}
+						],
+						"Components" : 
+						[
+							{
+								"Rotation" : [ 0.0, 180.0, 0.0 ],
+								"Scale" : 
+								[
+									0.00079999997979030013,
+									0.00079999997979030013,
+									0.00079999997979030013
+								],
+								"Translate" : [ 2.0, 0.0, -2.0 ],
+								"Type" : 2,
+								"UUID" : ""
+							}
+						],
+						"Name" : "Wall",
+						"Parent UUID" : "bd34c7b1-5312-7dde-201a-ed43eec59215",
+						"UUID" : "2d5adbb9-e683-c057-8830-e1f53518c4e0"
+					}
+				},
+				{
+					"Floor - 21e8d746-0498-693b-c571-a67b4b21bf83" : 
+					{
+						"Children" : 
+						[
+							{
+								"Base - 12663437-d6fe-8f86-fad2-1d0cbe86bee4" : 
+								{
+									"Children" : [],
+									"Components" : 
+									[
+										{
+											"Rotation" : [ 0.0, 0.0, 0.0 ],
+											"Scale" : [ 1.0, 1.0, 1.0 ],
+											"Translate" : [ 0.0, 0.0, 0.0 ],
+											"Type" : 2,
+											"UUID" : ""
+										},
+										{
+											"Mesh Path" : "assets/Meshes/Mesh.json",
+											"Name" : "Mesh",
+											"Type" : 0
+										}
+									],
+									"Name" : "Base",
+									"Parent UUID" : "21e8d746-0498-693b-c571-a67b4b21bf83",
+									"UUID" : "12663437-d6fe-8f86-fad2-1d0cbe86bee4"
+								}
+							},
+							{
+								"Planks - 388cf3d5-cd5b-4646-02ef-5a3c9e62ec7c" : 
+								{
+									"Children" : [],
+									"Components" : 
+									[
+										{
+											"Rotation" : [ 0.0, 0.0, 0.0 ],
+											"Scale" : [ 1.0, 1.0, 1.0 ],
+											"Translate" : [ 0.0, 0.0, 0.0 ],
+											"Type" : 2,
+											"UUID" : ""
+										},
+										{
+											"Mesh Path" : "assets/Meshes/Mesh.006.json",
+											"Name" : "Mesh.006",
+											"Type" : 0
+										}
+									],
+									"Name" : "Planks",
+									"Parent UUID" : "21e8d746-0498-693b-c571-a67b4b21bf83",
+									"UUID" : "388cf3d5-cd5b-4646-02ef-5a3c9e62ec7c"
+								}
+							}
+						],
+						"Components" : 
+						[
+							{
+								"Rotation" : [ 0.0, 0.0, 0.0 ],
+								"Scale" : 
+								[
+									0.00079999997979030013,
+									0.00079999997979030013,
+									0.00079999997979030013
+								],
+								"Translate" : [ -2.0, 0.039999999105930328, 2.0 ],
+								"Type" : 2,
+								"UUID" : ""
+							}
+						],
+						"Name" : "Floor",
+						"Parent UUID" : "bd34c7b1-5312-7dde-201a-ed43eec59215",
+						"UUID" : "21e8d746-0498-693b-c571-a67b4b21bf83"
+					}
+				},
+				{
+					"Drawers - 3d2fde9f-2e3f-8943-ef0a-7c0f6269da3a" : 
+					{
+						"Children" : 
+						[
+							{
+								"Drawers - cf5219ac-9d72-7258-6f72-ece7f4e823e3" : 
+								{
+									"Children" : [],
+									"Components" : 
+									[
+										{
+											"Rotation" : [ 0.0, 1.0, 0.0 ],
+											"Scale" : [ 1.0, 1.0, 1.0 ],
+											"Translate" : [ 0.0, 0.0, 0.0 ],
+											"Type" : 2,
+											"UUID" : ""
+										},
+										{
+											"Mesh Path" : "assets/Meshes/Drawers.json",
+											"Name" : "Drawers",
+											"Type" : 0
+										}
+									],
+									"Name" : "Drawers",
+									"Parent UUID" : "3d2fde9f-2e3f-8943-ef0a-7c0f6269da3a",
+									"UUID" : "cf5219ac-9d72-7258-6f72-ece7f4e823e3"
+								}
+							}
+						],
+						"Components" : 
+						[
+							{
+								"Rotation" : [ 0.0, 90.0, 0.0 ],
+								"Scale" : [ 0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513 ],
+								"Translate" : [ 1.5, 0.039999999105930328, -1.2000000476837158 ],
+								"Type" : 2,
+								"UUID" : ""
+							}
+						],
+						"Name" : "Drawers",
+						"Parent UUID" : "bd34c7b1-5312-7dde-201a-ed43eec59215",
+						"UUID" : "3d2fde9f-2e3f-8943-ef0a-7c0f6269da3a"
+					}
+				},
+				{
+					"Robot - 9f131574-b67c-13ce-01b7-bd1b16d9a5dd" : 
+					{
+						"Children" : 
+						[
+							{
+								"Robot - 9d082d42-5688-b677-826b-858be7013e21" : 
 								{
 									"Children" : [],
 									"Components" : 
@@ -29,8 +222,8 @@
 										}
 									],
 									"Name" : "Robot",
-									"Parent UUID" : "ce0d23ef-f437-7b03-8e04-4eda0c3f7aee",
-									"UUID" : "29f3e924-d41e-1bbc-bdf6-627c9cc0acd4"
+									"Parent UUID" : "9f131574-b67c-13ce-01b7-bd1b16d9a5dd",
+									"UUID" : "9d082d42-5688-b677-826b-858be7013e21"
 								}
 							}
 						],
@@ -38,24 +231,114 @@
 						[
 							{
 								"Rotation" : [ 0.0, 0.0, 0.0 ],
-								"Scale" : [ 0.0080000003799796104, 0.0080000003799796104, 0.0080000003799796104 ],
-								"Translate" : [ 0.0, 0.0, 0.0 ],
+								"Scale" : [ 0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513 ],
+								"Translate" : [ 1.0, 0.0, 0.0 ],
 								"Type" : 2,
 								"UUID" : ""
 							}
 						],
 						"Name" : "Robot",
-						"Parent UUID" : "62a285b3-89a0-0e96-f290-365f8ad7ed5e",
-						"UUID" : "ce0d23ef-f437-7b03-8e04-4eda0c3f7aee"
+						"Parent UUID" : "bd34c7b1-5312-7dde-201a-ed43eec59215",
+						"UUID" : "9f131574-b67c-13ce-01b7-bd1b16d9a5dd"
 					}
 				},
 				{
-					"Firetruck - 7fbe894f-863e-e54c-b337-020a099ccb85" : 
+					"Dollhouse - f27454fc-345b-e1d1-fa76-a881a3f0d2d0" : 
 					{
 						"Children" : 
 						[
 							{
-								"Firetruck - 75719967-28f7-46c2-f5d5-e3927575ed95" : 
+								"Dollhouse - 8ab6cf9f-1bdc-3621-7936-50e004d053b5" : 
+								{
+									"Children" : 
+									[
+										{
+											"Dollhouse - fff8aa2d-d9c7-b59d-68e2-9ffe388d2e69" : 
+											{
+												"Children" : [],
+												"Components" : 
+												[
+													{
+														"Rotation" : [ 0.0, 1.0, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ 0.0, 0.0, 0.0 ],
+														"Type" : 2,
+														"UUID" : ""
+													},
+													{
+														"Mesh Path" : "assets/Meshes/Mesh.010.json",
+														"Name" : "Mesh.010",
+														"Type" : 0
+													}
+												],
+												"Name" : "Dollhouse",
+												"Parent UUID" : "8ab6cf9f-1bdc-3621-7936-50e004d053b5",
+												"UUID" : "fff8aa2d-d9c7-b59d-68e2-9ffe388d2e69"
+											}
+										},
+										{
+											"Dollhouse - 7a095fe6-fcc9-b406-e8c8-22e9dba16586" : 
+											{
+												"Children" : [],
+												"Components" : 
+												[
+													{
+														"Rotation" : [ 0.0, 1.0, 0.0 ],
+														"Scale" : [ 1.0, 1.0, 1.0 ],
+														"Translate" : [ 0.0, 0.0, 0.0 ],
+														"Type" : 2,
+														"UUID" : ""
+													},
+													{
+														"Mesh Path" : "assets/Meshes/Mesh.010.json",
+														"Name" : "Mesh.010",
+														"Type" : 0
+													}
+												],
+												"Name" : "Dollhouse",
+												"Parent UUID" : "8ab6cf9f-1bdc-3621-7936-50e004d053b5",
+												"UUID" : "7a095fe6-fcc9-b406-e8c8-22e9dba16586"
+											}
+										}
+									],
+									"Components" : 
+									[
+										{
+											"Rotation" : [ 0.0, 180.0, 0.0 ],
+											"Scale" : [ 0.001500000013038516, 0.001500000013038516, 0.001500000013038516 ],
+											"Translate" : [ -1.5, 0.039999999105930328, -1.3999999761581421 ],
+											"Type" : 2,
+											"UUID" : ""
+										}
+									],
+									"Name" : "Dollhouse",
+									"Parent UUID" : "f27454fc-345b-e1d1-fa76-a881a3f0d2d0",
+									"UUID" : "8ab6cf9f-1bdc-3621-7936-50e004d053b5"
+								}
+							}
+						],
+						"Components" : 
+						[
+							{
+								"Rotation" : [ 0.0, 0.0, 0.0 ],
+								"Scale" : [ 1.0, 1.0, 1.0 ],
+								"Translate" : [ 0.0, 0.0, 0.0 ],
+								"Type" : 2,
+								"UUID" : ""
+							}
+						],
+						"Name" : "Dollhouse",
+						"Parent UUID" : "bd34c7b1-5312-7dde-201a-ed43eec59215",
+						"UUID" : "f27454fc-345b-e1d1-fa76-a881a3f0d2d0"
+					}
+				},
+				{
+					"Firetruck - df9c09e7-adbe-92ae-2712-6ee9ea2a98bc" : 
+					{
+						"Children" : 
+						[
+							{
+								"Firetruck - e26cd125-25b6-53be-0a18-5b429f659716" : 
 								{
 									"Children" : [],
 									"Components" : 
@@ -74,33 +357,33 @@
 										}
 									],
 									"Name" : "Firetruck",
-									"Parent UUID" : "7fbe894f-863e-e54c-b337-020a099ccb85",
-									"UUID" : "75719967-28f7-46c2-f5d5-e3927575ed95"
+									"Parent UUID" : "df9c09e7-adbe-92ae-2712-6ee9ea2a98bc",
+									"UUID" : "e26cd125-25b6-53be-0a18-5b429f659716"
 								}
 							}
 						],
 						"Components" : 
 						[
 							{
-								"Rotation" : [ 0.0, 0.0, 0.0 ],
-								"Scale" : [ 0.0080000003799796104, 0.0080000003799796104, 0.0080000003799796104 ],
-								"Translate" : [ -6.0, 0.0, 0.0 ],
+								"Rotation" : [ 0.0, 180.0, 0.0 ],
+								"Scale" : [ 0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513 ],
+								"Translate" : [ -1.5, 0.0, -0.5 ],
 								"Type" : 2,
 								"UUID" : ""
 							}
 						],
 						"Name" : "Firetruck",
-						"Parent UUID" : "62a285b3-89a0-0e96-f290-365f8ad7ed5e",
-						"UUID" : "7fbe894f-863e-e54c-b337-020a099ccb85"
+						"Parent UUID" : "bd34c7b1-5312-7dde-201a-ed43eec59215",
+						"UUID" : "df9c09e7-adbe-92ae-2712-6ee9ea2a98bc"
 					}
 				},
 				{
-					"Drawers - cb1bd91a-359e-511f-b635-b09557b2568b" : 
+					"Hearse - 3a66d0cd-eb69-ce61-47c6-30020727924a" : 
 					{
 						"Children" : 
 						[
 							{
-								"Drawers - d075a459-0307-a58d-d90d-e74e3ba2fb7b" : 
+								"Hearse - 3f9d5b58-dea7-9f5d-1134-dafe0b313174" : 
 								{
 									"Children" : [],
 									"Components" : 
@@ -110,17 +393,17 @@
 											"Scale" : [ 1.0, 1.0, 1.0 ],
 											"Translate" : [ 0.0, 0.0, 0.0 ],
 											"Type" : 2,
-											"UUID" : "fda7d220-555f-018f-807d-92f7ad081c60"
+											"UUID" : ""
 										},
 										{
-											"Mesh Path" : "assets/Meshes/Drawers.json",
-											"Name" : "Drawers",
+											"Mesh Path" : "assets/Meshes/Hearse.json",
+											"Name" : "Hearse",
 											"Type" : 0
 										}
 									],
-									"Name" : "Drawers",
-									"Parent UUID" : "cb1bd91a-359e-511f-b635-b09557b2568b",
-									"UUID" : "d075a459-0307-a58d-d90d-e74e3ba2fb7b"
+									"Name" : "Hearse",
+									"Parent UUID" : "3a66d0cd-eb69-ce61-47c6-30020727924a",
+									"UUID" : "3f9d5b58-dea7-9f5d-1134-dafe0b313174"
 								}
 							}
 						],
@@ -128,15 +411,110 @@
 						[
 							{
 								"Rotation" : [ 0.0, 0.0, 0.0 ],
-								"Scale" : [ 0.004999999888241291, 0.004999999888241291, 0.004999999888241291 ],
-								"Translate" : [ 4.0, 0.0, 4.0 ],
+								"Scale" : [ 0.0020000000949949026, 0.0020000000949949026, 0.0020000000949949026 ],
+								"Translate" : [ -1.0, 0.0, 1.2000000476837158 ],
 								"Type" : 2,
-								"UUID" : "7bb966c4-f34e-46cd-25f1-dc75dc6bca85"
+								"UUID" : ""
 							}
 						],
-						"Name" : "Drawers",
-						"Parent UUID" : "62a285b3-89a0-0e96-f290-365f8ad7ed5e",
-						"UUID" : "cb1bd91a-359e-511f-b635-b09557b2568b"
+						"Name" : "Hearse",
+						"Parent UUID" : "bd34c7b1-5312-7dde-201a-ed43eec59215",
+						"UUID" : "3a66d0cd-eb69-ce61-47c6-30020727924a"
+					}
+				},
+				{
+					"Clock - 17d50954-89e7-4cdf-50f5-f099008bbe95" : 
+					{
+						"Children" : 
+						[
+							{
+								"Clock - a1520d13-084a-908a-0a70-6696d6bd1329" : 
+								{
+									"Children" : [],
+									"Components" : 
+									[
+										{
+											"Rotation" : [ 0.0, 1.0, 0.0 ],
+											"Scale" : [ 1.0, 1.0, 1.0 ],
+											"Translate" : [ 0.0, 0.0, 0.0 ],
+											"Type" : 2,
+											"UUID" : ""
+										},
+										{
+											"Mesh Path" : "assets/Meshes/Mesh.008.Mesh.008.json",
+											"Name" : "Mesh.008.Mesh.008",
+											"Type" : 0
+										}
+									],
+									"Name" : "Clock",
+									"Parent UUID" : "17d50954-89e7-4cdf-50f5-f099008bbe95",
+									"UUID" : "a1520d13-084a-908a-0a70-6696d6bd1329"
+								}
+							}
+						],
+						"Components" : 
+						[
+							{
+								"Rotation" : [ 0.0, 180.0, 0.0 ],
+								"Scale" : 
+								[
+									0.00050000002374872565,
+									0.00050000002374872565,
+									0.00050000002374872565
+								],
+								"Translate" : [ 1.0, 0.0, -2.0 ],
+								"Type" : 2,
+								"UUID" : ""
+							}
+						],
+						"Name" : "Clock",
+						"Parent UUID" : "bd34c7b1-5312-7dde-201a-ed43eec59215",
+						"UUID" : "17d50954-89e7-4cdf-50f5-f099008bbe95"
+					}
+				},
+				{
+					"SpinningTop - 70225f3a-eae2-c8e5-1e6e-8c4649c324a1" : 
+					{
+						"Children" : 
+						[
+							{
+								"SpinningTop - 5501865b-aca4-c8ca-4fea-2e232bb061f6" : 
+								{
+									"Children" : [],
+									"Components" : 
+									[
+										{
+											"Rotation" : [ 0.0, 1.0, 0.0 ],
+											"Scale" : [ 1.0, 1.0, 1.0 ],
+											"Translate" : [ 0.0, 0.0, 0.0 ],
+											"Type" : 2,
+											"UUID" : ""
+										},
+										{
+											"Mesh Path" : "assets/Meshes/Mesh.013.json",
+											"Name" : "Mesh.013",
+											"Type" : 0
+										}
+									],
+									"Name" : "SpinningTop",
+									"Parent UUID" : "70225f3a-eae2-c8e5-1e6e-8c4649c324a1",
+									"UUID" : "5501865b-aca4-c8ca-4fea-2e232bb061f6"
+								}
+							}
+						],
+						"Components" : 
+						[
+							{
+								"Rotation" : [ 0.0, 0.0, 0.0 ],
+								"Scale" : [ 0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513 ],
+								"Translate" : [ 0.0, 0.05000000074505806, 1.0 ],
+								"Type" : 2,
+								"UUID" : ""
+							}
+						],
+						"Name" : "SpinningTop",
+						"Parent UUID" : "bd34c7b1-5312-7dde-201a-ed43eec59215",
+						"UUID" : "70225f3a-eae2-c8e5-1e6e-8c4649c324a1"
 					}
 				}
 			],
@@ -152,7 +530,7 @@
 			],
 			"Name" : "root",
 			"Parent UUID" : "NULL",
-			"UUID" : "62a285b3-89a0-0e96-f290-365f8ad7ed5e"
+			"UUID" : "bd34c7b1-5312-7dde-201a-ed43eec59215"
 		}
 	}
 ]

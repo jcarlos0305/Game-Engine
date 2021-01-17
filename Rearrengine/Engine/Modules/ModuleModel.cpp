@@ -183,6 +183,7 @@ void ModuleModel::LoadDefaultTextures(const char* src_path) {
 	if (textures.size() % 2 != 0) {
 		loaded_texture = App->texture->LoadTexture(DEFAULT_TEXTURE_PATH);
 		textures.push_back(loaded_texture);
+		textures_root[JSON_PROPERTY_TEXTURES].append(DEFAULT_TEXTURE_PATH);
 	}
 	PrintToFile("textures", JSON_TEXTURES_DIRECTORY, textures_root);
 }

@@ -166,8 +166,9 @@ void Mesh::Draw(const std::vector<unsigned>& model_textures, const float4x4 mode
 	float4x4 view = App->camera->GetViewMatrix();
 
 	float3 view_pos = App->camera->GetPosition();
-	//float3 view_pos(0.0f, 2.0f, 0.0f);
-	float3 light_dir(0.0f, 0.6043f, 0.7967f);
+
+	// Set a default light due to now having lights implemented in the enigine, yet!
+	float3 light_dir(-0.5, 0.6043f, 0.7967f);
 	float3 light_color(1.0f, 1.0f, 1.0f);
 	float3 ambient_color(1.0f, 1.0f, 1.0f);
 
