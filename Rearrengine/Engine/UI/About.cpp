@@ -21,9 +21,10 @@ void About::Draw() {
 	ImGui::Text("3D Engine developed for learning purposes");
 
 	// Team
-	ImGui::Text("Author: ");
-	ImGui::SameLine();
+	ImGui::Text("Authors: ");
+	//ImGui::SameLine();
 	ImGui::Text(DEVELOPER);
+	ImGui::Text(DEVELOPER_2);
 
 	// Libraries
 	ImGui::Text("Libraries");

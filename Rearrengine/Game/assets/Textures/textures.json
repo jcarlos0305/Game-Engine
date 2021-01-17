@@ -1,1 +1,23 @@
-null
+{
+	"Textures" : 
+	[
+		"assets/Textures/Wall/WallDiffuse.png",
+		"assets/Textures/Wall/WallSpecular.tif",
+		"assets/Textures/Floor/FloorDiffuse.png",
+		"assets/Textures/Floor/FloorSpecular.tif",
+		"assets/Textures/Drawers/DrawersDiffuse.png",
+		"assets/Textures/Drawers/DrawersSpecular.tif",
+		"assets/Textures/Robot/RobotDiffuse.png",
+		"assets/Textures/Robot/RobotSpecular.png",
+		"assets/Textures/DollHouse/DollhouseDiffuse.png",
+		"assets/Textures/DollHouse/DollhouseSpecular.tif",
+		"assets/Textures/Firetruck/FiretruckDiffuse.png",
+		"assets/Textures/Firetruck/FiretruckSpecular.tif",
+		"assets/Textures/Hearse/HearseDiffuse.png",
+		"assets/Textures/Hearse/HearseSpecular.tif",
+		"assets/Textures/Clock/ClockDiffuse.png",
+		"assets/Textures/Clock/ClockSpecular.tif",
+		"assets/Textures/SpinningTop/SpinningTopDiffuse.png",
+		"assets/Textures/GrayTexture.png"
+	]
+}
