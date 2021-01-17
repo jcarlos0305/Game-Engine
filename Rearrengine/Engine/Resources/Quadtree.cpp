@@ -7,7 +7,8 @@ Quadtree::Quadtree(const AABB aabb)
 
 Quadtree::~Quadtree()
 {
-	// release quadtree node
+	delete root;
+	root = nullptr;
 }
 
 void Quadtree::InsertGameObject(GameObject* gameObject)

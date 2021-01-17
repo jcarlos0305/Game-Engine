@@ -20,6 +20,12 @@ QuadtreeNode::QuadtreeNode(const AABB aabb, QuadtreeNode* _parent, int _index)
 
 QuadtreeNode::~QuadtreeNode()
 {
+	for (QuadtreeNode* child : GetChildren()) {
+		if (child != nullptr) {
+			delete child;
+			child = nullptr;
+		}
+	}
 }
 
 void QuadtreeNode::Draw()

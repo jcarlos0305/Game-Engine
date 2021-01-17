@@ -12,11 +12,15 @@ public:
 	~QuadtreeNode();
 
 	inline AABB GetBoundingBox() { return boundingBox; };
+
 	void Draw();
+
 	void CreateChildrenNodes();
 	inline std::vector<QuadtreeNode*> GetChildren() { return children; };
+
 	inline std::vector<GameObject*> GetGameObjects() { return gameObjects; };
 	void InsertGameObject(GameObject* gameObject);
+
 	inline int GetIndex() { return index; };
 
 private:
