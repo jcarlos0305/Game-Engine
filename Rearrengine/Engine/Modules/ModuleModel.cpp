@@ -57,7 +57,7 @@ void ModuleModel::Load(const char* file_path) {
 
 		Load(file_path, "assets/vertex_pbr.glsl", "assets/fragment_pbr.glsl");
 	}
-	else if (strcmpi(file_ext, ".png") == 0 || strcmpi(file_ext, ".dds") == 0 || strcmpi(file_ext, ".jpg") == 0 || strcmpi(file_ext, ".jpeg") == 0) {
+	/*else if (strcmpi(file_ext, ".png") == 0 || strcmpi(file_ext, ".dds") == 0 || strcmpi(file_ext, ".jpg") == 0 || strcmpi(file_ext, ".jpeg") == 0) {
 		LOG("Loading texture %s", file_path);
 
 		unsigned int loaded_texture = App->texture->LoadTexture(file_path);
@@ -69,7 +69,7 @@ void ModuleModel::Load(const char* file_path) {
 			textures.push_back(loaded_texture);
 			LOG("Texture loaded successfully");
 		}
-	}
+	}*/
 }
 
 void ModuleModel::Load(const char* model_path, const char* vertex_shader_path, const char* fragment_shader_path) {

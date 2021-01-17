@@ -4,6 +4,7 @@
 #include "ModuleRender.h"
 #include "ModuleModel.h"
 #include "ModuleCamera.h"
+#include "ModuleScene.h"
 
 // UI
 #include "UI/MainMenu.h"
@@ -47,6 +48,8 @@ bool ModuleEditor::Init() {
 	io.ConfigFlags = ImGuiConfigFlags_DockingEnable;
 	io.ConfigWindowsMoveFromTitleBarOnly;
 	io.ConfigWindowsMoveFromTitleBarOnly = true;
+
+	App->scene->FromJSON();
 
 	return true;
 }
