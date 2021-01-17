@@ -160,22 +160,26 @@ UpdateStatus ModuleCamera::Update() {
 void ModuleCamera::CreateCameraGameObject()
 {
 	GameObject* gameObject_newCamera = new GameObject();
-	// Im sure that exists a better way to do this xD
-	char str1[12];
-	char str2[3];
-	strcpy(str1, "Camera ");
-	std::string s = std::to_string(rand() % 100);
-	const char* pchar = s.c_str();
-	strcpy(str2, pchar);
-	strcat(str1, str2);
-	// Correct when put uuid to componentCamera
-	gameObject_newCamera->SetName(str1);
 	gameObject_newCamera->SetParent(App->scene->GetRoot());
 
 	ComponentCamera* newCamera = new ComponentCamera();
 	gameObject_newCamera->AddComponent(newCamera);
 
 	SetGameCamera(static_cast<ComponentCamera*>(gameObject_newCamera->GetComponentType(ComponentTypes::kCamera)));
+	int number = 1;
+	for (GameObject* gameObject : App->scene->GetRoot()->GetChildren()) {
+		if (gameObject->HasComponentType(ComponentTypes::kCamera)) {
+			number++;
+		}
+	}
+	char str1[12];
+	char str2[3];
+	strcpy(str1, "Camera ");
+	std::string s = std::to_string(number);
+	const char* pchar = s.c_str();
+	strcpy(str2, pchar);
+	strcat(str1, str2);
+	gameObject_newCamera->SetName(str1);
 
 	App->scene->GetRoot()->AddChild(gameObject_newCamera);
 }

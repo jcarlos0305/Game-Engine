@@ -1,7 +1,8 @@
 #include "Camera.h"
 #include "Utils/Globals.h"
+#include "Utils/UUID.h"
 
-Camera::Camera()
+Camera::Camera() : UUID(custom_UUID::generate())
 {
 	frustum.SetKind(FrustumSpaceGL, FrustumRightHanded);
 	frustum.SetViewPlaneDistances(2.0f, 500.0f);

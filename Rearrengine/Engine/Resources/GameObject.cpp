@@ -1,13 +1,13 @@
 #include "GameObject.h"
 #include "Components/ComponentTransform.h"
 #include "Components/ComponentMesh.h"
+#include "Components/ComponentCamera.h"
 #include "Utils/Utils.h"
 #include "Utils/UUID.h"
 
 #include "Main/Application.h"
 #include "Modules/ModuleRender.h"
 #include "Debug Draw/ModuleDebugDraw.h"
-#include "Components/ComponentMesh.h"
 
 GameObject::GameObject() : UUID(custom_UUID::generate()) {}
 
@@ -101,6 +101,9 @@ void GameObject::FromJson(Json::Value& _game_object_data) {
 			break;
 		case ComponentTypes::kMesh:
 			component = new ComponentMesh(component_json, this);
+			break;
+		case ComponentTypes::kCamera:
+			component = new ComponentCamera(component_json, this);
 			break;
 		default:
 			break;

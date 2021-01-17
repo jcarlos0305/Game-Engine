@@ -35,7 +35,11 @@ public:
 
 	void SetAspectRatio(float aspect_ratio);
 
+	inline std::string GetUUID() const { return UUID; };
+	inline void SetUUID(const char* _uuid) { UUID = _uuid; };
+
 private:
+	std::string UUID;
 	Frustum frustum;
 };
 
