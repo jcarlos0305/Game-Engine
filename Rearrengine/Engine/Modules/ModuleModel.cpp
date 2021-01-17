@@ -23,7 +23,7 @@
 #include "Brofiler/Brofiler.h"
 
 static std::vector<std::string> extensions{ ".png", ".tif" };
-static std::vector<std::string> texture_types{ "Diffuse", "Specular" }; //"Normals", "Occlusion",
+static std::vector<std::string> texture_types{ "Diffuse", "Specular" }; //"Normals", "Occlusion" pending
 
 struct aiLogStream stream;
 
@@ -45,12 +45,6 @@ bool ModuleModel::Init() {
 	stream.callback = AssimpLog;
 	aiAttachLogStream(&stream);
 
-	/*unsigned int loaded_texture = App->texture->LoadTexture(DEFAULT_TEXTURE_PATH);
-	textures.push_back(loaded_texture);*/
-	//Load("assets/BakerHouse.fbx", "assets/vertex.glsl", "assets/fragment.glsl");
-	//Load("assets/Street_Environment/Street_environment_V01.fbx", "assets/vertex.glsl", "assets/fragment.glsl");
-	//Load("assets/Robot/Robot.FBX", "assets/vertex_pbr.glsl", "assets/fragment_pbr.glsl");
-
 	return true;
 }
 
@@ -60,8 +54,8 @@ void ModuleModel::Load(const char* file_path) {
 
 	if (strcmpi(file_ext, ".fbx") == 0) {
 		LOG("Loading model %s", file_path);
-		//Load(file_path, "assets/vertex.glsl", "assets/fragment.glsl");
-		Load(file_path, "assets/vertex_pbr.glsl", "assets/fragment_pbr.glsl"); //TODO: Add pbr phong
+
+		Load(file_path, "assets/vertex_pbr.glsl", "assets/fragment_pbr.glsl");
 	}
 	else if (strcmpi(file_ext, ".png") == 0 || strcmpi(file_ext, ".dds") == 0 || strcmpi(file_ext, ".jpg") == 0 || strcmpi(file_ext, ".jpeg") == 0) {
 		LOG("Loading texture %s", file_path);
@@ -155,8 +149,6 @@ void ModuleModel::LoadTextures(aiMaterial** const mMaterials, unsigned int mNumM
 
 void ModuleModel::LoadDefaultTextures(const char* src_path) {
 	unsigned int loaded_texture = 0;
-	//Json::Value textures_root;
-	/*Json::Value texture_array(Json::arrayValue);*/
 
 	char texture_file_drive[_MAX_DRIVE];
 	char texture_file_dir[_MAX_DIR];
@@ -342,7 +334,6 @@ void ModuleModel::LoadModelChildren(aiMesh** const mMeshes, unsigned int program
 		LoadModelChildren(mMeshes, program, node->mChildren[i], game_object);
 		father->AddChild(game_object);
 	}
-	//App->camera->SetFocusToModel(GetModelCenterPoint(), GetModelRadius());
 }
 
 void ModuleModel::SetMinMax(Mesh* _mesh) {

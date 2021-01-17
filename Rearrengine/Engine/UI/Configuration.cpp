@@ -53,8 +53,6 @@ void Configuration::Draw() {
 		ImGui::DragFloat("", &camera_up.z, 0.0f); ImGui::NextColumn();
 		ImGui::Text("Up"); ImGui::NextColumn();
 
-		ImGui::PopItemFlag();
-
 		// World
 		float3 camera_position = App->camera->GetPosition();
 		ImGui::DragFloat("", &camera_position.x, 0.0f); ImGui::NextColumn();
@@ -62,7 +60,7 @@ void Configuration::Draw() {
 		ImGui::DragFloat("", &camera_position.z, 0.0f); ImGui::NextColumn();
 		ImGui::Text("Position"); ImGui::NextColumn();
 
-		//ImGui::PopItemFlag();
+		ImGui::PopItemFlag();
 		ImGui::NewLine();
 
 		// Near plane

@@ -9,8 +9,6 @@
 
 bool ModuleTexture::Init() {
 	ilInit();
-	/*ilEnable(IL_ORIGIN_SET);
-	ilOriginFunc(IL_ORIGIN_LOWER_LEFT);*/
 	return true;
 }
 
