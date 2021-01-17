@@ -53,7 +53,8 @@ enum class KeyState {
 // DEV info
 #define REPO_URL "https://github.com/jcarlos0305/Game-Engine"
 #define ENGINE_VERSION "1.0"
-#define DEVELOPER "Juan Carlos Sanchez Guzman"
+#define DEVELOPER "- Juan Carlos Sanchez Guzman"
+#define DEVELOPER_2 "- Alvaro Hinojal"
 #define LICENCE "MIT License"
 
 // Component types
