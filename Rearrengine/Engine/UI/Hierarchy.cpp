@@ -15,12 +15,11 @@ Hierarchy::Hierarchy() {
 Hierarchy::~Hierarchy() {}
 
 void Hierarchy::Draw() {
-	if (ImGui::Begin(title, &visible, ImGuiWindowFlags_NoCollapse)) {
-		if (App->scene->GetRoot()) {
-			DrawRecursive(*App->scene->GetRoot());
-		}
-		ImGui::End();
+	ImGui::Begin(title, &visible, ImGuiWindowFlags_NoCollapse);
+	if (App->scene->GetRoot()) {
+		DrawRecursive(*App->scene->GetRoot());
 	}
+	ImGui::End();
 }
 
 void Hierarchy::DrawRecursive(GameObject& game_object) {

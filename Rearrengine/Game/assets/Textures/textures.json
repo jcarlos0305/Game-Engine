@@ -1,0 +1,23 @@
+{
+	"Textures" : 
+	[
+		"C:\\Users\\jcarl\\Desktop\\Master Resources\\Models\\178604_Models\\Wall\\WallDiffuse.png",
+		"C:\\Users\\jcarl\\Desktop\\Master Resources\\Models\\178604_Models\\Wall\\WallSpecular.tif",
+		"C:\\Users\\jcarl\\Desktop\\Master Resources\\Models\\178604_Models\\Floor\\FloorDiffuse.png",
+		"C:\\Users\\jcarl\\Desktop\\Master Resources\\Models\\178604_Models\\Floor\\FloorSpecular.tif",
+		"C:\\Users\\jcarl\\Desktop\\Master Resources\\Models\\178604_Models\\Drawers\\DrawersDiffuse.png",
+		"C:\\Users\\jcarl\\Desktop\\Master Resources\\Models\\178604_Models\\Drawers\\DrawersSpecular.tif",
+		"C:\\Users\\jcarl\\Desktop\\Master Resources\\Models\\178604_Models\\Robot\\RobotDiffuse.png",
+		"C:\\Users\\jcarl\\Desktop\\Master Resources\\Models\\178604_Models\\Robot\\RobotSpecular.png",
+		"C:\\Users\\jcarl\\Desktop\\Master Resources\\Models\\178604_Models\\DollHouse\\DollhouseDiffuse.png",
+		"C:\\Users\\jcarl\\Desktop\\Master Resources\\Models\\178604_Models\\DollHouse\\DollhouseSpecular.tif",
+		"C:\\Users\\jcarl\\Desktop\\Master Resources\\Models\\178604_Models\\Firetruck\\FiretruckDiffuse.png",
+		"C:\\Users\\jcarl\\Desktop\\Master Resources\\Models\\178604_Models\\Firetruck\\FiretruckSpecular.tif",
+		"C:\\Users\\jcarl\\Desktop\\Master Resources\\Models\\178604_Models\\Hearse\\HearseDiffuse.png",
+		"C:\\Users\\jcarl\\Desktop\\Master Resources\\Models\\178604_Models\\Hearse\\HearseSpecular.tif",
+		"C:\\Users\\jcarl\\Desktop\\Master Resources\\Models\\178604_Models\\Clock\\ClockDiffuse.png",
+		"C:\\Users\\jcarl\\Desktop\\Master Resources\\Models\\178604_Models\\Clock\\ClockSpecular.tif",
+		"C:\\Users\\jcarl\\Desktop\\Master Resources\\Models\\178604_Models\\SpinningTop\\SpinningTopDiffuse.png",
+		"C:\\Users\\jcarl\\Desktop\\Master\\Game-Engine\\Rearrengine\\Game\\assets\\GrayTexture.png"
+	]
+}

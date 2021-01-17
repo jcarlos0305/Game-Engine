@@ -120,6 +120,7 @@ void ModuleCamera::ResetCameraPosition() {
 }
 
 void ModuleCamera::SetFocusToModel(float3 model_center, float radius) {
+	//frustum.SetPos(float3(0.0f, 2.5f, 7.0f));
 	activeCamera->GetCamera()->SetPos(model_center + activeCamera->GetFrustum().Front().Neg() * radius * 2.5);
 }
 

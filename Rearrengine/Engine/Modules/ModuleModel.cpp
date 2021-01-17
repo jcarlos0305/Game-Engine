@@ -14,10 +14,16 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 
+#include <json/json.h>
+#include "Utils/Utils.h"
+
 #include <string>
 
 #include "Utils/LeakTest.h"
 #include "Brofiler/Brofiler.h"
+
+static std::vector<std::string> extensions{ ".png", ".tif" };
+static std::vector<std::string> texture_types{ "Diffuse", "Specular" }; //"Normals", "Occlusion" pending
 
 struct aiLogStream stream;
 
@@ -39,12 +45,6 @@ bool ModuleModel::Init() {
 	stream.callback = AssimpLog;
 	aiAttachLogStream(&stream);
 
-	unsigned int loaded_texture = App->texture->LoadTexture(DEFAULT_TEXTURE_PATH);
-	textures.push_back(loaded_texture);
-	//Load("assets/BakerHouse.fbx", "assets/vertex.glsl", "assets/fragment.glsl");
-	Load("assets/Street_Environment/Street_environment_V01.fbx", "assets/vertex.glsl", "assets/fragment.glsl");
-	//Load("assets/Robot/Robot.FBX", "assets/vertex.glsl", "assets/fragment.glsl");
-
 	return true;
 }
 
@@ -54,7 +54,8 @@ void ModuleModel::Load(const char* file_path) {
 
 	if (strcmpi(file_ext, ".fbx") == 0) {
 		LOG("Loading model %s", file_path);
-		Load(file_path, "assets/vertex.glsl", "assets/fragment.glsl");
+
+		Load(file_path, "assets/vertex_pbr.glsl", "assets/fragment_pbr.glsl");
 	}
 	else if (strcmpi(file_ext, ".png") == 0 || strcmpi(file_ext, ".dds") == 0 || strcmpi(file_ext, ".jpg") == 0 || strcmpi(file_ext, ".jpeg") == 0) {
 		LOG("Loading texture %s", file_path);
@@ -76,7 +77,7 @@ void ModuleModel::Load(const char* model_path, const char* vertex_shader_path, c
 	const aiScene* scene = aiImportFile(model_path, aiProcessPreset_TargetRealtime_MaxQuality);
 	if (program && scene) {
 		LOG("Shaders program created successfully!\n");
-		LoadTextures(scene->mMaterials, scene->mNumMaterials, model_path);
+		LoadDefaultTextures(model_path);
 
 		char model_name[_MAX_FNAME];
 		_splitpath_s(model_path, NULL, 0, NULL, 0, model_name, _MAX_FNAME, NULL, 0);
@@ -142,6 +143,57 @@ void ModuleModel::LoadTextures(aiMaterial** const mMaterials, unsigned int mNumM
 		}
 		else {
 			SearchTexture(file.data, src_path);
+		}
+	}
+}
+
+void ModuleModel::LoadDefaultTextures(const char* src_path) {
+	unsigned int loaded_texture = 0;
+
+	char texture_file_drive[_MAX_DRIVE];
+	char texture_file_dir[_MAX_DIR];
+	char texture_file_name[_MAX_FNAME];
+	_splitpath_s(src_path, texture_file_drive, _MAX_DRIVE, texture_file_dir, _MAX_DIR, texture_file_name, _MAX_FNAME, NULL, 0);
+
+	textures.reserve(texture_types.size());
+
+	for (unsigned int i = 0; i < texture_types.size(); i++) {
+		for (unsigned int j = 0; j < extensions.size(); j++) {
+			std::string texture_path = texture_file_drive;
+			texture_path.append(texture_file_dir);
+			texture_path.append(texture_file_name + texture_types[i] + extensions[j]);
+
+			loaded_texture = App->texture->LoadTexture(texture_path.c_str());
+
+			if (loaded_texture) {
+				textures.push_back(loaded_texture);
+				textures_root[JSON_PROPERTY_TEXTURES].append(texture_path.c_str());
+				break;
+			}
+		}
+	}
+	if (textures.size() % 2 != 0) {
+		loaded_texture = App->texture->LoadTexture(DEFAULT_TEXTURE_PATH);
+		textures.push_back(loaded_texture);
+		textures_root[JSON_PROPERTY_TEXTURES].append(DEFAULT_TEXTURE_PATH);
+	}
+	PrintToFile("textures", JSON_TEXTURES_DIRECTORY, textures_root);
+}
+
+void ModuleModel::LoadTexturesFromJson(Json::Value& _json_textures_root) {
+	unsigned int loaded_texture = 0;
+	textures.reserve(_json_textures_root[JSON_PROPERTY_TEXTURES].size());
+	for (Json::Value texture_json : _json_textures_root[JSON_PROPERTY_TEXTURES]) {
+		loaded_texture = App->texture->LoadTexture(texture_json.asCString());
+
+		if (loaded_texture) {
+			textures.push_back(loaded_texture);
+			textures_root[JSON_PROPERTY_TEXTURES].append(texture_json.asCString());
+		}
+		else {
+			loaded_texture = App->texture->LoadTexture(DEFAULT_TEXTURE_PATH);
+			textures.push_back(loaded_texture);
+			textures_root[JSON_PROPERTY_TEXTURES].append(texture_json.asCString());
 		}
 	}
 }
@@ -228,6 +280,7 @@ void ModuleModel::LoadModelChildren(aiMesh** const mMeshes, unsigned int program
 		if (node->mChildren[i]->mNumMeshes == 1) {
 			Mesh* mesh = new Mesh(program);
 			mesh->LoadVBO(mMeshes[node->mChildren[i]->mMeshes[0]]);
+			mesh->SetMaterialIndex(textures.size() - 2);
 			mesh->LoadEBO(mMeshes[node->mChildren[i]->mMeshes[0]]);
 			mesh->CreateVAO();
 
@@ -259,6 +312,7 @@ void ModuleModel::LoadModelChildren(aiMesh** const mMeshes, unsigned int program
 
 				Mesh* mesh = new Mesh(program);
 				mesh->LoadVBO(mMeshes[node->mChildren[i]->mMeshes[j]]);
+				mesh->SetMaterialIndex(textures.size() - 2);
 				mesh->LoadEBO(mMeshes[node->mChildren[i]->mMeshes[j]]);
 				mesh->CreateVAO();
 
@@ -281,7 +335,6 @@ void ModuleModel::LoadModelChildren(aiMesh** const mMeshes, unsigned int program
 		LoadModelChildren(mMeshes, program, node->mChildren[i], game_object);
 		father->AddChild(game_object);
 	}
-	App->camera->SetFocusToModel(GetModelCenterPoint(), GetModelRadius());
 }
 
 void ModuleModel::SetMinMax(Mesh* _mesh) {
@@ -291,6 +344,15 @@ void ModuleModel::SetMinMax(Mesh* _mesh) {
 	if (_mesh->min_y < min_y) min_y = _mesh->min_y;
 	if (_mesh->max_z > max_z) max_z = _mesh->max_z;
 	if (_mesh->min_z < min_z) min_z = _mesh->min_z;
+}
+
+void ModuleModel::UpdateMinMax(float3& vector, Mesh* _mesh) {
+	max_x = _mesh->max_x * vector.x;
+	min_x = _mesh->min_x * vector.x;
+	max_y = _mesh->max_y * vector.y;
+	min_y = _mesh->min_y * vector.y;
+	max_z = _mesh->max_z * vector.z;
+	min_z = _mesh->min_z * vector.z;
 }
 
 float3 ModuleModel::GetModelCenterPoint() {

@@ -21,6 +21,10 @@ public:
 	UpdateStatus Update() override;
 	UpdateStatus PostUpdate() override;
 
+	inline float3   GetFront()    const { return GetSceneCamera()->GetFrustum().Front(); }
+	inline float3   GetUp()       const { return GetSceneCamera()->GetFrustum().Up(); }
+	inline float3   GetPosition() const { return GetSceneCamera()->GetFrustum().Pos(); };
+
 	bool CleanUp() override;
 
 	inline ComponentCamera* GetActiveCamera() { return activeCamera; }
@@ -40,6 +44,6 @@ private:
 	ComponentCamera* gameCamera = nullptr;
 
 	float speed_modifier = 1.0f;
-	
+
 	void Rotate(const float3x3& rotationMatrix);
 };
