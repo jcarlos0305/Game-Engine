@@ -32,7 +32,7 @@ void Mesh::LoadVBO(const aiMesh* mesh) {
 	glGenBuffers(1, &vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
-	unsigned vertex_size = (sizeof(float) * 3 + sizeof(float) * 2);
+	unsigned vertex_size = (sizeof(float) * 3 + sizeof(float) * 3 + sizeof(float) * 2);
 	unsigned vertices_size = vertex_size * mesh->mNumVertices;
 
 	name = mesh->mName.C_Str();
@@ -62,6 +62,11 @@ void Mesh::LoadVBO(const aiMesh* mesh) {
 		uvs[position++] = mesh->mVertices[i].y; vbo_json.append(mesh->mVertices[i].y);
 		uvs[position++] = mesh->mVertices[i].z; vbo_json.append(mesh->mVertices[i].z);
 
+		// normals
+		uvs[position++] = mesh->mNormals[i].x; vbo_json.append(mesh->mNormals[i].x);
+		uvs[position++] = mesh->mNormals[i].y; vbo_json.append(mesh->mNormals[i].y);
+		uvs[position++] = mesh->mNormals[i].z; vbo_json.append(mesh->mNormals[i].z);
+
 		// UV
 		if (mesh->mTextureCoords[0]) {
 			uvs[position++] = mesh->mTextureCoords[0][i].x; vbo_json.append(mesh->mTextureCoords[0][i].x);
@@ -82,7 +87,7 @@ void Mesh::LoadVBO(Json::Value& _vbo_data) {
 	glGenBuffers(1, &vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
-	unsigned vertex_size = (sizeof(float) * 3 + sizeof(float) * 2);
+	unsigned vertex_size = (sizeof(float) * 3 + sizeof(float) * 3 + sizeof(float) * 2);
 	unsigned vertices_size = vertex_size * num_vertices;
 
 	glBufferData(GL_ARRAY_BUFFER, vertices_size, nullptr, GL_STATIC_DRAW);
@@ -116,7 +121,7 @@ void Mesh::LoadEBO(const aiMesh* mesh) {
 
 	num_indices = mesh->mNumFaces * 3;
 	mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_NUM_INDICES] = num_indices;
-
+	mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_MATERIAL_INDEX] = material_index;
 	mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_EBO] = ebo_json;
 
 	PrintToFile(name, JSON_MESH_DIRECTORY, mesh_root);
@@ -145,10 +150,13 @@ void Mesh::CreateVAO() {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
 
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3 + sizeof(float) * 2, (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3 + sizeof(float) * 3 + sizeof(float) * 2, (void*)0);
 
 	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 3 + sizeof(float) * 2, (void*)(sizeof(float) * 3));
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3 + sizeof(float) * 3 + sizeof(float) * 2, (void*)(sizeof(float) * 3));
+
+	glEnableVertexAttribArray(2);
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 3 + sizeof(float) * 3 + sizeof(float) * 2, (void*)(sizeof(float) * 6));
 
 	glBindVertexArray(0);
 }
@@ -157,18 +165,44 @@ void Mesh::Draw(const std::vector<unsigned>& model_textures, const float4x4 mode
 	float4x4 proj = App->camera->GetProjectionMatrix();
 	float4x4 view = App->camera->GetViewMatrix();
 
+	float3 view_pos = App->camera->GetPosition();
+
+	// Set a default light due to now having lights implemented in the enigine, yet!
+	float3 light_dir(-0.5, 0.6043f, 0.7967f);
+	float3 light_color(1.0f, 1.0f, 1.0f);
+	float3 ambient_color(1.0f, 1.0f, 1.0f);
+
+	float Ks = 1.0f;
+	float Kd = 0.5f;
+	float shininess = 80.0f;
+	float refractive_index = 2.2f;
+
 	glUseProgram(program);
 
 	glUniformMatrix4fv(glGetUniformLocation(program, "model"), 1, GL_TRUE, (const float*)&model);
 	glUniformMatrix4fv(glGetUniformLocation(program, "view"), 1, GL_TRUE, (const float*)&view);
 	glUniformMatrix4fv(glGetUniformLocation(program, "proj"), 1, GL_TRUE, (const float*)&proj);
 
-	glUniform1i(glGetUniformLocation(program, "mytexture"), 0);
+	glUniform1i(glGetUniformLocation(program, "diffuse_texture"), 0);
+	glUniform1i(glGetUniformLocation(program, "specular_texture"), 1);
+
+	glUniform3f(glGetUniformLocation(program, "light_dir"), light_dir.x, light_dir.y, light_dir.z);
+	glUniform3f(glGetUniformLocation(program, "light_color"), light_color.x, light_color.y, light_color.z);
+	glUniform3f(glGetUniformLocation(program, "ambient_color"), ambient_color.x, ambient_color.y, ambient_color.z);
+
+	glUniform3f(glGetUniformLocation(program, "view_pos"), view_pos.x, view_pos.y, view_pos.z);
+
+	glUniform1f(glGetUniformLocation(program, "Ks"), Ks);
+	glUniform1f(glGetUniformLocation(program, "Kd"), Kd);
+	glUniform1f(glGetUniformLocation(program, "shininess"), shininess);
+	glUniform1f(glGetUniformLocation(program, "refractive_index"), refractive_index);
 
 	glBindVertexArray(vao);
-	glActiveTexture(GL_TEXTURE0);
-	//glBindTexture(GL_TEXTURE_2D, model_textures[material_index]); TODO: This will be updated with the materials
-	glBindTexture(GL_TEXTURE_2D, model_textures[0]);
+
+	for (unsigned int i = 0; i < 2; i++) {
+		glActiveTexture(GL_TEXTURE0 + i);
+		glBindTexture(GL_TEXTURE_2D, model_textures[material_index + i]);
+	}
 
 	glDrawElements(GL_TRIANGLES, num_indices, GL_UNSIGNED_INT, nullptr);
 
@@ -179,7 +213,6 @@ void Mesh::ToJson() {
 	mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_NAME] = name;
 	mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_NUM_FACES] = num_faces;
 	mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_NUM_VERTICES] = num_vertices;
-	mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_MATERIAL_INDEX] = material_index;
 
 	mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_MIN_X] = min_x;
 	mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_MIN_Y] = min_y;
@@ -208,7 +241,7 @@ void Mesh::FromJson(std::string _mesh_path) {
 	max_y = mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_MAX_Y].asFloat();
 	max_z = mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_MAX_Z].asFloat();
 
-	program = App->model->CreateProgram("assets/vertex.glsl", "assets/fragment.glsl");
+	program = App->model->CreateProgram("assets/vertex_pbr.glsl", "assets/fragment_pbr.glsl");
 
 	LoadVBO(mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_VBO]);
 	LoadEBO(mesh_root[JSON_PROPERTY_MESH][JSON_PROPERTY_MESH_EBO]);

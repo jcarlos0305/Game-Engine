@@ -116,8 +116,6 @@ void ModuleRender::RenderToViewport(unsigned int width, unsigned int height) {
 
 void ModuleRender::EnableVsync(bool enabled) {
 	SDL_GL_SetSwapInterval(enabled);
-	App->scene->FromJSON(); // TODO: remove this
-	//App->scene->ToJSON(); // TODO: remove this
 }
 
 // Called before quitting

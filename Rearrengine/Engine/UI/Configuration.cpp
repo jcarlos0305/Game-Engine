@@ -54,7 +54,7 @@ void Configuration::Draw() {
 		ImGui::Text("Up"); ImGui::NextColumn();
 
 		// World
-		float3x4 camera_position = App->camera->GetWorldMatrix();
+		float3 camera_position = App->camera->GetPosition();
 		ImGui::DragFloat("", &camera_position.x, 0.0f); ImGui::NextColumn();
 		ImGui::DragFloat("", &camera_position.y, 0.0f); ImGui::NextColumn();
 		ImGui::DragFloat("", &camera_position.z, 0.0f); ImGui::NextColumn();
@@ -103,19 +103,19 @@ void Configuration::Draw() {
 
 			// Position
 			translate_vector = component_transform->GetTranslate();
-			DrawModifiableVector(translate_vector, component_transform);
+			DrawModifiableVector(translate_vector, component_transform, 0);
 			ImGui::Text("Position"); ImGui::NextColumn();
 			ImGui::Separator();
 
 			// Scale
 			scale_vector = component_transform->GetScale();
-			DrawModifiableVector(scale_vector, component_transform);
+			DrawModifiableVector(scale_vector, component_transform, 1);
 			ImGui::Text("Scale");  ImGui::NextColumn();
 			ImGui::Separator();
 
 			// Rotaton
 			rotation_vector = component_transform->GetRotation();
-			DrawModifiableVector(rotation_vector, component_transform);
+			DrawModifiableVector(rotation_vector, component_transform, 2);
 			ImGui::Text("Rotation");  ImGui::NextColumn();
 
 			ImGui::Columns(1);
@@ -135,17 +135,23 @@ void Configuration::Draw() {
 	}
 
 	if (ImGui::CollapsingHeader("Texture")) {
-		ImGui::Image((ImTextureID)App->model->textures[0], ImVec2(128, 128));
+		for (unsigned int i = 0; i < App->model->textures.size(); i++) {
+			ImGui::Image((ImTextureID)App->model->textures[i], ImVec2(128, 128));
+		}
 	}
 	ImGui::End();
 }
 
-void Configuration::DrawModifiableVector(float3& vector, ComponentTransform* transform) {
+void Configuration::DrawModifiableVector(float3& vector, ComponentTransform* transform, int type) {
 	for (unsigned int i = 0; i < 3; i++) {
 		ImGui::PushID(&vector[i]);
 		if (ImGui::DragFloat("", &vector[i], 1.0f, -FLT_MAX, +FLT_MAX, "%.4f", ImGuiSliderFlags_None)) {
 			transform->SetTransform(translate_vector, rotation_vector, scale_vector);
 			selected_game_object->UpdateChildrenGlobalMatrix();
+			if (type == 1) {
+				ComponentMesh* component_mesh = static_cast<ComponentMesh*>(selected_game_object->GetComponentType(ComponentTypes::kMesh));
+				if (component_mesh) App->model->UpdateMinMax(vector, component_mesh->GetMesh());
+			}
 		}
 		ImGui::PopID();
 		ImGui::NextColumn();

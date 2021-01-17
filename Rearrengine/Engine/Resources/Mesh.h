@@ -15,13 +15,19 @@ public:
 
 	void LoadVBO(const aiMesh* mesh);
 	void LoadVBO(Json::Value& _vbo_data);
+
 	void LoadEBO(const aiMesh* mesh);
 	void LoadEBO(Json::Value& _ebo_data);
+
 	void CreateVAO();
+
 	void Draw(const std::vector<unsigned>& model_textures, float4x4 model);
+
 	void ToJson();
 	void FromJson(std::string _mesh_path);
+
 	std::string GetName() const { return name; };
+	void SetMaterialIndex(unsigned int _mat_index) { material_index = _mat_index; };
 
 	unsigned int num_vertices = 0;
 	unsigned int num_faces = 0;

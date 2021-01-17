@@ -20,7 +20,7 @@ public:
 	bool CleanUp();
 
 private:
-	void DrawModifiableVector(float3& vector, ComponentTransform* transform);
+	void DrawModifiableVector(float3& vector, ComponentTransform* transform, int type);
 
 private:
 	GameObject* selected_game_object = nullptr;

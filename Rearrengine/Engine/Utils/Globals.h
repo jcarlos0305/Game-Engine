@@ -110,3 +110,7 @@ enum class ComponentTypes {
 #define JSON_PROPERTY_GAME_OBJECT_PARENT_UUID	"Parent UUID"
 #define JSON_PROPERTY_GAME_OBJECT_COMPONENTS	"Components"
 #define JSON_PROPERTY_GAME_OBJECT_CHILDREN		"Children"
+
+// Textures
+#define JSON_TEXTURES_DIRECTORY					"Textures/"
+#define JSON_PROPERTY_TEXTURES					"Textures"

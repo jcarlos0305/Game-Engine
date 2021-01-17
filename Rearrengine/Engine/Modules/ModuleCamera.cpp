@@ -16,8 +16,9 @@ bool ModuleCamera::Init() {
 	frustum.SetKind(FrustumSpaceGL, FrustumRightHanded);
 	frustum.SetViewPlaneDistances(0.1f, 1000.0f);
 	frustum.SetHorizontalFovAndAspectRatio(DEGTORAD(90.0f), 1.3f);
-	frustum.SetFront(-float3::unitZ);
+	frustum.SetFront(float3(0, 0, -1));
 	frustum.SetUp(float3::unitY);
+	frustum.SetPos(float3(0.0f, 3.0f, 7.0f));
 
 	return true;
 }
@@ -109,7 +110,7 @@ void ModuleCamera::ResetCameraPosition() {
 }
 
 void ModuleCamera::SetFocusToModel(float3 model_center, float radius) {
-	frustum.SetPos(model_center + frustum.Front().Neg() * radius * 2.5);
+	frustum.SetPos(float3(0.0f, 2.5f, 7.0f));
 }
 
 void ModuleCamera::SetPos(float3 position) {

@@ -4,6 +4,7 @@
 
 #include "Main/Application.h"
 #include "Modules/ModuleEditor.h"
+#include "Modules/ModuleScene.h"
 
 #include "ImGui/imgui.h"
 
@@ -12,6 +13,14 @@ UpdateStatus MainMenu::Draw() {
 
 	if (ImGui::BeginMainMenuBar()) {
 		if (ImGui::BeginMenu("File")) {
+			if (ImGui::MenuItem("Save")) {
+				App->scene->ToJSON();
+			}
+
+			if (ImGui::MenuItem("Load")) {
+				App->scene->FromJSON();
+			}
+
 			if (ImGui::MenuItem("Exit")) {
 				ret = UpdateStatus::kUpdateStop;
 			}

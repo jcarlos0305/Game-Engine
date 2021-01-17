@@ -27,8 +27,9 @@ public:
 	UpdateStatus Update() override;
 	UpdateStatus PostUpdate() override;
 
-	inline float3   GetFront() const { return frustum.Front(); }
-	inline float3   GetUp()    const { return frustum.Up(); }
+	inline float3   GetFront()    const { return frustum.Front(); }
+	inline float3   GetUp()       const { return frustum.Up(); }
+	inline float3   GetPosition() const { return frustum.Pos(); };
 
 	inline float3x4 GetWorldMatrix()      const { return frustum.WorldMatrix(); }
 	inline float4x4 GetProjectionMatrix() const { return frustum.ProjectionMatrix(); }
@@ -47,6 +48,6 @@ public:
 private:
 	Frustum frustum;
 	float speed_modifier = 1.0f;
-	
+
 	void Rotate(const float3x3& rotationMatrix);
 };
