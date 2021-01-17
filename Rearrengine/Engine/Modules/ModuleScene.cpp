@@ -29,8 +29,9 @@ void ModuleScene::Draw(QuadtreeNode* node)
 	if (App->camera->GetGameCamera()) {
 		bool isNodeInsideFrustum = App->camera->GetGameCamera()->GetFrustum().Intersects(node->GetBoundingBox());
 		if (isNodeInsideFrustum) {
-			for (GameObject* gameObject : node->GetGameObjects())
-			DrawMesh(*gameObject);
+			for (GameObject* gameObject : node->GetGameObjects()) {
+				Draw(*gameObject);
+			}
 		}
 	}
 
