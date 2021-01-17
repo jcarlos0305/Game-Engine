@@ -78,7 +78,9 @@ void ModuleScene::RecursiveDelete(GameObject* game_object) {
 UpdateStatus ModuleScene::Update()
 {
 	if (drawQuadtree) {
-		DrawQuadtree(quadtree->GetRoot());
+		if (quadtree->GetRoot() != nullptr) {
+			DrawQuadtree(quadtree->GetRoot());
+		}
 	}
 	return UpdateStatus::kUpdateContinue;
 }

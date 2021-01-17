@@ -167,9 +167,11 @@ void ModuleCamera::CreateCameraGameObject()
 
 	SetGameCamera(static_cast<ComponentCamera*>(gameObject_newCamera->GetComponentType(ComponentTypes::kCamera)));
 	int number = 1;
-	for (GameObject* gameObject : App->scene->GetRoot()->GetChildren()) {
-		if (gameObject->HasComponentType(ComponentTypes::kCamera)) {
-			number++;
+	if (App->scene->GetRoot() != nullptr) {
+		for (GameObject* gameObject : App->scene->GetRoot()->GetChildren()) {
+			if (gameObject->HasComponentType(ComponentTypes::kCamera)) {
+				number++;
+			}
 		}
 	}
 	char str1[12];
@@ -181,7 +183,12 @@ void ModuleCamera::CreateCameraGameObject()
 	strcat(str1, str2);
 	gameObject_newCamera->SetName(str1);
 
+	if (App->scene->GetRoot() == nullptr) {
+		App->scene->InitializeRoot();
+	}
+
 	App->scene->GetRoot()->AddChild(gameObject_newCamera);
+	
 }
 
 

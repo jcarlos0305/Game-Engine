@@ -24,7 +24,7 @@ public:
 	UpdateStatus Update() override;
 	bool CleanUp();
 
-	bool drawQuadtree = true;
+	bool drawQuadtree = false;
 
 	void ToJSON() const override;
 	void FromJSON() override;
