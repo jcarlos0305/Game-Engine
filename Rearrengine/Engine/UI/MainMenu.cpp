@@ -20,7 +20,7 @@ UpdateStatus MainMenu::Draw() {
 
 			if (ImGui::MenuItem("Load")) {
 				App->scene->FromJSON();
-				//App->scene->InitializeQuadtree();
+				// App->scene->InitializeQuadtree();
 			}
 
 			if (ImGui::MenuItem("Exit")) {

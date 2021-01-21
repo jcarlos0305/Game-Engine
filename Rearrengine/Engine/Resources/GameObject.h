@@ -54,7 +54,7 @@ private:
 	AABB aabb;
 	OBB obb;
 	std::vector<GameObject*> children;
-	std::vector<Component*>  components;
+	std::vector<Component*> components;
 
 	GameObject* parent = nullptr;
 };

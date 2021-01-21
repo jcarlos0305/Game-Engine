@@ -27,11 +27,21 @@ GameObject* ModuleScene::InitializeRoot() {
 void ModuleScene::InitializeQuadtree()
 {
 	// TODO: If its a quadtree create, delete first
-
+	if (quadtree != nullptr) {
+		/*if (quadtree->GetRoot()->HasChildren()) {
+			quadtree->GetRoot()->RecursiveDelete(quadtree->GetRoot());
+		}*/
+		quadtree->~Quadtree();
+	}
+	
 	// Creation Quadtree when load scene from JSON
-	quadtree = new Quadtree(AABB(float3(-5, -5, -5), float3(5, 5, 5)));
-	for (GameObject* child : root->GetChildren()) {
-		App->scene->GetQuadtree()->InsertGameObject(child);
+	quadtree = new Quadtree(AABB(float3(-3, -3, -3), float3(3, 3, 3)));
+	if (root != nullptr) {
+		if (root->GetChildrenCount() > 0) {
+			for (GameObject* child : root->GetChildren()) {
+				App->scene->GetQuadtree()->InsertGameObject(child);
+			}
+		}
 	}
 }
 
@@ -41,7 +51,7 @@ void ModuleScene::Draw(QuadtreeNode* node)
 		bool isNodeInsideFrustum = App->camera->GetGameCamera()->GetFrustum().Intersects(node->GetBoundingBox());
 		if (isNodeInsideFrustum) {
 			for (GameObject* gameObject : node->GetGameObjects()) {
-				DrawMesh(*gameObject);
+				Draw(*gameObject);
 			}
 		}
 	}
@@ -55,6 +65,7 @@ void ModuleScene::Draw(GameObject& game_object)
 {
 	if (game_object.HasComponentType(ComponentTypes::kMesh)) {
 		ComponentMesh* component_mesh = static_cast<ComponentMesh*>(game_object.GetComponentType(ComponentTypes::kMesh));
+		if (App->render->showQuad) App->debug_draw->DrawOBB(game_object.GetOBB(), float3(0.372549f, 0.619608f, 0.627451f));
 		component_mesh->Draw();
 	}
 
@@ -62,19 +73,6 @@ void ModuleScene::Draw(GameObject& game_object)
 		Draw(*child);
 	}
 }
-
-void ModuleScene::DrawMesh(GameObject& game_object) {
-	if (game_object.HasComponentType(ComponentTypes::kMesh)) {
-		ComponentMesh* component_mesh = static_cast<ComponentMesh*>(game_object.GetComponentType(ComponentTypes::kMesh));
-		if (App->render->showQuad) App->debug_draw->DrawOBB(game_object.GetOBB(), float3(0.372549f, 0.619608f, 0.627451f));
-		component_mesh->Draw();
-	}
-
-	for (GameObject* child : game_object.GetChildren()) {
-		DrawMesh(*child);
-	}
-}
-
 
 void ModuleScene::DrawQuadtree(QuadtreeNode* quadtreeNode)
 {
@@ -99,7 +97,7 @@ void ModuleScene::RecursiveDelete(GameObject* game_object) {
 UpdateStatus ModuleScene::Update()
 {
 	if (drawQuadtree) {
-		if (quadtree->GetRoot() != nullptr) {
+		if (quadtree->GetRoot()) {
 			DrawQuadtree(quadtree->GetRoot());
 		}
 	}

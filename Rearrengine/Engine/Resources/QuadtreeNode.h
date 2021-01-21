@@ -17,9 +17,11 @@ public:
 
 	void CreateChildrenNodes();
 	inline std::vector<QuadtreeNode*> GetChildren() { return children; };
+	inline bool HasChildren() { return children.size() > 0; };
 
 	inline std::vector<GameObject*> GetGameObjects() { return gameObjects; };
 	void InsertGameObject(GameObject* gameObject);
+	void RecursiveDelete(QuadtreeNode* _node);
 
 	inline int GetIndex() { return index; };
 

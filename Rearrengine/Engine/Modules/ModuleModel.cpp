@@ -97,7 +97,7 @@ void ModuleModel::Load(const char* model_path, const char* vertex_shader_path, c
 		ComponentTransform* component_transform = new ComponentTransform();
 		component_transform->SetOwner(game_object);
 		game_object->AddComponent(component_transform);
-		//App->scene->GetQuadtree()->InsertGameObject(game_object);
+		App->scene->GetQuadtree()->InsertGameObject(game_object);
 
 		LoadModelChildren(scene->mMeshes, program, scene->mRootNode, game_object);
 		LOG("Model loaded successfully!\n");

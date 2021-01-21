@@ -50,7 +50,7 @@ bool ModuleEditor::Init() {
 	io.ConfigWindowsMoveFromTitleBarOnly = true;
 
 	App->scene->FromJSON();
-	//App->scene->InitializeQuadtree();
+	App->scene->InitializeQuadtree();
 
 	return true;
 }

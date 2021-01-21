@@ -16,7 +16,6 @@ public:
 	inline void SetQuadtree(Quadtree* _quadtree) { quadtree = _quadtree; };
 	void Draw(QuadtreeNode* quadtreeNode);
 	void Draw(GameObject& game_object);
-	void DrawMesh(GameObject& game_object);
 	void DrawQuadtree(QuadtreeNode* quadtreeNode);
 
 	GameObject* InitializeRoot();

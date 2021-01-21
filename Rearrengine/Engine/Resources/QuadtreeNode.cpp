@@ -20,12 +20,7 @@ QuadtreeNode::QuadtreeNode(const AABB aabb, QuadtreeNode* _parent, int _index)
 
 QuadtreeNode::~QuadtreeNode()
 {
-	for (QuadtreeNode* child : GetChildren()) {
-		if (child != nullptr) {
-			delete child;
-			child = nullptr;
-		}
-	}
+	delete this;
 }
 
 void QuadtreeNode::Draw()
@@ -91,4 +86,15 @@ void QuadtreeNode::InsertGameObject(GameObject* gameObject)
 			}
 		}
 	}
+}
+
+void QuadtreeNode::RecursiveDelete(QuadtreeNode* _node)
+{
+	if (_node->HasChildren()) {
+		for (QuadtreeNode* child : _node->GetChildren()) {
+			RecursiveDelete(child);
+		}
+	}
+	this->~QuadtreeNode();
+
 }
