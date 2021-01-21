@@ -18,7 +18,9 @@ public:
 	void Draw(GameObject& game_object);
 	void DrawMesh(GameObject& game_object);
 	void DrawQuadtree(QuadtreeNode* quadtreeNode);
+
 	GameObject* InitializeRoot();
+	void InitializeQuadtree();
 
 	void RecursiveDelete(GameObject* game_object);
 

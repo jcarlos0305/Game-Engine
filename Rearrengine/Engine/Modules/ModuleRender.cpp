@@ -104,12 +104,8 @@ void ModuleRender::RenderToViewport(unsigned int width, unsigned int height) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	// Change draw to send all the gameobjects that obb is inside the frustrum
-	//if (App->scene->GetRoot()) App->scene->DrawMesh(*App->scene->GetRoot());
-	if (App->scene->GetRoot()) App->scene->Draw(App->scene->GetQuadtree()->GetRoot());
-
-	// Drawing the model
-	//App->model->Draw();
-	//if (App->scene->GetRoot()) App->scene->DrawMesh(*App->scene->GetRoot());
+	if (App->scene->GetRoot()) App->scene->DrawMesh(*App->scene->GetRoot());
+	//if (App->scene->GetRoot()) App->scene->Draw(App->scene->GetQuadtree()->GetRoot());
 
 	// Drawing the grid with debug draw
 	App->debug_draw->Draw(view, proj, w, h);

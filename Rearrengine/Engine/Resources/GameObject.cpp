@@ -20,7 +20,7 @@ GameObject::GameObject(Json::Value& _game_object_data) {
 GameObject::~GameObject() {
 	free(name);
 	name = nullptr;
-	for (Component* component : components) delete component; // ?
+	for (Component* component : components) delete component;
 }
 
 void GameObject::AddComponent(Component* _component)

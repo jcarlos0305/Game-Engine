@@ -19,9 +19,8 @@ UpdateStatus MainMenu::Draw() {
 			}
 
 			if (ImGui::MenuItem("Load")) {
-				App->scene->SetQuadtree(new Quadtree(AABB(float3(-5, -5, -5), float3(5, 5, 5))));
 				App->scene->FromJSON();
-				App->scene->GetQuadtree()->InsertGameObject(App->scene->GetRoot());
+				//App->scene->InitializeQuadtree();
 			}
 
 			if (ImGui::MenuItem("Exit")) {

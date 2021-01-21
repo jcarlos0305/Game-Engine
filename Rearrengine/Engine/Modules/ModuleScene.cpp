@@ -20,8 +20,19 @@ GameObject* ModuleScene::InitializeRoot() {
 	root = new GameObject();
 	root->SetName("root");
 	root->AddComponent(new ComponentTransform());
-	quadtree = new Quadtree(AABB(float3(-10, -10, -10), float3(10, 10, 10)));
+	//quadtree = new Quadtree(AABB(float3(-5, -5, -5), float3(5, 5, 5)));
 	return root;
+}
+
+void ModuleScene::InitializeQuadtree()
+{
+	// TODO: If its a quadtree create, delete first
+
+	// Creation Quadtree when load scene from JSON
+	quadtree = new Quadtree(AABB(float3(-5, -5, -5), float3(5, 5, 5)));
+	for (GameObject* child : root->GetChildren()) {
+		App->scene->GetQuadtree()->InsertGameObject(child);
+	}
 }
 
 void ModuleScene::Draw(QuadtreeNode* node)
@@ -30,7 +41,7 @@ void ModuleScene::Draw(QuadtreeNode* node)
 		bool isNodeInsideFrustum = App->camera->GetGameCamera()->GetFrustum().Intersects(node->GetBoundingBox());
 		if (isNodeInsideFrustum) {
 			for (GameObject* gameObject : node->GetGameObjects()) {
-				Draw(*gameObject);
+				DrawMesh(*gameObject);
 			}
 		}
 	}
@@ -57,6 +68,10 @@ void ModuleScene::DrawMesh(GameObject& game_object) {
 		ComponentMesh* component_mesh = static_cast<ComponentMesh*>(game_object.GetComponentType(ComponentTypes::kMesh));
 		if (App->render->showQuad) App->debug_draw->DrawOBB(game_object.GetOBB(), float3(0.372549f, 0.619608f, 0.627451f));
 		component_mesh->Draw();
+	}
+
+	for (GameObject* child : game_object.GetChildren()) {
+		DrawMesh(*child);
 	}
 }
 

@@ -11,8 +11,8 @@ ComponentCamera::ComponentCamera()
 ComponentCamera::ComponentCamera(Json::Value& _component_camera, GameObject* _game_object)
 {
 	type = ComponentTypes::kTransform;
-	SetOwner(_game_object);
-	FromJson(_component_camera);
+	//SetOwner(_game_object);
+	//FromJson(_component_camera);
 }
 
 ComponentCamera::~ComponentCamera()
